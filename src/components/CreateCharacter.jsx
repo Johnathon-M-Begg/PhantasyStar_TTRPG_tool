@@ -5,9 +5,22 @@ import './CreateCharacter.css'
 function CreateCharacter() {
     const navigate = useNavigate()
     const [selectedRace, setSelectedRace] = useState('')
+    const [selectedVariant, setSelectedVariant] = useState('')
+    const [selectedProfession, setSelectedProfession] = useState('')
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const professions = [
+        {name: 'Guardian', desc: 'Heroic defender and champion of justice'},
+        {name: 'Hunter', desc: 'Expert explorer and tracker'},
+        {name: 'Mystic', desc: 'Agile combatant who channels spiritual energy'},
+        {name: 'Operative', desc: 'Experts in infiltration, investigation, and subterfuge'},
+        {name: 'Savant', desc: 'Scientists and specialists'},
+        {name: 'Thaumaturge', desc: 'Channelers of arcane power and elemental energy'},
+        {name: 'Warrior', desc: 'Battle adept and master of arms'},
+    ]
 
     const races = [
-        { name: 'Human', desc: 'Humans are by far the most populous species in the\n' +
+        { name: 'Human', size: 'Medium', desc: 'Humans are by far the most populous species in the\n' +
                 'galaxy. They are believed to have originated on Palma,\n' +
                 'the first planet of the Algol system. Many believe,\n' +
                 'however, that their true origins go back far beyond\n' +
@@ -48,10 +61,37 @@ function CreateCharacter() {
                 'by those outside their secluded settlements.' },
     ]
 
+    const humanVariants = [
+        {name: 'Default', traits: ['Adaptable', 'Resourceful', 'Versatile']},
+        {name: 'Arctic Climate', traits: ['Cold Resistance']},
+        {name: 'Extreme Heat', traits: ['Heat Resistance']},
+        {name: 'High Gravity', traits: ['Jump Boost', 'Strength Increase']},
+        {name: 'Spacer', traits: ['Vehicle Proficiency']},
+        {name: 'Subterranean', traits: ['Dark Vision', 'Skill rank']},
+        {name: 'Utopian', traits: ['Fear Resistance', 'Charm Resistance', 'Vehicle or Tool proficiency']},
+        {name: 'Wasteland', traits: ['Necrotic Resistance', 'Poison Resistance', 'Disease Resistance']},
+    ]
+
     return (
         <div className="container">
             <div className="white-box">
                 <h2>Create New Character</h2>
+                <div className="form-group">
+                    <label htmlFor="profession-select">Select Profession:</label>
+                    <select 
+                        id="profession-select" 
+                        value={selectedProfession}
+                        onChange={(e) => setSelectedProfession(e.target.value)}
+                        className="dropdown"
+                    >
+                        <option value="">-- Choose a profession --</option>
+                        {professions.map((profession) => (
+                            <option key={profession.name} value={profession.name} title={profession.desc}>
+                                {profession.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 <div className="form-group">
                     <label htmlFor="race-select">Select Race:</label>
                     <select 
@@ -70,7 +110,7 @@ function CreateCharacter() {
                 </div>
                 <div className="button-group">
                     <button className="btn btn-secondary" onClick={() => navigate('/')}>Back</button>
-                    <button className="btn btn-primary" disabled={!selectedRace}>Next</button>
+                    <button className="btn btn-primary" onClick={() => navigate('/summary', { state: { profession: selectedProfession, race: selectedRace, variant: selectedVariant } })} disabled={!selectedRace || !selectedProfession}>Next</button>
                 </div>
             </div>
         </div>
