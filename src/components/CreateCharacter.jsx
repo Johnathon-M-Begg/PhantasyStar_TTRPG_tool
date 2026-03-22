@@ -7,10 +7,9 @@ function CreateCharacter() {
     const [selectedRace, setSelectedRace] = useState('')
 
     const races = [
-        'Hume',
-        'Newmans',
+        'Human',
+        'Newman',
         'Casts',
-        'Beasts'
     ]
 
     return (
