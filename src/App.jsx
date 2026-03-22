@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import LandingPage from "./components/LandingPage.jsx";
-import CreateCharacter from "./components/CreateCharacter.jsx";
-import CharacterSummary from "./components/CharacterSummary.jsx";
+import CreateCharacter from "./components/CharacterCreation/CreateCharacter.jsx";
+import CharacterSummary from "./components/CharacterSummary/CharacterSummary.jsx";
 
 function App() {
     return (

@@ -1,14 +1,20 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './CreateCharacter.css'
-import ProfessionAndRaceSelect from "./ProfessionAndRaceSelect.jsx";
-import CharacterSummary from "./CharacterSummary.jsx";
+import OriginSelect from "./OriginSelect.jsx";
+import ProfessionSelect from "./ProfessionSelect.jsx";
 
 function CreateCharacter() {
     const navigate = useNavigate()
     const [selectedRace, setSelectedRace] = useState('')
     const [selectedVariant, setSelectedVariant] = useState('')
+    const [selectedBackground, setSelectedBackground] = useState('')
     const [selectedProfession, setSelectedProfession] = useState('')
+    const [selectedOrigin, setSelectedOrigin] = useState({
+        race: null,
+        variant: null,
+        background: null,
+    })
     const [step, setStep] = useState(1)
 
     return (
@@ -16,13 +22,9 @@ function CreateCharacter() {
             <div className="white-box">
                 {step === 1 && (
                     <>
-                        <ProfessionAndRaceSelect
-                            selectedProfession={selectedProfession}
-                            setSelectedProfession={setSelectedProfession}
-                            selectedRace={selectedRace}
-                            setSelectedRace={setSelectedRace}
-                            selectedVariant={selectedVariant}
-                            setSelectedVariant={setSelectedVariant}
+                        <OriginSelect
+                            selectedOrigin={selectedOrigin}
+                            setSelectedOrigin={setSelectedOrigin}
                         />
                         <div className="button-group">
                             <button className="btn btn-secondary" onClick={() => navigate('/')}>Back</button>
@@ -31,11 +33,8 @@ function CreateCharacter() {
                     </>
                 )}
                 {step === 2 && (
-                    <CharacterSummary
-                        profession={selectedProfession}
-                        race={selectedRace}
-                        variant={selectedVariant}
-                        onBack={() => setStep(1)}
+                    <ProfessionSelect
+                    selectedProfession={selectedProfession}
                     />
                 )}
             </div>

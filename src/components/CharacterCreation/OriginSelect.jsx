@@ -1,16 +1,9 @@
 import './CreateCharacter.css'
 
-function ProfessionAndRaceSelect({ selectedProfession, setSelectedProfession, selectedRace, setSelectedRace, selectedVariant, setSelectedVariant }) {
-
-    const professions = [
-        {name: 'Guardian', desc: 'Heroic defender and champion of justice'},
-        {name: 'Hunter', desc: 'Expert explorer and tracker'},
-        {name: 'Mystic', desc: 'Agile combatant who channels spiritual energy'},
-        {name: 'Operative', desc: 'Experts in infiltration, investigation, and subterfuge'},
-        {name: 'Savant', desc: 'Scientists and specialists'},
-        {name: 'Thaumaturge', desc: 'Channelers of arcane power and elemental energy'},
-        {name: 'Warrior', desc: 'Battle adept and master of arms'},
-    ]
+function OriginSelect({
+    selectedOrigin,
+    setSelectedOrigin,
+}) {
 
     const races = [
         { name: 'Human', size: 'Medium', desc: 'Humans are by far the most populous species in the\n' +
@@ -54,7 +47,7 @@ function ProfessionAndRaceSelect({ selectedProfession, setSelectedProfession, se
                 'by those outside their secluded settlements.' },
     ]
 
-    const humanVariants = [
+    const variants = [
         {name: 'Default', traits: ['Adaptable', 'Resourceful', 'Versatile']},
         {name: 'Arctic Climate', traits: ['Cold Resistance']},
         {name: 'Extreme Heat', traits: ['Heat Resistance']},
@@ -64,31 +57,23 @@ function ProfessionAndRaceSelect({ selectedProfession, setSelectedProfession, se
         {name: 'Utopian', traits: ['Fear Resistance', 'Charm Resistance', 'Vehicle or Tool proficiency']},
         {name: 'Wasteland', traits: ['Necrotic Resistance', 'Poison Resistance', 'Disease Resistance']},
     ]
-    return (
-        <div>
-            <h2>Create New Character</h2>
-            <div className="form-group">
-                <label htmlFor="profession-select">Select Profession:</label>
-                <select
-                    id="profession-select"
-                    value={selectedProfession}
-                    onChange={(e) => setSelectedProfession(e.target.value)}
-                    className="dropdown"
-                >
-                    <option value="">-- Choose a profession --</option>
-                    {professions.map((profession) => (
-                        <option key={profession.name} value={profession.name} title={profession.desc}>
-                            {profession.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <div className="form-group">
+
+    const backgrounds = [
+        {name: 'Acolyte'},
+        {name: 'Celebrity'},
+
+    ]
+
+
+
+    const RaceSelect = () => {
+        return (
+            <>
                 <label htmlFor="race-select">Select Race:</label>
                 <select
                     id="race-select"
-                    value={selectedRace}
-                    onChange={(e) => setSelectedRace(e.target.value)}
+                    value={selectedOrigin.race}
+                    onChange={(e) => setSelectedOrigin(prev => ({ ...prev, race: e.target.value }))}
                     className="dropdown"
                 >
                     <option value="">-- Choose a race --</option>
@@ -98,9 +83,81 @@ function ProfessionAndRaceSelect({ selectedProfession, setSelectedProfession, se
                         </option>
                     ))}
                 </select>
+            </>
+        )
+    }
+
+    const VariantSelect = () => {
+        return (
+            <>
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+                    <div style={{ flex: 1 }}>
+                        <select
+                            disabled={!selectedOrigin.race}
+                            id="race-variant"
+                            value={selectedOrigin.variant}
+                            onChange={(e) => setSelectedOrigin(prev => ({ ...prev, variant: e.target.value }))}
+                            className="dropdown"
+                        >
+                            <option value="">-- Choose a Variant --</option>
+                            {variants.map((variant) => (
+                                <option key={variant.name} value={variant.name} title={variant.desc}>
+                                    {variant.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px', paddingTop: '20px' }}>
+                        <input
+                            type="checkbox"
+                            id="has-techniques"
+                            disabled={selectedOrigin.race !== 'Android'}
+                            onChange={(e) => setSelectedOrigin(prev => ({ ...prev, hasTechniques: e.target.checked }))}
+                            checked={selectedOrigin.hasTechniques || false}
+                            style={{ cursor: selectedOrigin.race === 'Android' ? 'pointer' : 'not-allowed' }}
+                        />
+                        <label htmlFor="has-techniques" style={{ margin: 0, cursor: selectedOrigin.race === 'Android' ? 'pointer' : 'not-allowed' }}>
+                            Has Techniques
+                        </label>
+                    </div>
+                </div>
+            </>
+        )
+    }
+
+    const BackgroundSelect = () => {
+        return (
+            <>
+                <label htmlFor="background-select">Select Background</label>
+                <select
+                    id="background-select"
+                    value={selectedOrigin.background}
+                    onChange={(e) => setSelectedOrigin(prev => ({ ...prev, background: e.target.value }))}
+                    className="dropdown"
+                >
+                    <option value="">-- Choose a Background --</option>
+                    {backgrounds.map((option) => (
+                        <option key={option.name} value={option.name} title={option.desc}>
+                            {option.name}
+                        </option>
+                    ))}
+                </select>
+            </>
+        )
+    }
+
+    return (
+        <div>
+            <h2>Select Origin</h2>
+            <div className="form-group">
+                <RaceSelect/>
+                <VariantSelect/>
+                <BackgroundSelect/>
             </div>
         </div>
     )
 }
 
-export default ProfessionAndRaceSelect
+
+
+export default OriginSelect
