@@ -1,8 +1,17 @@
-
-function ProfessionSelect({ selectedProfession, setSelectedProfession }) {
+function ProfessionSelect({
+    selectedProfession,
+    setSelectedProfession,
+    setStep,
+}) {
 
     const professions = [
-        {name: "Guardian"},
+        {name: "Guardian", desc: "Versatile combatant and defender", HitDice: 10},
+        {name: "Hunter", desc: "Combines weapon skills with technique use", HitDice: 10},
+        {name: "Mystic", desc: "Combat adept with spiritual techniques", HitDice: 8},
+        {name: "Operative", desc: "Expert in infiltration and exploration", HitDice: 8},
+        {name: "Savant", desc: "Specialist in biotech or machines", HitDice: 8},
+        {name: "Thaumaturge", desc: "Channelers of arcane power and elemental energy", HitDice: 6},
+        {name: "Warrior", desc: "Master of arms and armor", HitDice: 10},
     ]
     return (
         <div className="form-group">
@@ -20,6 +29,15 @@ function ProfessionSelect({ selectedProfession, setSelectedProfession }) {
                     </option>
                 ))}
             </select>
+            <div className="input-group">
+                <label>HP</label> {selectedProfession ? professions.find(p => p.name === selectedProfession).HitDice : ''}
+            </div>
+            <div className="button-group">
+                <button className="btn btn-secondary" onClick={() => navigate('/')}>Back</button>
+                <button className="btn btn-primary" onClick={() => setStep(3)}
+                        disabled={!selectedProfession}
+                >Next</button>
+            </div>
         </div>
     )
 }

@@ -30,6 +30,7 @@ function CreateCharacter() {
                     <ProfessionSelect
                     selectedProfession={selectedProfession}
                     setSelectedProfession={setSelectedProfession}
+                    setStep={setStep}
                     />
                 )}
             </div>
