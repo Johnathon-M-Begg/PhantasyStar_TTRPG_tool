@@ -1,6 +1,9 @@
 
 function ProfessionSelect({ selectedProfession, setSelectedProfession }) {
 
+    const professions = [
+        {name: "Guardian"},
+    ]
     return (
         <div className="form-group">
             <label htmlFor="profession-select">Select Profession:</label>

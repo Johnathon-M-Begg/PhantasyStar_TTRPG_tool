@@ -1,9 +1,15 @@
 import './CreateCharacter.css'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 
 function OriginSelect({
     selectedOrigin,
     setSelectedOrigin,
+    setStep,
 }) {
+
+    const navigate = useNavigate()
 
     const races = [
         { name: 'Human', size: 'Medium', desc: 'Humans are by far the most populous species in the\n' +
@@ -61,7 +67,18 @@ function OriginSelect({
     const backgrounds = [
         {name: 'Acolyte'},
         {name: 'Celebrity'},
-
+        {name: 'Crafter'},
+        {name: 'Drifter'},
+        {name: 'Investigator'},
+        {name: 'Local Hero'},
+        {name: 'Outlander'},
+        {name: 'Outlaw'},
+        {name: 'Patrician'},
+        {name: 'Pilot'},
+        {name: 'Scholar'},
+        {name: 'Soldier'},
+        {name: 'Techie'},
+        {name: 'Wayfarer'},
     ]
 
 
@@ -69,7 +86,7 @@ function OriginSelect({
     const RaceSelect = () => {
         return (
             <>
-                <label htmlFor="race-select">Select Race:</label>
+                <label htmlFor="race-select">Race:</label>
                 <select
                     id="race-select"
                     value={selectedOrigin.race}
@@ -90,6 +107,7 @@ function OriginSelect({
     const VariantSelect = () => {
         return (
             <>
+                <label>Variant</label>
                 <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
                     <div style={{ flex: 1 }}>
                         <select
@@ -99,7 +117,7 @@ function OriginSelect({
                             onChange={(e) => setSelectedOrigin(prev => ({ ...prev, variant: e.target.value }))}
                             className="dropdown"
                         >
-                            <option value="">-- Choose a Variant --</option>
+                            <option value="">-- Variant --</option>
                             {variants.map((variant) => (
                                 <option key={variant.name} value={variant.name} title={variant.desc}>
                                     {variant.name}
@@ -107,19 +125,20 @@ function OriginSelect({
                             ))}
                         </select>
                     </div>
-                    <div style={{ display: 'flex', gap: '8px', paddingTop: '20px' }}>
-                        <input
-                            type="checkbox"
-                            id="has-techniques"
-                            disabled={selectedOrigin.race !== 'Android'}
-                            onChange={(e) => setSelectedOrigin(prev => ({ ...prev, hasTechniques: e.target.checked }))}
-                            checked={selectedOrigin.hasTechniques || false}
-                            style={{ cursor: selectedOrigin.race === 'Android' ? 'pointer' : 'not-allowed' }}
-                        />
-                        <label htmlFor="has-techniques" style={{ margin: 0, cursor: selectedOrigin.race === 'Android' ? 'pointer' : 'not-allowed' }}>
-                            Has Techniques
-                        </label>
-                    </div>
+                    {selectedOrigin.race === 'Android' && (
+                        <div style={{ display: 'flex', gap: '8px', paddingTop: '20px' }}>
+                            <input
+                                type="checkbox"
+                                id="has-techniques"
+                                onChange={(e) => setSelectedOrigin(prev => ({ ...prev, hasTechniques: e.target.checked }))}
+                                checked={selectedOrigin.hasTechniques || false}
+                                style={{ cursor: 'pointer' }}
+                            />
+                            <label htmlFor="has-techniques" style={{ margin: 0, cursor: 'pointer' }}>
+                                Has Techniques
+                            </label>
+                        </div>
+                    )}
                 </div>
             </>
         )
@@ -128,7 +147,7 @@ function OriginSelect({
     const BackgroundSelect = () => {
         return (
             <>
-                <label htmlFor="background-select">Select Background</label>
+                <label htmlFor="background-select">Background:</label>
                 <select
                     id="background-select"
                     value={selectedOrigin.background}
@@ -146,6 +165,10 @@ function OriginSelect({
         )
     }
 
+    useEffect(() => {
+        console.log('Selected Origin:', selectedOrigin)
+    }, [selectedOrigin])
+
     return (
         <div>
             <h2>Select Origin</h2>
@@ -153,6 +176,12 @@ function OriginSelect({
                 <RaceSelect/>
                 <VariantSelect/>
                 <BackgroundSelect/>
+            </div>
+            <div className="button-group">
+                <button className="btn btn-secondary" onClick={() => navigate('/')}>Back</button>
+                <button className="btn btn-primary" onClick={() => setStep(2)}
+                        disabled={!selectedOrigin.race || !selectedOrigin.background || !selectedOrigin.variant}
+                >Next</button>
             </div>
         </div>
     )

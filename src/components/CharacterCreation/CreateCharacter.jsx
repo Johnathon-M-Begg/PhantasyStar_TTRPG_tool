@@ -1,19 +1,15 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import './CreateCharacter.css'
 import OriginSelect from "./OriginSelect.jsx";
 import ProfessionSelect from "./ProfessionSelect.jsx";
 
 function CreateCharacter() {
-    const navigate = useNavigate()
-    const [selectedRace, setSelectedRace] = useState('')
-    const [selectedVariant, setSelectedVariant] = useState('')
-    const [selectedBackground, setSelectedBackground] = useState('')
     const [selectedProfession, setSelectedProfession] = useState('')
     const [selectedOrigin, setSelectedOrigin] = useState({
         race: null,
         variant: null,
         background: null,
+        hasTechniques: true,
     })
     const [step, setStep] = useState(1)
 
@@ -25,16 +21,15 @@ function CreateCharacter() {
                         <OriginSelect
                             selectedOrigin={selectedOrigin}
                             setSelectedOrigin={setSelectedOrigin}
+                            setStep={setStep}
                         />
-                        <div className="button-group">
-                            <button className="btn btn-secondary" onClick={() => navigate('/')}>Back</button>
-                            <button className="btn btn-primary" onClick={() => setStep(2)} disabled={!selectedRace || !selectedProfession}>Next</button>
-                        </div>
+
                     </>
                 )}
                 {step === 2 && (
                     <ProfessionSelect
                     selectedProfession={selectedProfession}
+                    setSelectedProfession={setSelectedProfession}
                     />
                 )}
             </div>
