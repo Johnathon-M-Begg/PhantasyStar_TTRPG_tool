@@ -9,6 +9,7 @@ function ProfessionSelect({
     setStep,
 }) {
 
+
     const professions = [
         {
             name: "Guardian",
@@ -230,6 +231,9 @@ function ProfessionSelect({
             ],
         },
     ]
+    const selectedItem = professions.find(item => item.name === selectedProfession)
+
+
     return (
         <div className="form-group">
             <label htmlFor="profession-select">Select Profession:</label>
@@ -247,12 +251,20 @@ function ProfessionSelect({
                 ))}
             </select>
             <div className="input-group">
-                <div>
-                    <label>HP</label> {selectedProfession ? professions.find(p => p.name === selectedProfession).hitDice : ''}
-                </div>
-                <div>
-                    <label>Saving Throw Bonus:</label> {selectedProfession ? professions.find(p => p.name === selectedProfession).saves : ''}
-                </div>
+                {selectedProfession ? (
+                    <div className="profession-details">
+                        <p>{selectedItem.description}</p>
+                        <p><strong>Hit Dice:</strong> D{selectedItem.hitDice}</p>
+                        <p><strong>Primary Abilities:</strong> {selectedItem.primaryAbilities.map(ability => ability).join(', ')}{selectedItem.primaryAbilityChoice.length > 0 ? ` (Choose one: ${selectedItem.primaryAbilityChoice.map(ability => ability).join(', ')})` : ''}</p>
+                        <p><strong>Saves:</strong> {selectedItem.saves.map(ability => ability).join(', ')}</p>
+                        <p><strong>Skill Choices:</strong> {selectedItem.skillCount} from {selectedItem.classSkills.map(skill => skill).join(', ')}</p>
+                        <p><strong>Weapon Proficiencies:</strong> {selectedItem.weaponProficiencies.map(weapon => weapon).join(', ')}</p>
+                        <p><strong>Armor Proficiencies:</strong> {selectedItem.armorProficiencies.length > 0 ? selectedItem.armorProficiencies.map(armor => armor).join(', ') : 'None'}</p>
+                    </div>
+                ) : (
+                    <p>Please select a profession to see its details.</p>
+                    )
+                }
             </div>
             <div className="button-group">
                 <button className="btn btn-secondary" onClick={() => setStep(1)}>Back</button>
