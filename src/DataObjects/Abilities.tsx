@@ -1,8 +1,8 @@
-enum Abilities {
-    Strength,
-    Dexterity,
-    Constitution,
-    Intelligence,
-    Wisdom,
-    Charisma,
+export enum Abilities {
+    Strength = "Strength",
+    Dexterity = "Dexterity",
+    Constitution = "Constitution",
+    Intelligence = "Intelligence",
+    Wisdom = "Wisdom",
+    Charisma = "Charisma",
 }

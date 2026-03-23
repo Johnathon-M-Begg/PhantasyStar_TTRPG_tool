@@ -1,4 +1,4 @@
-enum Skill {
+export enum Skill {
     acrobatics,
     astrophysics,
     athletics,
@@ -10,6 +10,7 @@ enum Skill {
     lore,
     mechanics,
     medicine,
+    performance,
     perception,
     persuasion,
     slightOfHand,
