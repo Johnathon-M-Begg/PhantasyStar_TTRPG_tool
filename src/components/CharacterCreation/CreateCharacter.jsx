@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './CreateCharacter.css'
 import OriginSelect from "./OriginSelect.jsx";
 import ProfessionSelect from "./ProfessionSelect.jsx";
+import SkillSelect from "./SkillSelect.jsx";
 
 function CreateCharacter() {
     const [selectedProfession, setSelectedProfession] = useState('')
@@ -30,6 +31,13 @@ function CreateCharacter() {
                     <ProfessionSelect
                     selectedProfession={selectedProfession}
                     setSelectedProfession={setSelectedProfession}
+                    setStep={setStep}
+                    />
+                )}
+                {step === 3 && (
+                    <SkillSelect
+                    selectedProfession={selectedProfession}
+                    selectedOrigin={selectedOrigin}
                     setStep={setStep}
                     />
                 )}

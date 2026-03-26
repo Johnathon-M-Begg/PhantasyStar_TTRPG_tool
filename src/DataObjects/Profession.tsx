@@ -3,12 +3,13 @@ import { ArmorTypes } from "./ArmorTypes";
 import { Skill } from "./Skill";
 import { WeaponType } from "./WeaponType";
 
-type Profession = {
+export type Profession = {
     name: string;
     description: string;
     hitDice: number;
+    skillCount: number;
+    primaryAbilities: Abilities[];
     classSkills: Skill[];
-    primaryAbilities: Abilities;[];
     saves: Abilities[]
     weaponProficiencies: WeaponType[];
     armorProficiencies: ArmorTypes[];
