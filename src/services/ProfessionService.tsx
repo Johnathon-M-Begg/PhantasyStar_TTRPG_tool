@@ -44,7 +44,7 @@ export class ProfessionService {
             description: "Combines weapon skills with technique use",
             hitDice: 10,
             skillCount: 2,
-            primaryAbilities: [Abilities.Wisdom],
+            primaryAbilities: [Abilities.Wisdom, Abilities.Strength, Abilities.Dexterity],
             saves: [Abilities.Strength, Abilities.Dexterity],
             classSkills: [
                 Skill.acrobatics,
@@ -222,9 +222,14 @@ export class ProfessionService {
     ]
 
     getMatch(name: string): Profession | undefined {
-        return this.professions.find(profession => profession.name.toLowerCase() === name.toLowerCase())
+        console.log(name)
+        return this.professions.find(profession => profession.name === name)
     }
 
+    getDescription(name: string): string | undefined {
+        return this.getMatch(name)?.description
+    }
+s
     getProfessionSkills(name: string): Skill[]  {
         return this.getMatch(name)?.classSkills ?? []
     }
@@ -234,6 +239,7 @@ export class ProfessionService {
     }
 
     getHitDice(name: string): number  {
+        console.log("getting hit dice:" + name)
         return this.getMatch(name)?.hitDice ?? 0
     }
 
@@ -247,5 +253,9 @@ export class ProfessionService {
 
     getSaveProficiencies(name: string): Abilities[]  {
         return this.getMatch(name)?.saves ?? []
+    }
+
+    getPrimaryAbilities(name: string): Abilities[] {
+        return this.getMatch(name)?.primaryAbilities ?? []
     }
 }
