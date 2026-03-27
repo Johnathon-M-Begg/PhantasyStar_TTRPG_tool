@@ -7,6 +7,7 @@ function SkillSelect({
      setStep,
 }) {
 
+    const max = 3
     const skillList = [
         {name: Skill.acrobatics, attribute: Abilities.Dexterity},
         {name: Skill.astrophysics, attribute: Abilities.Intelligence},
@@ -28,21 +29,24 @@ function SkillSelect({
         {name: Skill.xenobiology, attribute: Abilities.Intelligence},
     ]
 
+    function SkillRow({name, attribute}) {
+        return (
+            <tr>
+                <td>
+                    <strong>{name}</strong>
+                </td>
+                <td>{attribute.slice(0,3).toUpperCase()}</td>
+                <td>value</td>
+            </tr>
+        )
+    }
+
     return(
         <div className="skill-container">
-            {selectedOrigin.race}
-            {selectedOrigin.variant}
-            {selectedOrigin.background}
             <table className="skill-table">
                 <tbody>
                 {skillList.map(skill => (
-                    <tr>
-                        <td>
-                            <strong>{skill.name}</strong>
-                        </td>
-                        <td>{skill.attribute.slice(0,3).toUpperCase()}</td>
-                        <td>value</td>
-                    </tr>
+                    <SkillRow name={skill.name} attribute={skill.attribute} />
                 ))}
                 </tbody>
             </table>
