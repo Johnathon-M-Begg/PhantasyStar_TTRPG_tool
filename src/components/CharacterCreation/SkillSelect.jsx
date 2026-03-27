@@ -1,21 +1,11 @@
 import {Skill} from "../../DataObjects/Skill.tsx";
 import {Abilities} from "../../DataObjects/Abilities.tsx";
 
-function SkillSelect(
-    selectedProfession,
-    selectedOrigin,
-    setStep,
-) {
-
-    const professionSkillPoints = [
-        {name: 'Guardian', points: 2},
-        {name: 'Hunter', points: 2},
-        {name: 'Mystic', points: 2},
-        {name: 'Operative', points: 4},
-        {name: 'Savant', points: 2},
-        {name: 'Thaumaturge', points: 2},
-        {name: 'Warrior', points: 2},
-    ]
+function SkillSelect({
+     selectedProfession,
+     selectedOrigin,
+     setStep,
+}) {
 
     const skillList = [
         {name: Skill.acrobatics, attribute: Abilities.Dexterity},
@@ -40,6 +30,9 @@ function SkillSelect(
 
     return(
         <div className="skill-container">
+            {selectedOrigin.race}
+            {selectedOrigin.variant}
+            {selectedOrigin.background}
             <table className="skill-table">
                 <tbody>
                 {skillList.map(skill => (
@@ -56,7 +49,7 @@ function SkillSelect(
             <div className="button-group">
                 <button className="btn btn-secondary" onClick={() => setStep(2)}>Back</button>
                 <button className="btn btn-primary"  onClick={() => setStep(4)}
-                        disabled={!selectedProfession}
+                disabled={true}
                 >Next</button>
             </div>
         </div>

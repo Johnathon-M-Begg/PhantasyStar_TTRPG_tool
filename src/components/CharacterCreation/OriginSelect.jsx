@@ -29,6 +29,8 @@ function OriginSelect({
                 'sentience. After attaining their independence, they set\n' +
                 'out to forge their own paths with a sense of self-worth\n' +
                 'and a dedication to their chosen purpose.' },
+        { name: 'Android - ALT', desc: 'An alternative Android that has self\n' +
+                'regeneration abilities but gains NO TP' },
         { name: 'Dezolian', desc: 'These tall humanoids are native to the frozen world of\n' +
                 'Dezolis, the third planet of the Algol system. While most\n' +
                 'still reside on their native planet, some are known to\n' +
@@ -107,39 +109,21 @@ function OriginSelect({
     const VariantSelect = () => {
         return (
             <>
-                <label>Variant</label>
-                <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-                    <div style={{ flex: 1 }}>
-                        <select
-                            disabled={!selectedOrigin.race}
-                            id="race-variant"
-                            value={selectedOrigin.variant}
-                            onChange={(e) => setSelectedOrigin(prev => ({ ...prev, variant: e.target.value }))}
-                            className="dropdown"
-                        >
-                            <option value="">-- Variant --</option>
-                            {variants.map((variant) => (
-                                <option key={variant.name} value={variant.name} title={variant.desc}>
-                                    {variant.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    {selectedOrigin.race === 'Android' && (
-                        <div style={{ display: 'flex', gap: '8px', paddingTop: '20px' }}>
-                            <input
-                                type="checkbox"
-                                id="has-techniques"
-                                onChange={(e) => setSelectedOrigin(prev => ({ ...prev, hasTechniques: e.target.checked }))}
-                                checked={selectedOrigin.hasTechniques || false}
-                                style={{ cursor: 'pointer' }}
-                            />
-                            <label htmlFor="has-techniques" style={{ margin: 0, cursor: 'pointer' }}>
-                                Has Techniques
-                            </label>
-                        </div>
-                    )}
-                </div>
+            <label htmlFor={"variant-select"}>Variant</label>
+                <select
+                    disabled={!selectedOrigin.race}
+                    id="race-variant"
+                    value={selectedOrigin.variant}
+                    onChange={(e) => setSelectedOrigin(prev => ({ ...prev, variant: e.target.value }))}
+                    className="dropdown"
+                >
+                    <option value="">-- Variant --</option>
+                    {variants.map((variant) => (
+                        <option key={variant.name} value={variant.name} title={variant.desc}>
+                            {variant.name}
+                        </option>
+                    ))}
+                </select>
             </>
         )
     }

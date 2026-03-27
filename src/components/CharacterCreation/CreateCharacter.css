@@ -66,6 +66,17 @@ h2 {
     color: #333;
 }
 
+.profession-select {
+    .select-group{
+        position: relative;
+        flex-direction: column;
+    },
+    .profession-info{
+        text-align: left !important;
+        width: 75%;
+    },
+}
+
 .skill-container {
     text-align: left ;
     padding: 5px 10px;

@@ -20,37 +20,52 @@ function ProfessionSelect({
         'Thaumaturge',
         'Warrior'
     ]
-    const selectedItem = professions.find(item => item.name === selectedProfession)
-
 
     return (
-        <div className="form-group">
-            <label htmlFor="profession-select">Select Profession:</label>
-            <select
-                id="profession-select"
-                value={selectedProfession}
-                onChange={(e) => setSelectedProfession(e.target.value)}
-                className="dropdown"
-            >
-                <option value="">-- Choose a profession --</option>
-                {professions.map((profession) => (
-                    <option key={profession} value={profession} title={profession}>
-                        {profession}
-                    </option>
-                ))}
-            </select>
-            <div className="input-group">
+        <div className="profession-select">
+            <div>
+                <label htmlFor="profession-select">Select Profession:</label>
+                <select
+                    id="profession-select"
+                    value={selectedProfession}
+                    onChange={(e) => setSelectedProfession(e.target.value)}
+                    className="dropdown"
+                >
+                    <option value="">-- Choose a profession --</option>
+                    {professions.map((profession) => (
+                        <option key={profession} value={profession} title={profession}>
+                            {profession}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className="profession-info">
                 {selectedProfession ? (
-
                     <div className="profession-details">
-                        {selectedProfession}
-                        <p>{professionService.getHitDice(selectedProfession)}</p>
-                        <p><strong>Hit Dice:</strong> D{professionService.getHitDice(selectedProfession)}</p>
-                        <p><strong>Primary Abilities:</strong> {professionService.getPrimaryAbilities(selectedProfession).map(ability => ability).join(', ')}</p>
-                        <p><strong>Saves:</strong> {professionService.getSaveProficiencies(selectedProfession).map(ability => ability).join(', ')}</p>
-                        <p><strong>Skill Choices:</strong> {professionService.getSkillPoints(selectedProfession)} from {professionService.getProfessionSkills(selectedProfession).map(skill => skill).join(', ')}</p>
-                        <p><strong>Weapon Proficiencies:</strong> {professionService.getWeaponProficiencies(selectedProfession).map(weapon => weapon).join(', ')}</p>
-                        <p><strong>Armor Proficiencies:</strong> {professionService.getArmorProficiencies(selectedProfession).length > 0 ? professionService.getArmorProficiencies(selectedProfession).map(armor => armor).join(', ') : 'None'}</p>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><strong>HitDice:</strong></td>
+                                    <td> D{professionService.getHitDice(selectedProfession)}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primary Abilities:</strong></td>
+                                    <td>{professionService.getPrimaryAbilities(selectedProfession).map(ability => ability).join(', ')}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Saves:</strong></td>
+                                    <td>{professionService.getSaveProficiencies(selectedProfession).map(ability => ability).join(', ')}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Weapon Proficiencies:</strong></td>
+                                    <td>{professionService.getWeaponProficiencies(selectedProfession).map(weapon => weapon).join(', ')}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Armor Proficiencies:</strong></td>
+                                    <td>{professionService.getArmorProficiencies(selectedProfession).length > 0 ? professionService.getArmorProficiencies(selectedProfession).map(armor => armor).join(', ') : 'None'}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 ) : (
                     <p>Please select a profession to see its details.</p>
