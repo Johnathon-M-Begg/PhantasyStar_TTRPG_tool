@@ -222,7 +222,6 @@ export class ProfessionService {
     ]
 
     getMatch(name: string): Profession | undefined {
-        console.log(name)
         return this.professions.find(profession => profession.name === name)
     }
 
