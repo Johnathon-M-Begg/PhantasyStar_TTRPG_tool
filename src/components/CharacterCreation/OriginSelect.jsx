@@ -149,10 +149,6 @@ function OriginSelect({
         )
     }
 
-    useEffect(() => {
-        console.log('Selected Origin:', selectedOrigin)
-    }, [selectedOrigin])
-
     return (
         <div>
             <h2>Select Origin</h2>

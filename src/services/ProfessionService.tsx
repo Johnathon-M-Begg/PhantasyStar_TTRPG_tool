@@ -238,7 +238,6 @@ s
     }
 
     getHitDice(name: string): number  {
-        console.log("getting hit dice:" + name)
         return this.getMatch(name)?.hitDice ?? 0
     }
 

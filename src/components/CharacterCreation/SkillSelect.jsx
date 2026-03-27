@@ -1,5 +1,6 @@
 import {Skill} from "../../DataObjects/Skill.tsx";
 import {Abilities} from "../../DataObjects/Abilities.tsx";
+import {BackgroundService} from "../../services/BackgroundService.tsx";
 
 function SkillSelect({
      selectedProfession,
@@ -7,7 +8,9 @@ function SkillSelect({
      setStep,
 }) {
 
-    const max = 3
+    const maxSkillValue = 3
+    let freeSkillPoints = 0
+    let professionPoints = 0
     const skillList = [
         {name: Skill.acrobatics, attribute: Abilities.Dexterity},
         {name: Skill.astrophysics, attribute: Abilities.Intelligence},
@@ -29,14 +32,23 @@ function SkillSelect({
         {name: Skill.xenobiology, attribute: Abilities.Intelligence},
     ]
 
+    const backgroundService = new BackgroundService()
+    const backgroundSkills = backgroundService.getSkills(selectedOrigin.background)
+
     function SkillRow({name, attribute}) {
+        let value = 0
+        if(backgroundSkills.includes(name)) {
+            value += 2
+        }
         return (
             <tr>
                 <td>
                     <strong>{name}</strong>
                 </td>
                 <td>{attribute.slice(0,3).toUpperCase()}</td>
-                <td>value</td>
+                <td>{value}</td>
+                <td><button disabled={value < 1}>-</button></td>
+                <td><button disabled={value >= maxSkillValue}>+</button></td>
             </tr>
         )
     }
