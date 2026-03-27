@@ -1,6 +1,7 @@
 import {Skill} from "../../DataObjects/Skill.tsx";
 import {Abilities} from "../../DataObjects/Abilities.tsx";
 import {BackgroundService} from "../../services/BackgroundService.tsx";
+import {ProfessionService} from "../../services/ProfessionService.tsx";
 
 function SkillSelect({
      selectedProfession,
@@ -10,7 +11,7 @@ function SkillSelect({
 
     const maxSkillValue = 3
     let freeSkillPoints = 0
-    let professionPoints = 0
+
     const skillList = [
         {name: Skill.acrobatics, attribute: Abilities.Dexterity},
         {name: Skill.astrophysics, attribute: Abilities.Intelligence},
@@ -32,8 +33,20 @@ function SkillSelect({
         {name: Skill.xenobiology, attribute: Abilities.Intelligence},
     ]
 
+    const professionService = new ProfessionService()
+    const professionSkills = professionService.getProfessionSkills(selectedProfession)
+    let professionPoints = professionService.getSkillPoints(selectedProfession)
     const backgroundService = new BackgroundService()
     const backgroundSkills = backgroundService.getSkills(selectedOrigin.background)
+
+    function IsClassSkill({name}) {
+        let isClassSkill = professionSkills.includes(name)
+        if(isClassSkill) {
+            return(<b>*</b>)
+        } else {
+            return(<div/>)
+        }
+    }
 
     function SkillRow({name, attribute}) {
         let value = 0
@@ -42,6 +55,7 @@ function SkillSelect({
         }
         return (
             <tr>
+                <td><IsClassSkill name={name}/></td>
                 <td>
                     <strong>{name}</strong>
                 </td>
@@ -55,6 +69,7 @@ function SkillSelect({
 
     return(
         <div className="skill-container">
+            <div>class points {professionPoints}</div>
             <table className="skill-table">
                 <tbody>
                 {skillList.map(skill => (
