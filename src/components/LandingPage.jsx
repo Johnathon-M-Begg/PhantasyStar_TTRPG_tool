@@ -1,16 +1,17 @@
 import { useNavigate } from 'react-router-dom'
 import './LandingPage.css'
+import {Box, Button} from "@mui/material";
 
 function LandingPage() {
     const navigate = useNavigate();
 
     return (
-        <div className="container">
-            <div className="white-box">
-                <button className="btn btn-primary" onClick={() => navigate('/create')}>CREATE NEW</button>
-                <button className="btn btn-secondary">LOAD</button>
-            </div>
-        </div>
+        <Box className="container">
+            <Box className="white-box">
+                <Button variant="contained" color="primary" onClick={() => navigate('/create')}>CREATE NEW</Button>
+                <Button variant="contained" color={"secondary"}>LOAD</Button>
+            </Box>
+        </Box>
     )
 }
 
