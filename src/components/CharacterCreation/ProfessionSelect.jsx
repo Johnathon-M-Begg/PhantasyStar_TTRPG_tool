@@ -1,7 +1,3 @@
-import {Abilities} from "../../DataObjects/Abilities.tsx";
-import {Skill} from "../../DataObjects/Skill.tsx";
-import {ArmorTypes} from "../../DataObjects/ArmorTypes.tsx";
-import {WeaponType} from "../../DataObjects/WeaponType.tsx";
 import {ProfessionService} from "../../services/ProfessionService.tsx";
 import {
     Box,
@@ -13,8 +9,8 @@ import {
     Select,
     Stack,
     Table,
-    TableCell, TableHead,
-    TableRow, Typography
+    TableCell,
+    TableRow,
 } from "@mui/material";
 
 function ProfessionSelect({

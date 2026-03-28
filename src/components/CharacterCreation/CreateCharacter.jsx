@@ -3,6 +3,7 @@ import './CreateCharacter.css'
 import OriginSelect from "./OriginSelect.jsx";
 import ProfessionSelect from "./ProfessionSelect.jsx";
 import SkillSelect from "./SkillSelect.jsx";
+import {Box} from "@mui/material";
 
 function CreateCharacter() {
     const [selectedProfession, setSelectedProfession] = useState('')
@@ -10,7 +11,6 @@ function CreateCharacter() {
         race: null,
         variant: null,
         background: null,
-        hasTechniques: true,
     })
     const [step, setStep] = useState(1)
 
@@ -18,14 +18,11 @@ function CreateCharacter() {
         <div className="container">
             <div className="white-box">
                 {step === 1 && (
-                    <>
-                        <OriginSelect
-                            selectedOrigin={selectedOrigin}
-                            setSelectedOrigin={setSelectedOrigin}
-                            setStep={setStep}
-                        />
-
-                    </>
+                    <OriginSelect
+                        selectedOrigin={selectedOrigin}
+                        setSelectedOrigin={setSelectedOrigin}
+                        setStep={setStep}
+                    />
                 )}
                 {step === 2 && (
                     <ProfessionSelect

@@ -1,5 +1,4 @@
 import './CreateCharacter.css'
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography} from "@mui/material";
 
