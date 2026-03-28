@@ -56,14 +56,14 @@ function OriginSelect({
     ]
 
     const variants = [
-        {name: 'Default', traits: ['Adaptable', 'Resourceful', 'Versatile']},
-        {name: 'Arctic Climate', traits: ['Cold Resistance']},
-        {name: 'Extreme Heat', traits: ['Heat Resistance']},
-        {name: 'High Gravity', traits: ['Jump Boost', 'Strength Increase']},
-        {name: 'Spacer', traits: ['Vehicle Proficiency']},
-        {name: 'Subterranean', traits: ['Dark Vision', 'Skill rank']},
-        {name: 'Utopian', traits: ['Fear Resistance', 'Charm Resistance', 'Vehicle or Tool proficiency']},
-        {name: 'Wasteland', traits: ['Necrotic Resistance', 'Poison Resistance', 'Disease Resistance']},
+        {name: 'Default'},
+        {name: 'Arctic Climate'},
+        {name: 'Extreme Heat'},
+        {name: 'High Gravity'},
+        {name: 'Spacer'},
+        {name: 'Subterranean'},
+        {name: 'Utopian'},
+        {name: 'Wasteland'},
     ]
 
     const backgrounds = [
@@ -152,20 +152,24 @@ function OriginSelect({
     }
 
     return (
-        <Stack>
+        <Box width={'100%'}>
             <Typography>Select Origin</Typography>
-            <Box className="form-group">
-                <RaceSelect/>
-                <VariantSelect/>
-                <BackgroundSelect/>
-            </Box>
-            <Grid size={2} className="button-group">
+            <Stack direction={"row"}>
+                <Stack direction={"column"} width={"100%"} spacing={2}>
+                    <Box className="form-group">
+                        <RaceSelect/>
+                        <VariantSelect/>
+                        <BackgroundSelect/>
+                    </Box>
+                </Stack>
+            </Stack>
+            <Box direction={"row"} className="button-group">
                 <Button variant="contained" color="secondary" onClick={() => navigate('/')}>Back</Button>
                 <Button variant="contained" color="primary" onClick={() => setStep(2)}
                         disabled={!selectedOrigin.race || !selectedOrigin.background || !selectedOrigin.variant}
                 >Next</Button>
-            </Grid>
-        </Stack>
+            </Box>
+        </Box>
     )
 }
 

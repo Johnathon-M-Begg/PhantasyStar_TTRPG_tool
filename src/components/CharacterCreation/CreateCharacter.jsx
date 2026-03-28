@@ -16,7 +16,7 @@ function CreateCharacter() {
 
     return (
         <div className="container">
-            <div className="white-box">
+            <Box className="white-box">
                 {step === 1 && (
                     <OriginSelect
                         selectedOrigin={selectedOrigin}
@@ -38,7 +38,7 @@ function CreateCharacter() {
                     setStep={setStep}
                     />
                 )}
-            </div>
+            </Box>
         </div>
     )
 }
