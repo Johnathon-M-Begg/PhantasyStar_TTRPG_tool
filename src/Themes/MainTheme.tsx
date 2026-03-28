@@ -7,6 +7,9 @@ export const mainTheme: Theme = createTheme({
             main: "#284ebf",
         },
         secondary: {
+            main: "#564c4d",
+        },
+        complementary: {
             main: "#bf9928",
         },
     }

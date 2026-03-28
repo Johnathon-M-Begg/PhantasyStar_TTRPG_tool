@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <BrowserRouter>
             <ThemeProvider theme={mainTheme}>
-            <App />
+                <App />
             </ThemeProvider>
         </BrowserRouter>
     </React.StrictMode>,

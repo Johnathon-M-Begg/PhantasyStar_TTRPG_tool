@@ -9,7 +9,7 @@ function LandingPage() {
         <Box className="container">
             <Box className="white-box">
                 <Button variant="contained" color="primary" onClick={() => navigate('/create')}>CREATE NEW</Button>
-                <Button variant="contained" color={"secondary"}>LOAD</Button>
+                <Button variant="contained" color="secondary">LOAD</Button>
             </Box>
         </Box>
     )

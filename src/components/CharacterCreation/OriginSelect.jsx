@@ -1,6 +1,7 @@
 import './CreateCharacter.css'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography} from "@mui/material";
 
 
 function OriginSelect({
@@ -87,83 +88,85 @@ function OriginSelect({
 
     const RaceSelect = () => {
         return (
-            <>
-                <label htmlFor="race-select">Race:</label>
-                <select
+            <FormControl sx={{ m: 1}} variant="standard" size="small">
+                <InputLabel id="race-select">Race</InputLabel>
+                <Select
+                    color="primary"
                     id="race-select"
                     value={selectedOrigin.race}
                     onChange={(e) => setSelectedOrigin(prev => ({ ...prev, race: e.target.value }))}
-                    className="dropdown"
                 >
-                    <option value="">-- Choose a race --</option>
+                    <MenuItem value="">-- Choose a race --</MenuItem>
                     {races.map((race) => (
-                        <option key={race.name} value={race.name} title={race.desc}>
+                        <MenuItem key={race.name} value={race.name} title={race.desc}>
                             {race.name}
-                        </option>
+                        </MenuItem>
                     ))}
-                </select>
-            </>
+                </Select>
+            </FormControl>
         )
     }
 
     const VariantSelect = () => {
         return (
-            <>
-            <label htmlFor={"variant-select"}>Variant</label>
-                <select
-                    disabled={!selectedOrigin.race}
+            <FormControl
+                disabled={!selectedOrigin.race}
+                sx={{ m: 1}} variant="standard"
+                size="small"
+            >
+            <InputLabel htmlFor={"variant-select"}>Variant</InputLabel>
+                <Select
+                    color="primary"
                     id="race-variant"
                     value={selectedOrigin.variant}
                     onChange={(e) => setSelectedOrigin(prev => ({ ...prev, variant: e.target.value }))}
-                    className="dropdown"
                 >
-                    <option value="">-- Variant --</option>
+                    <MenuItem value="">-- Variant --</MenuItem>
                     {variants.map((variant) => (
-                        <option key={variant.name} value={variant.name} title={variant.desc}>
+                        <MenuItem key={variant.name} value={variant.name} title={variant.desc}>
                             {variant.name}
-                        </option>
+                        </MenuItem>
                     ))}
-                </select>
-            </>
+                </Select>
+            </FormControl>
         )
     }
 
     const BackgroundSelect = () => {
         return (
-            <>
-                <label htmlFor="background-select">Background:</label>
-                <select
+            <FormControl sx={{ m: 1}} variant="standard" size="small">
+                <InputLabel htmlFor="background-select">Background</InputLabel>
+                <Select
                     id="background-select"
                     value={selectedOrigin.background}
                     onChange={(e) => setSelectedOrigin(prev => ({ ...prev, background: e.target.value }))}
-                    className="dropdown"
                 >
-                    <option value="">-- Choose a Background --</option>
+                    <MenuItem value="">-- Choose a Background --</MenuItem>
                     {backgrounds.map((option) => (
-                        <option key={option.name} value={option.name} title={option.desc}>
+                        <MenuItem key={option.name} value={option.name} title={option.desc}>
                             {option.name}
-                        </option>
+                        </MenuItem>
                     ))}
-                </select>
-            </>
+                </Select>
+            </FormControl>
         )
     }
 
     return (
-        <div>
-            <h2>Select Origin</h2>
-            <div className="form-group">
+        <Stack>
+            <Typography>Select Origin</Typography>
+            <Box className="form-group">
                 <RaceSelect/>
                 <VariantSelect/>
                 <BackgroundSelect/>
-            </div>
-            <div className="button-group">
-                <button className="btn btn-secondary" onClick={() => navigate('/')}>Back</button>
-                <button className="btn btn-primary" onClick={() => setStep(2)}
+            </Box>
+            <Grid size={2} className="button-group">
+                <Button variant="contained" color="secondary" onClick={() => navigate('/')}>Back</Button>
+                <Button variant="contained" color="primary" onClick={() => setStep(2)}
                         disabled={!selectedOrigin.race || !selectedOrigin.background || !selectedOrigin.variant}
-                >Next</button>
-            </div>
-        </div>
+                >Next</Button>
+            </Grid>
+        </Stack>
     )
 }
 
