@@ -8,7 +8,7 @@ import {
     MenuItem,
     Select,
     Stack,
-    Table,
+    Table, TableBody,
     TableCell,
     TableRow,
 } from "@mui/material";
@@ -52,27 +52,29 @@ function ProfessionSelect({
             </FormControl>
             <Box className="profession-info">
                 {selectedProfession ? (
-                    <Table container spacing={2}>
-                        <TableRow variant="dense">
-                            <TableCell style={{ width:'25%', textAlign: 'right'}}><strong>Hit Dice</strong></TableCell>
-                            <TableCell style={{ width:'75%' }} > D{professionService.getHitDice(selectedProfession)}</TableCell>
-                        </TableRow>
-                        <TableRow variant="dense">
-                            <TableCell style={{ textAlign: 'right' }}><strong>Primary Abilities:</strong></TableCell>
-                            <TableCell>{professionService.getPrimaryAbilities(selectedProfession).map(ability => ability).join(', ')}</TableCell>
-                        </TableRow>
-                        <TableRow variant="dense">
-                            <TableCell style={{ textAlign: 'right' }}><strong>Saves:</strong></TableCell>
-                            <TableCell>{professionService.getSaveProficiencies(selectedProfession).map(ability => ability).join(', ')}</TableCell>
-                        </TableRow>
-                        <TableRow variant="dense">
-                            <TableCell style={{ textAlign: 'right' }}><strong>Weapon Proficiencies:</strong></TableCell>
-                            <TableCell>{professionService.getWeaponProficiencies(selectedProfession).map(weapon => weapon).join(', ')}</TableCell>
-                        </TableRow>
-                        <TableRow variant="dense">
-                            <TableCell style={{ textAlign: 'right' }}><strong>Armor Proficiencies:</strong></TableCell>
-                            <TableCell>{professionService.getArmorProficiencies(selectedProfession).length > 0 ? professionService.getArmorProficiencies(selectedProfession).map(armor => armor).join(', ') : 'None'}</TableCell>
-                        </TableRow>
+                    <Table spacing={2}>
+                        <TableBody>
+                            <TableRow variant="dense">
+                                <TableCell style={{ width:'25%', textAlign: 'right'}}><strong>Hit Dice</strong></TableCell>
+                                <TableCell style={{ width:'75%' }} > D{professionService.getHitDice(selectedProfession)}</TableCell>
+                            </TableRow>
+                            <TableRow variant="dense">
+                                <TableCell style={{ textAlign: 'right' }}><strong>Primary Abilities:</strong></TableCell>
+                                <TableCell>{professionService.getPrimaryAbilities(selectedProfession).map(ability => ability).join(', ')}</TableCell>
+                            </TableRow>
+                            <TableRow variant="dense">
+                                <TableCell style={{ textAlign: 'right' }}><strong>Saves:</strong></TableCell>
+                                <TableCell>{professionService.getSaveProficiencies(selectedProfession).map(ability => ability).join(', ')}</TableCell>
+                            </TableRow>
+                            <TableRow variant="dense">
+                                <TableCell style={{ textAlign: 'right' }}><strong>Weapon Proficiencies:</strong></TableCell>
+                                <TableCell>{professionService.getWeaponProficiencies(selectedProfession).map(weapon => weapon).join(', ')}</TableCell>
+                            </TableRow>
+                            <TableRow variant="dense">
+                                <TableCell style={{ textAlign: 'right' }}><strong>Armor Proficiencies:</strong></TableCell>
+                                <TableCell>{professionService.getArmorProficiencies(selectedProfession).length > 0 ? professionService.getArmorProficiencies(selectedProfession).map(armor => armor).join(', ') : 'None'}</TableCell>
+                            </TableRow>
+                        </TableBody>
                     </Table>
                 ) : (
                     <Box>

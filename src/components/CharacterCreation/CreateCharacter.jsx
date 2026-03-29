@@ -4,6 +4,7 @@ import OriginSelect from "./OriginSelect.jsx";
 import ProfessionSelect from "./ProfessionSelect.jsx";
 import SkillSelect from "./SkillSelect.jsx";
 import {Box} from "@mui/material";
+import AbilityAssign from "./AbilityAssign.jsx";
 
 function CreateCharacter() {
     const [selectedProfession, setSelectedProfession] = useState('')
@@ -13,6 +14,14 @@ function CreateCharacter() {
         background: null,
     })
     const [step, setStep] = useState(1)
+    const [abilityScores, setAbilityScore] = useState({
+        Strength: 0,
+        Dexterity: 0,
+        Constitution: 0,
+        Intelligence: 0,
+        Wisdom: 0,
+        Charisma: 0,
+    })
 
     return (
         <div className="container">
@@ -32,6 +41,13 @@ function CreateCharacter() {
                     />
                 )}
                 {step === 3 && (
+                    <AbilityAssign
+                        abilityScores={abilityScores}
+                        setAbilityScore={setAbilityScore}
+                        setStep={setStep}
+                    />
+                )}
+                {step === 4 && (
                     <SkillSelect
                     selectedProfession={selectedProfession}
                     selectedOrigin={selectedOrigin}

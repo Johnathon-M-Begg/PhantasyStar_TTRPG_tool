@@ -78,7 +78,7 @@ function SkillSelect({
                 </tbody>
             </table>
             <div className="button-group">
-                <button className="btn btn-secondary" onClick={() => setStep(2)}>Back</button>
+                <button className="btn btn-secondary" onClick={() => setStep(3)}>Back</button>
                 <button className="btn btn-primary"  onClick={() => setStep(4)}
                 disabled={true}
                 >Next</button>
