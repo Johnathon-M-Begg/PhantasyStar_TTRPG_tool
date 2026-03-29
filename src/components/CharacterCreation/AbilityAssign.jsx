@@ -23,7 +23,7 @@ function AbilityAssign({
         // "Assign Rolls",
     ]
     const [currentRule, setCurrentRule] = useState(rules[0])
-    const [skillPoints, setSkillPoints] = useState(10)
+    const [abilityPoints, setAbilityPoints] = useState(7)
 
 
     const resetAbilityScores = () => {
@@ -83,10 +83,10 @@ function AbilityAssign({
                 <TableCell>{property}</TableCell>
                 <TableCell>
                     <IconButton color="primary"
-                        disabled={property >= 3 || skillPoints <= 0}
+                        disabled={property >= 3 || abilityPoints <= 0}
                         onClick={() => {
                             updateFunction(property + 1)
-                            setSkillPoints(skillPoints -1)
+                            setAbilityPoints(abilityPoints -1)
                         }}
                     >
                         <AddCircle/>
@@ -95,7 +95,7 @@ function AbilityAssign({
                         disabled={property <= -1}
                         onClick={() => {
                             updateFunction(property - 1)
-                            setSkillPoints(skillPoints + 1)
+                            setAbilityPoints(abilityPoints + 1)
                         }}
                     >
                         <RemoveCircle/>
@@ -149,7 +149,7 @@ function AbilityAssign({
     return (
         <Stack direction="column">
             <p>{currentRule}</p>
-            {skillPoints}
+            {abilityPoints}
             {/*<p>Select Rules</p>*/}
             {/*<FormControl variant="standard" size="small">*/}
             {/*    <Select*/}
