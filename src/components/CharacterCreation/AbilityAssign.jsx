@@ -10,107 +10,24 @@ import {
 } from "@mui/material";
 import {useState} from "react";
 import {AddCircle, RemoveCircle} from "@mui/icons-material";
+import {Abilities} from "../../DataObjects/Abilities.tsx";
 
 function AbilityAssign({
     abilityScores,
     setAbilityScore,
     setStep,
 }) {
-
-
-
     const rules = [
         // "Assign Values",
         "Assign Points",
         // "Assign Rolls",
     ]
     const [currentRule, setCurrentRule] = useState(rules[0])
+    const [skillPoints, setSkillPoints] = useState(10)
 
-
-    const AbilityTable = () => {
-        return(
-            <Table>
-                <TableBody>
-                    <TableRow>
-                        <TableCell>Strength</TableCell>
-                        <TableCell>{abilityScores.Strength}</TableCell>
-                        <TableCell>
-                            <IconButton color="primary">
-                                <AddCircle/>
-                            </IconButton>
-                            <IconButton color="primary">
-                                <RemoveCircle/>
-                            </IconButton>
-                        </TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Dexterity</TableCell>
-                        <TableCell>{abilityScores.Dexterity}</TableCell>
-                        <TableCell>
-                            <IconButton color="primary">
-                                <AddCircle/>
-                            </IconButton>
-                            <IconButton color="primary">
-                                <RemoveCircle/>
-                            </IconButton>
-                        </TableCell>
-
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Constitution</TableCell>
-                        <TableCell>{abilityScores.Constitution}</TableCell>
-                        <TableCell>
-                            <IconButton color="primary">
-                                <AddCircle/>
-                            </IconButton>
-                            <IconButton color="primary">
-                                <RemoveCircle/>
-                            </IconButton>
-                        </TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Intelligence</TableCell>
-                        <TableCell>{abilityScores.Intelligence}</TableCell>
-                        <TableCell>
-                            <IconButton color="primary">
-                                <AddCircle/>
-                            </IconButton>
-                            <IconButton color="primary">
-                                <RemoveCircle/>
-                            </IconButton>
-                        </TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Wisdom</TableCell>
-                        <TableCell>{abilityScores.Wisdom}</TableCell>
-                        <TableCell>
-                            <IconButton color="primary">
-                                <AddCircle/>
-                            </IconButton>
-                            <IconButton color="primary">
-                                <RemoveCircle/>
-                            </IconButton>
-                        </TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Charisma</TableCell>
-                        <TableCell>{abilityScores.Charisma}</TableCell>
-                        <TableCell>
-                            <IconButton color="primary">
-                                <AddCircle/>
-                            </IconButton>
-                            <IconButton color="primary">
-                                <RemoveCircle/>
-                            </IconButton>
-                        </TableCell>
-                    </TableRow>
-                </TableBody>
-            </Table>
-        )
-    }
 
     const resetAbilityScores = () => {
-        setAbilityScore.valueOf({
+        setAbilityScore({
             Strength: 0,
             Dexterity: 0,
             Constitution: 0,
@@ -120,9 +37,119 @@ function AbilityAssign({
         })
     }
 
+    const setStrength = (value) => {
+        setAbilityScore({
+            ...abilityScores,
+            Strength: value
+        })
+    }
+    const setDexterity = (value) => {
+        setAbilityScore({
+            ...abilityScores,
+            Dexterity: value
+        })
+    }
+    const setConstitution = (value) => {
+        setAbilityScore({
+            ...abilityScores,
+            Constitution: value
+        })
+    }
+    const setIntelligence = (value) => {
+        setAbilityScore({
+            ...abilityScores,
+            Intelligence: value
+        })
+    }
+    const setWisdom = (value) => {
+        setAbilityScore({
+            ...abilityScores,
+            Wisdom: value
+        })
+    }
+    const setCharisma = (value) => {
+        setAbilityScore({
+            ...abilityScores,
+            Charisma: value
+        })
+    }
+
+
+
+    const Test = ({name, property, updateFunction}) => {
+        return(
+            <TableRow>
+                <TableCell>{name}</TableCell>
+                <TableCell>{property}</TableCell>
+                <TableCell>
+                    <IconButton color="primary"
+                        disabled={property >= 3 || skillPoints <= 0}
+                        onClick={() => {
+                            updateFunction(property + 1)
+                            setSkillPoints(skillPoints -1)
+                        }}
+                    >
+                        <AddCircle/>
+                    </IconButton>
+                    <IconButton color="primary"
+                        disabled={property <= -1}
+                        onClick={() => {
+                            updateFunction(property - 1)
+                            setSkillPoints(skillPoints + 1)
+                        }}
+                    >
+                        <RemoveCircle/>
+                    </IconButton>
+                </TableCell>
+            </TableRow>
+        )
+    }
+
+    const AbilityTable = () => {
+        return(
+            <Table>
+                <TableBody>
+                    <Test
+                        name={Abilities.Strength}
+                        property={abilityScores.Strength}
+                        updateFunction={setStrength}
+                    />
+                    <Test
+                        name={Abilities.Dexterity}
+                        property={abilityScores.Dexterity}
+                        updateFunction={setDexterity}
+                    />
+                    <Test
+                        name={Abilities.Constitution}
+                        property={abilityScores.Constitution}
+                        updateFunction={setConstitution}
+                    />
+                    <Test
+                        name={Abilities.Wisdom}
+                        property={abilityScores.Wisdom}
+                        updateFunction={setWisdom}
+                    />
+                    <Test
+                        name={Abilities.Intelligence}
+                        property={abilityScores.Intelligence}
+                        updateFunction={setIntelligence}
+                    />
+                    <Test
+                        name={Abilities.Charisma}
+                        property={abilityScores.Charisma}
+                        updateFunction={setCharisma}
+                    />
+                </TableBody>
+            </Table>
+        )
+    }
+
+
+
     return (
         <Stack direction="column">
             <p>{currentRule}</p>
+            {skillPoints}
             {/*<p>Select Rules</p>*/}
             {/*<FormControl variant="standard" size="small">*/}
             {/*    <Select*/}
