@@ -26,7 +26,7 @@ function CreateCharacter() {
     return (
         <div className="container">
             <Box className="white-box">
-                {step === 1 && (
+                {step === 3 && (
                     <OriginSelect
                         selectedOrigin={selectedOrigin}
                         setSelectedOrigin={setSelectedOrigin}
@@ -40,7 +40,7 @@ function CreateCharacter() {
                     setStep={setStep}
                     />
                 )}
-                {step === 3 && (
+                {step === 1 && (
                     <AbilityAssign
                         abilityScores={abilityScores}
                         setAbilityScore={setAbilityScore}

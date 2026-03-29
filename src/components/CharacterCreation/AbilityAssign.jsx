@@ -1,14 +1,15 @@
 import {
     Button,
     FormControl,
-    Grid,
+    Grid, Icon, IconButton,
     MenuItem,
     Select,
     Stack,
     Table,
-    TableBody, TableCell,
+    TableBody, TableCell, TableRow,
 } from "@mui/material";
 import {useState} from "react";
+import {AddCircle, RemoveCircle} from "@mui/icons-material";
 
 function AbilityAssign({
     abilityScores,
@@ -16,10 +17,12 @@ function AbilityAssign({
     setStep,
 }) {
 
+
+
     const rules = [
-        "Method A: Assign Values",
-        "Method B: Assign Points",
-        "Method C: Assign Roles",
+        // "Assign Values",
+        "Assign Points",
+        // "Assign Rolls",
     ]
     const [currentRule, setCurrentRule] = useState(rules[0])
 
@@ -28,35 +31,85 @@ function AbilityAssign({
         return(
             <Table>
                 <TableBody>
-                    <TableCell>Strength</TableCell>
-                    <TableCell>{abilityScores.Strength}</TableCell>
-                </TableBody>
-                <TableBody>
-                    <TableCell>Dexterity</TableCell>
-                    <TableCell>{abilityScores.Dexterity}</TableCell>
-                </TableBody>
-                <TableBody>
-                    <TableCell>Constitution</TableCell>
-                    <TableCell>{abilityScores.Constitution}</TableCell>
-                </TableBody>
-                <TableBody>
-                    <TableCell>Intelligence</TableCell>
-                    <TableCell>{abilityScores.Intelligence}</TableCell>
-                </TableBody>
-                <TableBody>
-                    <TableCell>Wisdom</TableCell>
-                    <TableCell>{abilityScores.Wisdom}</TableCell>
-                </TableBody>
-                <TableBody>
-                    <TableCell>Charisma</TableCell>
-                    <TableCell>{abilityScores.Charisma}</TableCell>
+                    <TableRow>
+                        <TableCell>Strength</TableCell>
+                        <TableCell>{abilityScores.Strength}</TableCell>
+                        <TableCell>
+                            <IconButton color="primary">
+                                <AddCircle/>
+                            </IconButton>
+                            <IconButton color="primary">
+                                <RemoveCircle/>
+                            </IconButton>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Dexterity</TableCell>
+                        <TableCell>{abilityScores.Dexterity}</TableCell>
+                        <TableCell>
+                            <IconButton color="primary">
+                                <AddCircle/>
+                            </IconButton>
+                            <IconButton color="primary">
+                                <RemoveCircle/>
+                            </IconButton>
+                        </TableCell>
+
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Constitution</TableCell>
+                        <TableCell>{abilityScores.Constitution}</TableCell>
+                        <TableCell>
+                            <IconButton color="primary">
+                                <AddCircle/>
+                            </IconButton>
+                            <IconButton color="primary">
+                                <RemoveCircle/>
+                            </IconButton>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Intelligence</TableCell>
+                        <TableCell>{abilityScores.Intelligence}</TableCell>
+                        <TableCell>
+                            <IconButton color="primary">
+                                <AddCircle/>
+                            </IconButton>
+                            <IconButton color="primary">
+                                <RemoveCircle/>
+                            </IconButton>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Wisdom</TableCell>
+                        <TableCell>{abilityScores.Wisdom}</TableCell>
+                        <TableCell>
+                            <IconButton color="primary">
+                                <AddCircle/>
+                            </IconButton>
+                            <IconButton color="primary">
+                                <RemoveCircle/>
+                            </IconButton>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>Charisma</TableCell>
+                        <TableCell>{abilityScores.Charisma}</TableCell>
+                        <TableCell>
+                            <IconButton color="primary">
+                                <AddCircle/>
+                            </IconButton>
+                            <IconButton color="primary">
+                                <RemoveCircle/>
+                            </IconButton>
+                        </TableCell>
+                    </TableRow>
                 </TableBody>
             </Table>
         )
     }
 
     const resetAbilityScores = () => {
-        console.log("resetAbilityScores")
         setAbilityScore.valueOf({
             Strength: 0,
             Dexterity: 0,
@@ -69,21 +122,22 @@ function AbilityAssign({
 
     return (
         <Stack direction="column">
-            <p>Select Rules</p>
-            <FormControl variant="standard" size="small">
-                <Select
-                    id={"rules-select"}
-                    value={currentRule}
-                    onChange={(e) => {
-                        resetAbilityScores()
-                        setCurrentRule(e.target.value)
-                    }}
-                >
-                    {rules.map((item, index) => (
-                        <MenuItem key={index} value={item}>{item}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
+            <p>{currentRule}</p>
+            {/*<p>Select Rules</p>*/}
+            {/*<FormControl variant="standard" size="small">*/}
+            {/*    <Select*/}
+            {/*        id={"rules-select"}*/}
+            {/*        value={currentRule}*/}
+            {/*        onChange={(e) => {*/}
+            {/*            resetAbilityScores()*/}
+            {/*            setCurrentRule(e.target.value)*/}
+            {/*        }}*/}
+            {/*    >*/}
+            {/*        {rules.map((item, index) => (*/}
+            {/*            <MenuItem key={index} value={item}>{item}</MenuItem>*/}
+            {/*        ))}*/}
+            {/*    </Select>*/}
+            {/*</FormControl>*/}
             <Stack direction="row" spacing={2}>
                 <AbilityTable />
             </Stack>
