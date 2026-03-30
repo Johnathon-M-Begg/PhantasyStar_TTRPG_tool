@@ -15,6 +15,7 @@ import {Abilities} from "../../DataObjects/Abilities.tsx";
 function AbilityAssign({
     abilityScores,
     setAbilityScore,
+    selectedOrigin,
     setStep,
 }) {
     const rules = [
@@ -24,6 +25,7 @@ function AbilityAssign({
     ]
     const [currentRule, setCurrentRule] = useState(rules[0])
     const [abilityPoints, setAbilityPoints] = useState(7)
+
 
 
     const resetAbilityScores = () => {
@@ -76,14 +78,24 @@ function AbilityAssign({
 
 
 
-    const Test = ({name, property, updateFunction}) => {
+    const AbilityEntry = ({name, property, updateFunction}) => {
+        let abilityMax = 3
+        let abilityMin = 3
+
+        if(
+            name === 'Strength' &&
+            selectedOrigin.variant.toLowerCase() === "High-gravity".toLowerCase()
+        ){
+            abilityMax = abilityMax + 1
+        }
+
         return(
             <TableRow>
                 <TableCell>{name}</TableCell>
                 <TableCell>{property}</TableCell>
                 <TableCell>
                     <IconButton color="primary"
-                        disabled={property >= 3 || abilityPoints <= 0}
+                        disabled={property >= abilityMax || abilityPoints <= 0}
                         onClick={() => {
                             updateFunction(property + 1)
                             setAbilityPoints(abilityPoints -1)
@@ -92,7 +104,7 @@ function AbilityAssign({
                         <AddCircle/>
                     </IconButton>
                     <IconButton color="primary"
-                        disabled={property <= -1}
+                        disabled={property <= abilityMin}
                         onClick={() => {
                             updateFunction(property - 1)
                             setAbilityPoints(abilityPoints + 1)
@@ -109,32 +121,32 @@ function AbilityAssign({
         return(
             <Table>
                 <TableBody>
-                    <Test
+                    <AbilityEntry
                         name={Abilities.Strength}
                         property={abilityScores.Strength}
                         updateFunction={setStrength}
                     />
-                    <Test
+                    <AbilityEntry
                         name={Abilities.Dexterity}
                         property={abilityScores.Dexterity}
                         updateFunction={setDexterity}
                     />
-                    <Test
+                    <AbilityEntry
                         name={Abilities.Constitution}
                         property={abilityScores.Constitution}
                         updateFunction={setConstitution}
                     />
-                    <Test
+                    <AbilityEntry
                         name={Abilities.Wisdom}
                         property={abilityScores.Wisdom}
                         updateFunction={setWisdom}
                     />
-                    <Test
+                    <AbilityEntry
                         name={Abilities.Intelligence}
                         property={abilityScores.Intelligence}
                         updateFunction={setIntelligence}
                     />
-                    <Test
+                    <AbilityEntry
                         name={Abilities.Charisma}
                         property={abilityScores.Charisma}
                         updateFunction={setCharisma}
@@ -172,6 +184,9 @@ function AbilityAssign({
                 <Button variant="contained" color="secondary"onClick={() => setStep(2)}>Back</Button>
                 <Button variant="contained" color="primary" onClick={() => setStep(4)}
                 >Next</Button>
+
+                <Button variant="contained" color={"complementary"}
+                        onClick={() => resetAbilityScores()}>Reset</Button>
             </Grid>
         </Stack>
     )

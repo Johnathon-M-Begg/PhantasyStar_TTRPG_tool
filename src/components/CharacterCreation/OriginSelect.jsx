@@ -59,7 +59,7 @@ function OriginSelect({
         {name: 'Default'},
         {name: 'Arctic Climate'},
         {name: 'Extreme Heat'},
-        {name: 'High Gravity'},
+        {name: 'High-Gravity'},
         {name: 'Spacer'},
         {name: 'Subterranean'},
         {name: 'Utopian'},
