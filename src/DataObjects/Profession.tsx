@@ -9,6 +9,7 @@ export type Profession = {
     hitDice: number;
     skillCount: number;
     primaryAbilities: Abilities[];
+    techAbility: Abilities | null;
     classSkills: Skill[];
     saves: Abilities[]
     weaponProficiencies: WeaponType[];

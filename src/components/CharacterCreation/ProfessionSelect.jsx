@@ -62,6 +62,10 @@ function ProfessionSelect({
                                 <TableCell style={{ textAlign: 'right' }}><strong>Primary Abilities:</strong></TableCell>
                                 <TableCell>{professionService.getPrimaryAbilities(selectedProfession).map(ability => ability).join(', ')}</TableCell>
                             </TableRow>
+                            <TableRow>
+                                <TableCell style={{ textAlign: 'right' }}><strong>Tech Ability</strong></TableCell>
+                                <TableCell>{professionService.getTechAbility(selectedProfession) !== null ? professionService.getTechAbility(selectedProfession) : 'No Techniques'}</TableCell>
+                            </TableRow>
                             <TableRow variant="dense">
                                 <TableCell style={{ textAlign: 'right' }}><strong>Saves:</strong></TableCell>
                                 <TableCell>{professionService.getSaveProficiencies(selectedProfession).map(ability => ability).join(', ')}</TableCell>

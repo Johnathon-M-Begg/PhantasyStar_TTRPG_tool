@@ -13,6 +13,7 @@ export class ProfessionService {
             hitDice: 10,
             skillCount: 2,
             primaryAbilities: [Abilities.Strength, Abilities.Charisma],
+            techAbility: Abilities.Charisma,
             classSkills: [
                 Skill.athletics,
                 Skill.insight,
@@ -45,6 +46,7 @@ export class ProfessionService {
             hitDice: 10,
             skillCount: 2,
             primaryAbilities: [Abilities.Wisdom, Abilities.Strength, Abilities.Dexterity],
+            techAbility: Abilities.Wisdom,
             saves: [Abilities.Strength, Abilities.Dexterity],
             classSkills: [
                 Skill.acrobatics,
@@ -78,6 +80,7 @@ export class ProfessionService {
             hitDice: 8,
             skillCount: 2,
             primaryAbilities: [Abilities.Dexterity, Abilities.Wisdom],
+            techAbility: Abilities.Wisdom,
             saves: [Abilities.Strength, Abilities.Dexterity],
             classSkills: [
                 Skill.acrobatics,
@@ -104,6 +107,7 @@ export class ProfessionService {
             hitDice: 8,
             skillCount: 4,
             primaryAbilities: [Abilities.Dexterity],
+            techAbility: null,
             saves: [Abilities.Intelligence, Abilities.Dexterity],
             classSkills: [
                 Skill.acrobatics,
@@ -136,6 +140,7 @@ export class ProfessionService {
             hitDice: 8,
             skillCount: 2,
             primaryAbilities: [Abilities.Wisdom],
+            techAbility: Abilities.Wisdom,
             saves: [Abilities.Wisdom, Abilities.Charisma],
             classSkills: [
                 Skill.astrophysics,
@@ -166,6 +171,7 @@ export class ProfessionService {
             hitDice: 6,
             skillCount: 2,
             primaryAbilities: [Abilities.Intelligence],
+            techAbility: Abilities.Intelligence,
             saves: [Abilities.Intelligence, Abilities.Wisdom],
             classSkills: [
                 Skill.astrophysics,
@@ -190,6 +196,7 @@ export class ProfessionService {
             hitDice: 10,
             skillCount: 2,
             primaryAbilities: [Abilities.Strength, Abilities.Dexterity],
+            techAbility: null,
             saves: [Abilities.Strength, Abilities.Constitution],
             classSkills: [
                 Skill.acrobatics,
@@ -255,5 +262,9 @@ s
 
     getPrimaryAbilities(name: string): Abilities[] {
         return this.getMatch(name)?.primaryAbilities ?? []
+    }
+
+    getTechAbility(name: string): Abilities | null {
+        return this.getMatch(name)?.techAbility ?? null
     }
 }
