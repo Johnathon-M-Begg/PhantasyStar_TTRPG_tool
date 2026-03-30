@@ -53,6 +53,7 @@ function SkillSelect({
         if(backgroundSkills.includes(name)) {
             value += 2
         }
+        let allocatedPoints = 0
         return (
             <tr>
                 <td><IsClassSkill name={name}/></td>
@@ -61,8 +62,9 @@ function SkillSelect({
                 </td>
                 <td>{attribute.slice(0,3).toUpperCase()}</td>
                 <td>{value}</td>
-                <td><button disabled={value < 1}>-</button></td>
+                <td><button disabled={allocatedPoints < 1}>-</button></td>
                 <td><button disabled={value >= maxSkillValue}>+</button></td>
+                <td>{allocatedPoints}</td>
             </tr>
         )
     }
@@ -71,6 +73,15 @@ function SkillSelect({
         <div className="skill-container">
             <div>class points {professionPoints}</div>
             <table className="skill-table">
+                <tr>
+                    <th></th>
+                    <th>Skill</th>
+                    <th>Ability</th>
+                    <th>Total</th>
+                    <th></th>
+                    <th></th>
+                    <th>Points</th>
+                </tr>
                 <tbody>
                 {skillList.map(skill => (
                     <SkillRow name={skill.name} attribute={skill.attribute} />
