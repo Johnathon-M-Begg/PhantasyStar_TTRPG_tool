@@ -181,8 +181,14 @@ function AbilityAssign({
                 <AbilityTable />
             </Stack>
             <Grid className="button-group">
-                <Button variant="contained" color="secondary"onClick={() => setStep(2)}>Back</Button>
+                <Button variant="contained" color="secondary"
+                        onClick={() => {
+                            setStep(2)
+                            resetAbilityScores()
+                        }}
+                >Back</Button>
                 <Button variant="contained" color="primary" onClick={() => setStep(4)}
+                        disabled={abilityPoints !== 0}
                 >Next</Button>
 
                 <Button variant="contained" color={"complementary"}

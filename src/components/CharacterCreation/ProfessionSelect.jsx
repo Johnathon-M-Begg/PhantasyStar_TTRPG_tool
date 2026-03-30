@@ -81,9 +81,15 @@ function ProfessionSelect({
                         </TableBody>
                     </Table>
                 ) : (
-                    <Box>
-                        <p>Please select a profession to see its details.</p>
-                    </Box>
+                    <Table spacing={2}>
+                        <TableBody>
+                            <TableRow variant="dense">
+                                <TableCell>
+                                    Please select a profession to see its details
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
                     )
                 }
             </Box>
