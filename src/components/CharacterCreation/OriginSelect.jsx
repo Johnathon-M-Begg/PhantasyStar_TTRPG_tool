@@ -56,14 +56,14 @@ function OriginSelect({
     ]
 
     const variants = [
-        {name: 'Default'},
-        {name: 'Arctic Climate'},
-        {name: 'Extreme Heat'},
-        {name: 'High-Gravity'},
-        {name: 'Spacer'},
-        {name: 'Subterranean'},
-        {name: 'Utopian'},
-        {name: 'Wasteland'},
+        {name: 'Default', desc: 'You grew up in a mild environment, such as Palma or Algol City'},
+        {name: 'Arctic Climate', desc: 'You grew up in a freezing environment, such as Dezolis'},
+        {name: 'Extreme Heat', desc: 'You grew up near a volcano or on an arid planet'},
+        {name: 'High-Gravity', desc: 'You were raised on a planet or in a region with at least twice the gravitational force of an Earth-type planet'},
+        {name: 'Spacer', desc: 'You were raised aboard a starship or space station, or on a low-gravity planet'},
+        {name: 'Subterranean', desc: 'You spent most of your life underground or in regions with few light sources'},
+        {name: 'Utopian', desc: 'You come from an enlightened society on a resource-rich world with a controlled environment'},
+        {name: 'Wasteland', desc: 'You come from an area affected by atmospheric decay, radioactive fallout, or similar cataclysmic conditions'},
     ]
 
     const backgrounds = [
