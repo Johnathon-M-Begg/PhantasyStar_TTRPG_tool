@@ -2,6 +2,8 @@ import {Skill} from "../../DataObjects/Skill.tsx";
 import {Abilities} from "../../DataObjects/Abilities.tsx";
 import {BackgroundService} from "../../services/BackgroundService.tsx";
 import {ProfessionService} from "../../services/ProfessionService.tsx";
+import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
+import {useState} from "react";
 
 function SkillSelect({
      selectedProfession,
@@ -35,29 +37,41 @@ function SkillSelect({
 
     const professionService = new ProfessionService()
     const professionSkills = professionService.getProfessionSkills(selectedProfession)
-    let professionPoints = professionService.getSkillPoints(selectedProfession)
+    const professionPoints= professionService.getSkillPoints(selectedProfession)
     const backgroundService = new BackgroundService()
     const backgroundSkills = backgroundService.getSkills(selectedOrigin.background)
 
-    function SkillRow({name, attribute}) {
+    const [checkedItems, setCheckedItems] = useState(0)
+
+    function SkillRow({skill}) {
         let value = 0
-        if(backgroundSkills.includes(name)) {
+        if(backgroundSkills.includes(skill.name)) {
             value += 2
         }
-        let isClassSkill = professionSkills.includes(name)
+        let isClassSkill = professionSkills.includes(skill.name)
+        let [isTrained, setIsTrained] = useState(false)
+        const handleChange = (event) => {
+            // Update the state with the new checked value
+            setIsTrained(event.target.checked);
+        };
 
-        let allocatedPoints = 0
+        if(isTrained){
+            value += 2
+        }
         return (
             <tr>
                 <td>{isClassSkill? (<>*</>) : (<></>)}</td>
                 <td>
-                    <strong>{name}</strong>
+                    <strong>{skill.name}</strong>
                 </td>
-                <td>{attribute.slice(0,3).toUpperCase()}</td>
+                <td>{skill.attribute.slice(0,3).toUpperCase()}</td>
                 <td>{value}</td>
-                <td><button disabled={allocatedPoints < 1}>-</button></td>
-                <td><button disabled={value >= maxSkillValue}>+</button></td>
-                <td>{allocatedPoints}</td>
+                <td>{isClassSkill? (
+                    <Checkbox
+                        checked={isTrained}
+                        onChange={handleChange}
+                    />
+                ): (<></>)}</td>
             </tr>
         )
     }
@@ -65,19 +79,20 @@ function SkillSelect({
     return(
         <div className="skill-container">
             <div>class points {professionPoints}</div>
+            {checkedItems.length}
             <table className="skill-table">
+                <thead>
                 <tr>
-                    <th></th>
-                    <th>Skill</th>
-                    <th>Ability</th>
-                    <th>Total</th>
-                    <th></th>
-                    <th></th>
-                    <th>Points</th>
+                    <td></td>
+                    <td>Skill</td>
+                    <td>Ability</td>
+                    <td>Total</td>
+                    <td></td>
                 </tr>
+                </thead>
                 <tbody>
                 {skillList.map(skill => (
-                    <SkillRow name={skill.name} attribute={skill.attribute} />
+                    <SkillRow key={skill.name}  skill={skill} />
                 ))}
                 </tbody>
             </table>
