@@ -29,6 +29,7 @@ function AbilityAssign({
 
 
     const resetAbilityScores = () => {
+        setAbilityPoints(7)
         setAbilityScore({
             Strength: 0,
             Dexterity: 0,
@@ -80,7 +81,7 @@ function AbilityAssign({
 
     const AbilityEntry = ({name, property, updateFunction}) => {
         let abilityMax = 3
-        let abilityMin = 3
+        let abilityMin = -1
 
         if(
             name === 'Strength' &&
