@@ -39,24 +39,17 @@ function SkillSelect({
     const backgroundService = new BackgroundService()
     const backgroundSkills = backgroundService.getSkills(selectedOrigin.background)
 
-    function IsClassSkill({name}) {
-        let isClassSkill = professionSkills.includes(name)
-        if(isClassSkill) {
-            return(<b>*</b>)
-        } else {
-            return(<div/>)
-        }
-    }
-
     function SkillRow({name, attribute}) {
         let value = 0
         if(backgroundSkills.includes(name)) {
             value += 2
         }
+        let isClassSkill = professionSkills.includes(name)
+
         let allocatedPoints = 0
         return (
             <tr>
-                <td><IsClassSkill name={name}/></td>
+                <td>{isClassSkill? (<>*</>) : (<></>)}</td>
                 <td>
                     <strong>{name}</strong>
                 </td>

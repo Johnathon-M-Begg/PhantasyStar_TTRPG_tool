@@ -1,6 +1,7 @@
 import './CreateCharacter.css'
 import { useNavigate } from 'react-router-dom'
 import {Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography} from "@mui/material";
+import {VariantEnum} from "../../DataObjects/VariantEnum.tsx";
 
 
 function OriginSelect({
@@ -29,8 +30,8 @@ function OriginSelect({
                 'sentience. After attaining their independence, they set\n' +
                 'out to forge their own paths with a sense of self-worth\n' +
                 'and a dedication to their chosen purpose.' },
-        { name: 'Android - ALT', desc: 'An alternative Android that has self\n' +
-                'regeneration abilities but gains NO TP' },
+        // { name: 'Android - ALT', desc: 'An alternative Android that has self\n' +
+        //         'regeneration abilities but gains NO TP' },
         { name: 'Dezolian', desc: 'These tall humanoids are native to the frozen world of\n' +
                 'Dezolis, the third planet of the Algol system. While most\n' +
                 'still reside on their native planet, some are known to\n' +
@@ -56,14 +57,14 @@ function OriginSelect({
     ]
 
     const variants = [
-        {name: 'Default', desc: 'You grew up in a mild environment, such as Palma or Algol City'},
-        {name: 'Arctic Climate', desc: 'You grew up in a freezing environment, such as Dezolis'},
-        {name: 'Extreme Heat', desc: 'You grew up near a volcano or on an arid planet'},
-        {name: 'High-Gravity', desc: 'You were raised on a planet or in a region with at least twice the gravitational force of an Earth-type planet'},
-        {name: 'Spacer', desc: 'You were raised aboard a starship or space station, or on a low-gravity planet'},
-        {name: 'Subterranean', desc: 'You spent most of your life underground or in regions with few light sources'},
-        {name: 'Utopian', desc: 'You come from an enlightened society on a resource-rich world with a controlled environment'},
-        {name: 'Wasteland', desc: 'You come from an area affected by atmospheric decay, radioactive fallout, or similar cataclysmic conditions'},
+        {name: VariantEnum.Default, desc: 'You grew up in a mild environment, such as Palma or Algol City'},
+        {name: VariantEnum.ArcticClimate, desc: 'You grew up in a freezing environment, such as Dezolis'},
+        {name: VariantEnum.ExtremeHeat, desc: 'You grew up near a volcano or on an arid planet'},
+        {name: VariantEnum.HighGravity, desc: 'You were raised on a planet or in a region with at least twice the gravitational force of an Earth-type planet'},
+        {name: VariantEnum.Spacer, desc: 'You were raised aboard a starship or space station, or on a low-gravity planet'},
+        {name: VariantEnum.Subterranean, desc: 'You spent most of your life underground or in regions with few light sources'},
+        {name: VariantEnum.Utopian, desc: 'You come from an enlightened society on a resource-rich world with a controlled environment'},
+        {name: VariantEnum.Wasteland, desc: 'You come from an area affected by atmospheric decay, radioactive fallout, or similar cataclysmic conditions'},
     ]
 
     const backgrounds = [
