@@ -1,4 +1,4 @@
-export enum Abilities {
+export enum AbilitiesEnum {
     Strength = "Strength",
     Dexterity = "Dexterity",
     Constitution = "Constitution",

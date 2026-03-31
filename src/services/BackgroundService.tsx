@@ -1,5 +1,5 @@
 import type {Background} from "../DataObjects/Background.tsx";
-import {Skill} from "../DataObjects/Skill.tsx";
+import {SkillEnum} from "../DataObjects/enums/SkillEnum.tsx";
 
 
 export class BackgroundService {
@@ -10,7 +10,7 @@ export class BackgroundService {
                 "specific faith or deity. There you perform rites and\n" +
                 "ceremonies with fellow worshippers in accordance to\n" +
                 "your sacred beliefs",
-            skills: [Skill.insight, Skill.lore],
+            skills: [SkillEnum.insight, SkillEnum.lore],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -24,7 +24,7 @@ export class BackgroundService {
                 "public attention and know how to work a crowd. Most\n" +
                 "of your life has been spent in the limelight, whether you\n" +
                 "enjoyed it or not.",
-            skills: [Skill.insight, Skill.performance],
+            skills: [SkillEnum.insight, SkillEnum.performance],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -36,7 +36,7 @@ export class BackgroundService {
             description:"You are an artisan who excels at practicing and selling\n" +
                 "your craft. Various merchants and other crafters fall\n" +
                 "under your list of contacts.",
-            skills: [Skill.insight, Skill.persuasion],
+            skills: [SkillEnum.insight, SkillEnum.persuasion],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -51,7 +51,7 @@ export class BackgroundService {
                 "you were forced into this life. Maybe you just wanted\n" +
                 "to do something different. You may think of stopping\n" +
                 "someday… maybe…",
-            skills: [Skill.persuasion, Skill.survival],
+            skills: [SkillEnum.persuasion, SkillEnum.survival],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -66,7 +66,7 @@ export class BackgroundService {
                 "part of your job as an agent or a reporter, in pursuit of\n" +
                 "a personal truth, or perhaps just because you have a\n" +
                 "talent for it.",
-            skills: [Skill.insight, Skill.investigation],
+            skills: [SkillEnum.insight, SkillEnum.investigation],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -80,7 +80,7 @@ export class BackgroundService {
                 "colony or hometown regard you as a hero or protector.\n" +
                 "You feel your destiny calls you to defend and protect the\n" +
                 "innocent from tyrants, monsters, or other threats.",
-            skills: [Skill.insight, Skill.persuasion],
+            skills: [SkillEnum.insight, SkillEnum.persuasion],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -94,7 +94,7 @@ export class BackgroundService {
                 "survived more natural hazards than most commoners\n" +
                 "could comprehend, and enjoyed the solitude of being\n" +
                 "the only person for miles in any direction.",
-            skills: [Skill.survival, Skill.xenobiology],
+            skills: [SkillEnum.survival, SkillEnum.xenobiology],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -108,7 +108,7 @@ export class BackgroundService {
                 "bit more experience than you asked for. You may have\n" +
                 "acquaintances in the criminal underworld and can often\n" +
                 "sniff out the bad seed in a bunch.",
-            skills: [Skill.deception, Skill.stealth],
+            skills: [SkillEnum.deception, SkillEnum.stealth],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -122,7 +122,7 @@ export class BackgroundService {
                 "influential organization. Or perhaps you garnered a lot\n" +
                 "of political favors. Either way, you are considered part\n" +
                 "of the upper class—and you have the clout to prove it",
-            skills: [Skill.deception, Skill.persuasion],
+            skills: [SkillEnum.deception, SkillEnum.persuasion],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -135,8 +135,8 @@ export class BackgroundService {
                 "drive or fly it. You may be a retired fighter jock, a stunt\n" +
                 "driver, or a transport pilot, or perhaps you picked up a\n" +
                 "knack for it when you were young.",
-            skills: [Skill.insight],
-            skillOption: [Skill.computers, Skill.mechanics],
+            skills: [SkillEnum.insight],
+            skillOption: [SkillEnum.computers, SkillEnum.mechanics],
             toolProficiencies: [],
             traits: [],
             equipment: [],
@@ -149,8 +149,8 @@ export class BackgroundService {
                 "Knowledge is the key to the mysteries of the universe\n" +
                 "and you strive to learn enough to become a master in\n" +
                 "your field.",
-            skills: [Skill.lore],
-            skillOption: [Skill.astrophysics, Skill.medicine, Skill.xenobiology],
+            skills: [SkillEnum.lore],
+            skillOption: [SkillEnum.astrophysics, SkillEnum.medicine, SkillEnum.xenobiology],
             toolProficiencies: [],
             traits: [],
             equipment: [],
@@ -162,7 +162,7 @@ export class BackgroundService {
                 "you how to survive in the field both alone and with a\n" +
                 "group of fellow combatants. You may have been an\n" +
                 "army grunt, a knight, or a rebel mercenary",
-            skills: [Skill.athletics, Skill.survival],
+            skills: [SkillEnum.athletics, SkillEnum.survival],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -175,7 +175,7 @@ export class BackgroundService {
                 "machines are your forte. You are just as comfortable\n" +
                 "around the hum of machinery and the droning of robots\n" +
                 "as you are around other people.",
-            skills: [Skill.computers, Skill.mechanics],
+            skills: [SkillEnum.computers, SkillEnum.mechanics],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -190,7 +190,7 @@ export class BackgroundService {
                 "hunger became unbearable, you may have resorted\n" +
                 "to theft. Still, you never lost your pride and never\n" +
                 "abandoned hope.",
-            skills: [Skill.insight, Skill.stealth],
+            skills: [SkillEnum.insight, SkillEnum.stealth],
             skillOption: [],
             toolProficiencies: [],
             traits: [],
@@ -203,11 +203,11 @@ export class BackgroundService {
             return this.backgrounds.find(background => background.name === name);
         }
 
-        getSkills(name: string): Skill[] {
+        getSkills(name: string): SkillEnum[] {
             return this.getMatch(name)?.skills ?? [];
         }
 
-        getSkillOptions(name: string): Skill[] {
+        getSkillOptions(name: string): SkillEnum[] {
             return this.getMatch(name)?.skillOption ?? [];
         }
 }

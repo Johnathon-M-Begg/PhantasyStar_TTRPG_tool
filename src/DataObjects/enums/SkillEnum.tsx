@@ -1,4 +1,4 @@
-export enum Skill {
+export enum SkillEnum {
     acrobatics = 'Acrobatics',
     astrophysics = 'Astrophysics',
     athletics = 'Athletics',

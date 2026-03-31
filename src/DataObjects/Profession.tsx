@@ -1,17 +1,17 @@
-import { Abilities } from "./Abilities";
-import { ArmorTypes } from "./ArmorTypes";
-import { Skill } from "./Skill";
-import { WeaponType } from "./WeaponType";
+import { AbilitiesEnum } from "./enums/AbilitiesEnum.tsx";
+import { ArmorTypesEnum } from "./enums/ArmorTypesEnum.tsx";
+import { SkillEnum } from "./enums/SkillEnum.tsx";
+import { WeaponTypeEnum } from "./enums/WeaponTypeEnum.tsx";
 
 export type Profession = {
     name: string;
     description: string;
     hitDice: number;
     skillCount: number;
-    primaryAbilities: Abilities[];
-    techAbility: Abilities | null;
-    classSkills: Skill[];
-    saves: Abilities[]
-    weaponProficiencies: WeaponType[];
-    armorProficiencies: ArmorTypes[];
+    primaryAbilities: AbilitiesEnum[];
+    techAbility: AbilitiesEnum | null;
+    classSkills: SkillEnum[];
+    saves: AbilitiesEnum[]
+    weaponProficiencies: WeaponTypeEnum[];
+    armorProficiencies: ArmorTypesEnum[];
 }

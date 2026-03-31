@@ -1,7 +1,7 @@
 import './CreateCharacter.css'
 import { useNavigate } from 'react-router-dom'
 import {Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography} from "@mui/material";
-import {VariantEnum} from "../../DataObjects/VariantEnum.tsx";
+import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
 
 
 function OriginSelect({

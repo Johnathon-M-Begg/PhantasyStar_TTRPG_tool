@@ -1,10 +1,10 @@
-import type {Skill} from "./Skill.tsx";
+import type {SkillEnum} from "./enums/SkillEnum.tsx";
 
 export type Background = {
     name: string,
     description: string,
-    skills: Skill[],
-    skillOption: Skill[],
+    skills: SkillEnum[],
+    skillOption: SkillEnum[],
     toolProficiencies: string[],
     traits: string[],
     equipment: string[]

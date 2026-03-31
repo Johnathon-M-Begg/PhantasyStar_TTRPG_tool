@@ -1,8 +1,8 @@
 import type {Profession} from "../DataObjects/Profession.tsx";
-import {WeaponType} from "../DataObjects/WeaponType.tsx";
-import {Skill} from "../DataObjects/Skill.tsx";
-import {Abilities} from "../DataObjects/Abilities.tsx";
-import {ArmorTypes} from "../DataObjects/ArmorTypes.tsx";
+import {WeaponTypeEnum} from "../DataObjects/enums/WeaponTypeEnum.tsx";
+import {SkillEnum} from "../DataObjects/enums/SkillEnum.tsx";
+import {AbilitiesEnum} from "../DataObjects/enums/AbilitiesEnum.tsx";
+import {ArmorTypesEnum} from "../DataObjects/enums/ArmorTypesEnum.tsx";
 
 export class ProfessionService {
 
@@ -12,32 +12,32 @@ export class ProfessionService {
             description: "Versatile combatant and defender",
             hitDice: 10,
             skillCount: 2,
-            primaryAbilities: [Abilities.Strength, Abilities.Charisma],
-            techAbility: Abilities.Charisma,
+            primaryAbilities: [AbilitiesEnum.Strength, AbilitiesEnum.Charisma],
+            techAbility: AbilitiesEnum.Charisma,
             classSkills: [
-                Skill.athletics,
-                Skill.insight,
-                Skill.intimidation,
-                Skill.mechanics,
-                Skill.medicine,
-                Skill.perception,
-                Skill.persuasion,
+                SkillEnum.athletics,
+                SkillEnum.insight,
+                SkillEnum.intimidation,
+                SkillEnum.mechanics,
+                SkillEnum.medicine,
+                SkillEnum.perception,
+                SkillEnum.persuasion,
             ],
-            saves: [Abilities.Wisdom, Abilities.Charisma],
+            saves: [AbilitiesEnum.Wisdom, AbilitiesEnum.Charisma],
             weaponProficiencies: [
-                WeaponType.axe,
-                WeaponType.claw,
-                WeaponType.dagger,
-                WeaponType.pistol,
-                WeaponType.rod,
-                WeaponType.slasher,
-                WeaponType.sword,
+                WeaponTypeEnum.axe,
+                WeaponTypeEnum.claw,
+                WeaponTypeEnum.dagger,
+                WeaponTypeEnum.pistol,
+                WeaponTypeEnum.rod,
+                WeaponTypeEnum.slasher,
+                WeaponTypeEnum.sword,
             ],
             armorProficiencies: [
-                ArmorTypes.light,
-                ArmorTypes.medium,
-                ArmorTypes.heavy,
-                ArmorTypes.shield,
+                ArmorTypesEnum.light,
+                ArmorTypesEnum.medium,
+                ArmorTypesEnum.heavy,
+                ArmorTypesEnum.shield,
             ]
         },
         {
@@ -45,33 +45,33 @@ export class ProfessionService {
             description: "Combines weapon skills with technique use",
             hitDice: 10,
             skillCount: 2,
-            primaryAbilities: [Abilities.Wisdom, Abilities.Strength, Abilities.Dexterity],
-            techAbility: Abilities.Wisdom,
-            saves: [Abilities.Strength, Abilities.Dexterity],
+            primaryAbilities: [AbilitiesEnum.Wisdom, AbilitiesEnum.Strength, AbilitiesEnum.Dexterity],
+            techAbility: AbilitiesEnum.Wisdom,
+            saves: [AbilitiesEnum.Strength, AbilitiesEnum.Dexterity],
             classSkills: [
-                Skill.acrobatics,
-                Skill.athletics,
-                Skill.insight,
-                Skill.investigation,
-                Skill.perception,
-                Skill.stealth,
-                Skill.survival,
-                Skill.xenobiology,
+                SkillEnum.acrobatics,
+                SkillEnum.athletics,
+                SkillEnum.insight,
+                SkillEnum.investigation,
+                SkillEnum.perception,
+                SkillEnum.stealth,
+                SkillEnum.survival,
+                SkillEnum.xenobiology,
             ],
             weaponProficiencies: [
-                WeaponType.axe,
-                WeaponType.bow,
-                WeaponType.claw,
-                WeaponType.dagger,
-                WeaponType.pistol,
-                WeaponType.rifle,
-                WeaponType.slasher,
-                WeaponType.sword,
+                WeaponTypeEnum.axe,
+                WeaponTypeEnum.bow,
+                WeaponTypeEnum.claw,
+                WeaponTypeEnum.dagger,
+                WeaponTypeEnum.pistol,
+                WeaponTypeEnum.rifle,
+                WeaponTypeEnum.slasher,
+                WeaponTypeEnum.sword,
             ],
             armorProficiencies: [
-                ArmorTypes.light,
-                ArmorTypes.medium,
-                ArmorTypes.shield,
+                ArmorTypesEnum.light,
+                ArmorTypesEnum.medium,
+                ArmorTypesEnum.shield,
             ],
         },
         {
@@ -79,26 +79,26 @@ export class ProfessionService {
             description: "Combat adept with spiritual techniques",
             hitDice: 8,
             skillCount: 2,
-            primaryAbilities: [Abilities.Dexterity, Abilities.Wisdom],
-            techAbility: Abilities.Wisdom,
-            saves: [Abilities.Strength, Abilities.Dexterity],
+            primaryAbilities: [AbilitiesEnum.Dexterity, AbilitiesEnum.Wisdom],
+            techAbility: AbilitiesEnum.Wisdom,
+            saves: [AbilitiesEnum.Strength, AbilitiesEnum.Dexterity],
             classSkills: [
-                Skill.acrobatics,
-                Skill.athletics,
-                Skill.insight,
-                Skill.lore,
-                Skill.performance,
-                Skill.stealth,
-                Skill.survival,
+                SkillEnum.acrobatics,
+                SkillEnum.athletics,
+                SkillEnum.insight,
+                SkillEnum.lore,
+                SkillEnum.performance,
+                SkillEnum.stealth,
+                SkillEnum.survival,
             ],
             weaponProficiencies: [
-                WeaponType.claw,
-                WeaponType.dagger,
-                WeaponType.rod,
-                WeaponType.slasher,
+                WeaponTypeEnum.claw,
+                WeaponTypeEnum.dagger,
+                WeaponTypeEnum.rod,
+                WeaponTypeEnum.slasher,
             ],
             armorProficiencies: [
-                ArmorTypes.light,
+                ArmorTypesEnum.light,
             ],
         },
         {
@@ -106,32 +106,32 @@ export class ProfessionService {
             description: "Expert in infiltration and exploration",
             hitDice: 8,
             skillCount: 4,
-            primaryAbilities: [Abilities.Dexterity],
+            primaryAbilities: [AbilitiesEnum.Dexterity],
             techAbility: null,
-            saves: [Abilities.Intelligence, Abilities.Dexterity],
+            saves: [AbilitiesEnum.Intelligence, AbilitiesEnum.Dexterity],
             classSkills: [
-                Skill.acrobatics,
-                Skill.computers,
-                Skill.deception,
-                Skill.insight,
-                Skill.intimidation,
-                Skill.investigation,
-                Skill.perception,
-                Skill.persuasion,
-                Skill.slightOfHand,
-                Skill.stealth,
+                SkillEnum.acrobatics,
+                SkillEnum.computers,
+                SkillEnum.deception,
+                SkillEnum.insight,
+                SkillEnum.intimidation,
+                SkillEnum.investigation,
+                SkillEnum.perception,
+                SkillEnum.persuasion,
+                SkillEnum.slightOfHand,
+                SkillEnum.stealth,
             ],
             weaponProficiencies: [
-                WeaponType.bow,
-                WeaponType.dagger,
-                WeaponType.pistol,
-                WeaponType.rod,
-                WeaponType.slasher,
-                WeaponType.sword,
+                WeaponTypeEnum.bow,
+                WeaponTypeEnum.dagger,
+                WeaponTypeEnum.pistol,
+                WeaponTypeEnum.rod,
+                WeaponTypeEnum.slasher,
+                WeaponTypeEnum.sword,
             ],
             armorProficiencies: [
-                ArmorTypes.light,
-                ArmorTypes.shield,
+                ArmorTypesEnum.light,
+                ArmorTypesEnum.shield,
             ],
         },
         {
@@ -139,30 +139,30 @@ export class ProfessionService {
             description: "Specialist in biotech or machines",
             hitDice: 8,
             skillCount: 2,
-            primaryAbilities: [Abilities.Wisdom],
-            techAbility: Abilities.Wisdom,
-            saves: [Abilities.Wisdom, Abilities.Charisma],
+            primaryAbilities: [AbilitiesEnum.Wisdom],
+            techAbility: AbilitiesEnum.Wisdom,
+            saves: [AbilitiesEnum.Wisdom, AbilitiesEnum.Charisma],
             classSkills: [
-                Skill.astrophysics,
-                Skill.computers,
-                Skill.insight,
-                Skill.lore,
-                Skill.mechanics,
-                Skill.medicine,
-                Skill.persuasion,
-                Skill.xenobiology,
+                SkillEnum.astrophysics,
+                SkillEnum.computers,
+                SkillEnum.insight,
+                SkillEnum.lore,
+                SkillEnum.mechanics,
+                SkillEnum.medicine,
+                SkillEnum.persuasion,
+                SkillEnum.xenobiology,
             ],
             weaponProficiencies: [
-                WeaponType.bow,
-                WeaponType.claw,
-                WeaponType.dagger,
-                WeaponType.pistol,
-                WeaponType.rod,
+                WeaponTypeEnum.bow,
+                WeaponTypeEnum.claw,
+                WeaponTypeEnum.dagger,
+                WeaponTypeEnum.pistol,
+                WeaponTypeEnum.rod,
             ],
             armorProficiencies: [
-                ArmorTypes.light,
-                ArmorTypes.medium,
-                ArmorTypes.shield,
+                ArmorTypesEnum.light,
+                ArmorTypesEnum.medium,
+                ArmorTypesEnum.shield,
             ],
         },
         {
@@ -170,22 +170,22 @@ export class ProfessionService {
             description: "Channelers of arcane power and elemental energy",
             hitDice: 6,
             skillCount: 2,
-            primaryAbilities: [Abilities.Intelligence],
-            techAbility: Abilities.Intelligence,
-            saves: [Abilities.Intelligence, Abilities.Wisdom],
+            primaryAbilities: [AbilitiesEnum.Intelligence],
+            techAbility: AbilitiesEnum.Intelligence,
+            saves: [AbilitiesEnum.Intelligence, AbilitiesEnum.Wisdom],
             classSkills: [
-                Skill.astrophysics,
-                Skill.insight,
-                Skill.investigation,
-                Skill.lore,
-                Skill.medicine,
-                Skill.perception,
-                Skill.xenobiology,
+                SkillEnum.astrophysics,
+                SkillEnum.insight,
+                SkillEnum.investigation,
+                SkillEnum.lore,
+                SkillEnum.medicine,
+                SkillEnum.perception,
+                SkillEnum.xenobiology,
             ],
             weaponProficiencies: [
-                WeaponType.dagger,
-                WeaponType.rod,
-                WeaponType.slasher,
+                WeaponTypeEnum.dagger,
+                WeaponTypeEnum.rod,
+                WeaponTypeEnum.slasher,
             ],
             armorProficiencies: [
             ],
@@ -195,35 +195,35 @@ export class ProfessionService {
             description: "Master of arms and armor",
             hitDice: 10,
             skillCount: 2,
-            primaryAbilities: [Abilities.Strength, Abilities.Dexterity],
+            primaryAbilities: [AbilitiesEnum.Strength, AbilitiesEnum.Dexterity],
             techAbility: null,
-            saves: [Abilities.Strength, Abilities.Constitution],
+            saves: [AbilitiesEnum.Strength, AbilitiesEnum.Constitution],
             classSkills: [
-                Skill.acrobatics,
-                Skill.athletics,
-                Skill.insight,
-                Skill.intimidation,
-                Skill.lore,
-                Skill.perception,
-                Skill.persuasion,
-                Skill.survival,
+                SkillEnum.acrobatics,
+                SkillEnum.athletics,
+                SkillEnum.insight,
+                SkillEnum.intimidation,
+                SkillEnum.lore,
+                SkillEnum.perception,
+                SkillEnum.persuasion,
+                SkillEnum.survival,
             ],
             weaponProficiencies: [
-                WeaponType.axe,
-                WeaponType.bow,
-                WeaponType.claw,
-                WeaponType.dagger,
-                WeaponType.pistol,
-                WeaponType.rod,
-                WeaponType.rifle,
-                WeaponType.slasher,
-                WeaponType.sword,
+                WeaponTypeEnum.axe,
+                WeaponTypeEnum.bow,
+                WeaponTypeEnum.claw,
+                WeaponTypeEnum.dagger,
+                WeaponTypeEnum.pistol,
+                WeaponTypeEnum.rod,
+                WeaponTypeEnum.rifle,
+                WeaponTypeEnum.slasher,
+                WeaponTypeEnum.sword,
             ],
             armorProficiencies: [
-                ArmorTypes.light,
-                ArmorTypes.medium,
-                ArmorTypes.heavy,
-                ArmorTypes.shield,
+                ArmorTypesEnum.light,
+                ArmorTypesEnum.medium,
+                ArmorTypesEnum.heavy,
+                ArmorTypesEnum.shield,
             ],
         },
     ]
@@ -236,7 +236,7 @@ export class ProfessionService {
         return this.getMatch(name)?.description
     }
 s
-    getProfessionSkills(name: string): Skill[]  {
+    getProfessionSkills(name: string): SkillEnum[]  {
         return this.getMatch(name)?.classSkills ?? []
     }
 
@@ -248,23 +248,23 @@ s
         return this.getMatch(name)?.hitDice ?? 0
     }
 
-    getWeaponProficiencies(name: string): WeaponType[]  {
+    getWeaponProficiencies(name: string): WeaponTypeEnum[]  {
         return this.getMatch(name)?.weaponProficiencies ?? []
     }
 
-    getArmorProficiencies(name: string): ArmorTypes[]  {
+    getArmorProficiencies(name: string): ArmorTypesEnum[]  {
         return this.getMatch(name)?.armorProficiencies ?? []
     }
 
-    getSaveProficiencies(name: string): Abilities[]  {
+    getSaveProficiencies(name: string): AbilitiesEnum[]  {
         return this.getMatch(name)?.saves ?? []
     }
 
-    getPrimaryAbilities(name: string): Abilities[] {
+    getPrimaryAbilities(name: string): AbilitiesEnum[] {
         return this.getMatch(name)?.primaryAbilities ?? []
     }
 
-    getTechAbility(name: string): Abilities | null {
+    getTechAbility(name: string): AbilitiesEnum | null {
         return this.getMatch(name)?.techAbility ?? null
     }
 }

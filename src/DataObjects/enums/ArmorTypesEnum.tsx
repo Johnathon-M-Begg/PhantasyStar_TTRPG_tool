@@ -1,4 +1,4 @@
-export enum ArmorTypes {
+export enum ArmorTypesEnum {
     light = 'Light',
     medium = 'Medium',
     heavy = 'Heavy',

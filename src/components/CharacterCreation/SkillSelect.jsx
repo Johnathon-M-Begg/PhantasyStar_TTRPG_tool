@@ -1,5 +1,5 @@
-import {Skill} from "../../DataObjects/Skill.tsx";
-import {Abilities} from "../../DataObjects/Abilities.tsx";
+import {SkillEnum} from "../../DataObjects/enums/SkillEnum.tsx";
+import {AbilitiesEnum} from "../../DataObjects/enums/AbilitiesEnum.tsx";
 import {BackgroundService} from "../../services/BackgroundService.tsx";
 import {ProfessionService} from "../../services/ProfessionService.tsx";
 import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
@@ -15,24 +15,24 @@ function SkillSelect({
     let freeSkillPoints = 0
 
     const skillList = [
-        {name: Skill.acrobatics, attribute: Abilities.Dexterity},
-        {name: Skill.astrophysics, attribute: Abilities.Intelligence},
-        {name: Skill.athletics, attribute: Abilities.Strength},
-        {name: Skill.computers, attribute: Abilities.Intelligence},
-        {name: Skill.deception, attribute: Abilities.Charisma},
-        {name: Skill.insight, attribute: Abilities.Wisdom},
-        {name: Skill.intimidation, attribute: Abilities.Charisma},
-        {name: Skill.investigation, attribute: Abilities.Intelligence},
-        {name: Skill.lore, attribute: Abilities.Intelligence},
-        {name: Skill.mechanics, attribute: Abilities.Wisdom},
-        {name: Skill.medicine, attribute: Abilities.Wisdom},
-        {name: Skill.perception, attribute: Abilities.Wisdom},
-        {name: Skill.performance, attribute: Abilities.Charisma},
-        {name: Skill.persuasion, attribute: Abilities.Charisma},
-        {name: Skill.slightOfHand, attribute: Abilities.Dexterity},
-        {name: Skill.stealth, attribute: Abilities.Dexterity},
-        {name: Skill.survival, attribute: Abilities.Wisdom},
-        {name: Skill.xenobiology, attribute: Abilities.Intelligence},
+        {name: SkillEnum.acrobatics, attribute: AbilitiesEnum.Dexterity},
+        {name: SkillEnum.astrophysics, attribute: AbilitiesEnum.Intelligence},
+        {name: SkillEnum.athletics, attribute: AbilitiesEnum.Strength},
+        {name: SkillEnum.computers, attribute: AbilitiesEnum.Intelligence},
+        {name: SkillEnum.deception, attribute: AbilitiesEnum.Charisma},
+        {name: SkillEnum.insight, attribute: AbilitiesEnum.Wisdom},
+        {name: SkillEnum.intimidation, attribute: AbilitiesEnum.Charisma},
+        {name: SkillEnum.investigation, attribute: AbilitiesEnum.Intelligence},
+        {name: SkillEnum.lore, attribute: AbilitiesEnum.Intelligence},
+        {name: SkillEnum.mechanics, attribute: AbilitiesEnum.Wisdom},
+        {name: SkillEnum.medicine, attribute: AbilitiesEnum.Wisdom},
+        {name: SkillEnum.perception, attribute: AbilitiesEnum.Wisdom},
+        {name: SkillEnum.performance, attribute: AbilitiesEnum.Charisma},
+        {name: SkillEnum.persuasion, attribute: AbilitiesEnum.Charisma},
+        {name: SkillEnum.slightOfHand, attribute: AbilitiesEnum.Dexterity},
+        {name: SkillEnum.stealth, attribute: AbilitiesEnum.Dexterity},
+        {name: SkillEnum.survival, attribute: AbilitiesEnum.Wisdom},
+        {name: SkillEnum.xenobiology, attribute: AbilitiesEnum.Intelligence},
     ]
 
     const professionService = new ProfessionService()

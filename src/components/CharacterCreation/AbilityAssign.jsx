@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import {useState} from "react";
 import {AddCircle, RemoveCircle} from "@mui/icons-material";
-import {Abilities} from "../../DataObjects/Abilities.tsx";
+import {AbilitiesEnum} from "../../DataObjects/enums/AbilitiesEnum.tsx";
 
 function AbilityAssign({
     abilityScores,
@@ -123,32 +123,32 @@ function AbilityAssign({
             <Table>
                 <TableBody>
                     <AbilityEntry
-                        name={Abilities.Strength}
+                        name={AbilitiesEnum.Strength}
                         property={abilityScores.Strength}
                         updateFunction={setStrength}
                     />
                     <AbilityEntry
-                        name={Abilities.Dexterity}
+                        name={AbilitiesEnum.Dexterity}
                         property={abilityScores.Dexterity}
                         updateFunction={setDexterity}
                     />
                     <AbilityEntry
-                        name={Abilities.Constitution}
+                        name={AbilitiesEnum.Constitution}
                         property={abilityScores.Constitution}
                         updateFunction={setConstitution}
                     />
                     <AbilityEntry
-                        name={Abilities.Wisdom}
+                        name={AbilitiesEnum.Wisdom}
                         property={abilityScores.Wisdom}
                         updateFunction={setWisdom}
                     />
                     <AbilityEntry
-                        name={Abilities.Intelligence}
+                        name={AbilitiesEnum.Intelligence}
                         property={abilityScores.Intelligence}
                         updateFunction={setIntelligence}
                     />
                     <AbilityEntry
-                        name={Abilities.Charisma}
+                        name={AbilitiesEnum.Charisma}
                         property={abilityScores.Charisma}
                         updateFunction={setCharisma}
                     />
