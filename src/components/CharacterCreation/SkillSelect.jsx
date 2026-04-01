@@ -2,14 +2,15 @@ import {SkillEnum} from "../../DataObjects/enums/SkillEnum.tsx";
 import {AbilitiesEnum} from "../../DataObjects/enums/AbilitiesEnum.tsx";
 import {BackgroundService} from "../../services/BackgroundService.tsx";
 import {ProfessionService} from "../../services/ProfessionService.tsx";
-import {Box, Checkbox, FormControlLabel, FormGroup, Select, Stack} from "@mui/material";
+import {Stack} from "@mui/material";
 import {useState} from "react";
-import MutuallyExclusiveDropdowns from "../MutuallyExclusiveDropdowns.jsx";
 import TrainedSkillSelect from "./SkillSelect/TrainedSkillSelect.jsx";
 
 function SkillSelect({
      selectedProfession,
      selectedOrigin,
+     skillRanks,
+     setSkillRanks,
      setStep,
 }) {
 

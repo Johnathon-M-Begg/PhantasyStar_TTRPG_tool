@@ -23,6 +23,26 @@ function CreateCharacter() {
         Wisdom: 0,
         Charisma: 0,
     })
+    const [skillRanks, setSkillRanks] = useState({
+        acrobatics: 0,
+        astrophysics: 0,
+        athletics: 0,
+        computers: 0,
+        deception: 0,
+        insight: 0,
+        intimidation: 0,
+        investigation: 0,
+        lore: 0,
+        mechanics: 0,
+        medicine: 0,
+        performance: 0,
+        perception: 0,
+        persuasion: 0,
+        slightOfHand: 0,
+        stealth: 0,
+        survival: 0,
+        xenobiology: 0,
+    })
 
     return (
         <div className="container">
@@ -53,6 +73,8 @@ function CreateCharacter() {
                     <SkillSelect
                     selectedProfession={selectedProfession}
                     selectedOrigin={selectedOrigin}
+                    skillRanks={skillRanks}
+                    setSkillRanks={setSkillRanks}
                     setStep={setStep}
                     />
                 )}

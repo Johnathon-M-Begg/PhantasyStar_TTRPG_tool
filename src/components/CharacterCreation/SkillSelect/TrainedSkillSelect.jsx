@@ -5,34 +5,28 @@ function TrainedSkillSelect({
     professionSkills,
     count,
 }) {
-    // State to store the selected value for each dropdown
     const [selection1, setSelection1] = useState('');
     const [selection2, setSelection2] = useState('');
     const [selection3, setSelection3] = useState('');
     const [selection4, setSelection4] = useState('');
 
-    // Function to filter options for a specific dropdown
     const filterOptions = (currentSelection, otherSelections) => {
         return professionSkills.filter(option =>
-            // Include all options except the one selected in the *other* dropdown
             option !== otherSelections[0]
             && option !== otherSelections[1]
             && option !== otherSelections[2]
         );
     };
 
-    // Filtered options for each dropdown
     const options1 = filterOptions(selection1, [selection2, selection3, selection4]);
     const options2 = filterOptions(selection2, [selection1, selection3, selection4]);
     const options3 = filterOptions(selection3, [selection1, selection2, selection4]);
     const options4 = filterOptions(selection4, [selection1, selection2, selection3]);
 
-    // Handle change for the first dropdown
     const handleChange1 = (event) => {
         setSelection1(event.target.value);
     };
 
-    // Handle change for the second dropdown
     const handleChange2 = (event) => {
         setSelection2(event.target.value);
     };
