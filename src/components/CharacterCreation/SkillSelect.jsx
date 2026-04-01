@@ -5,6 +5,7 @@ import {ProfessionService} from "../../services/ProfessionService.tsx";
 import {Box, Checkbox, FormControlLabel, FormGroup, Select, Stack} from "@mui/material";
 import {useState} from "react";
 import MutuallyExclusiveDropdowns from "../MutuallyExclusiveDropdowns.jsx";
+import TrainedSkillSelect from "./SkillSelect/TrainedSkillSelect.jsx";
 
 function SkillSelect({
      selectedProfession,
@@ -105,7 +106,10 @@ function SkillSelect({
     return(
         <Stack direction={"column"}>
             <Stack direction={"row"}>
-                <SkillChoices/>
+                <Stack direction={"column"}>
+                    <SkillChoices/>
+                    <TrainedSkillSelect count={professionPoints}/>
+                </Stack>
                 <SkillDetailContainer className="white-box" />
             </Stack>
             <div className="button-group">
