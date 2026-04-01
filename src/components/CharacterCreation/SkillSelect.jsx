@@ -2,8 +2,9 @@ import {SkillEnum} from "../../DataObjects/enums/SkillEnum.tsx";
 import {AbilitiesEnum} from "../../DataObjects/enums/AbilitiesEnum.tsx";
 import {BackgroundService} from "../../services/BackgroundService.tsx";
 import {ProfessionService} from "../../services/ProfessionService.tsx";
-import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
+import {Box, Checkbox, FormControlLabel, FormGroup, Select, Stack} from "@mui/material";
 import {useState} from "react";
+import MutuallyExclusiveDropdowns from "../MutuallyExclusiveDropdowns.jsx";
 
 function SkillSelect({
      selectedProfession,
@@ -49,15 +50,6 @@ function SkillSelect({
             value += 2
         }
         let isClassSkill = professionSkills.includes(skill.name)
-        let [isTrained, setIsTrained] = useState(false)
-        const handleChange = (event) => {
-            // Update the state with the new checked value
-            setIsTrained(event.target.checked);
-        };
-
-        if(isTrained){
-            value += 2
-        }
         return (
             <tr>
                 <td>{isClassSkill? (<>*</>) : (<></>)}</td>
@@ -66,43 +58,63 @@ function SkillSelect({
                 </td>
                 <td>{skill.attribute.slice(0,3).toUpperCase()}</td>
                 <td>{value}</td>
-                <td>{isClassSkill? (
-                    <Checkbox
-                        checked={isTrained}
-                        onChange={handleChange}
-                    />
-                ): (<></>)}</td>
             </tr>
         )
     }
 
+    function SkillDetailContainer() {
+        return (
+            <div className="skill-container">
+                <div>class points {professionPoints}</div>
+                <table className="skill-table">
+                    <thead>
+                    <tr>
+                        <td></td>
+                        <td>Skill</td>
+                        <td>Ability</td>
+                        <td>Total</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {skillList.map(skill => (
+                        <SkillRow key={skill.name}  skill={skill} />
+                    ))}
+                    </tbody>
+                </table>
+
+            </div>
+        )
+    }
+
+    function SkillChoices() {
+        const [selectedOptions, setSelectedOptions] = useState([])
+        const [selectOne, setSelectOne] = useState(null)
+
+        const handleChange = (selected, actionMeta) => {
+
+        }
+
+
+        return (
+            <Box>
+                <MutuallyExclusiveDropdowns/>
+            </Box>
+        )
+    }
+
     return(
-        <div className="skill-container">
-            <div>class points {professionPoints}</div>
-            {checkedItems.length}
-            <table className="skill-table">
-                <thead>
-                <tr>
-                    <td></td>
-                    <td>Skill</td>
-                    <td>Ability</td>
-                    <td>Total</td>
-                    <td></td>
-                </tr>
-                </thead>
-                <tbody>
-                {skillList.map(skill => (
-                    <SkillRow key={skill.name}  skill={skill} />
-                ))}
-                </tbody>
-            </table>
+        <Stack direction={"column"}>
+            <Stack direction={"row"}>
+                <SkillChoices/>
+                <SkillDetailContainer className="white-box" />
+            </Stack>
             <div className="button-group">
                 <button className="btn btn-secondary" onClick={() => setStep(3)}>Back</button>
                 <button className="btn btn-primary"  onClick={() => setStep(4)}
-                disabled={true}
+                        disabled={true}
                 >Next</button>
             </div>
-        </div>
+        </Stack>
     )
 
 }

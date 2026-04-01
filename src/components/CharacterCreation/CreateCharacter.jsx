@@ -5,12 +5,13 @@ import ProfessionSelect from "./ProfessionSelect.jsx";
 import SkillSelect from "./SkillSelect.jsx";
 import {Box} from "@mui/material";
 import AbilityAssign from "./AbilityAssign.jsx";
+import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
 
 function CreateCharacter() {
-    const [selectedProfession, setSelectedProfession] = useState('')
+    const [selectedProfession, setSelectedProfession] = useState('Operative')
     const [selectedOrigin, setSelectedOrigin] = useState({
         race: null,
-        variant: null,
+        variant: VariantEnum.Default,
         background: null,
     })
     const [step, setStep] = useState(1)
@@ -26,7 +27,7 @@ function CreateCharacter() {
     return (
         <div className="container">
             <Box className="white-box">
-                {step === 1 && (
+                {step === 4 && (
                     <OriginSelect
                         selectedOrigin={selectedOrigin}
                         setSelectedOrigin={setSelectedOrigin}
@@ -48,7 +49,7 @@ function CreateCharacter() {
                         setStep={setStep}
                     />
                 )}
-                {step === 4 && (
+                {step === 1 && (
                     <SkillSelect
                     selectedProfession={selectedProfession}
                     selectedOrigin={selectedOrigin}
