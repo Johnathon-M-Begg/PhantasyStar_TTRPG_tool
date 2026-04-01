@@ -66,7 +66,6 @@ function SkillSelect({
     function SkillDetailContainer() {
         return (
             <div className="skill-container">
-                <div>class points {professionPoints}</div>
                 <table className="skill-table">
                     <thead>
                     <tr>
@@ -87,29 +86,13 @@ function SkillSelect({
         )
     }
 
-    function SkillChoices() {
-        const [selectedOptions, setSelectedOptions] = useState([])
-        const [selectOne, setSelectOne] = useState(null)
-
-        const handleChange = (selected, actionMeta) => {
-
-        }
-
-
-        return (
-            <Box>
-                <MutuallyExclusiveDropdowns/>
-            </Box>
-        )
-    }
-
     return(
         <Stack direction={"column"}>
             <Stack direction={"row"}>
-                <Stack direction={"column"}>
-                    <SkillChoices/>
-                    <TrainedSkillSelect count={professionPoints}/>
-                </Stack>
+                <TrainedSkillSelect
+                    professionSkills={professionSkills}
+                    count={professionPoints}
+                />
                 <SkillDetailContainer className="white-box" />
             </Stack>
             <div className="button-group">
