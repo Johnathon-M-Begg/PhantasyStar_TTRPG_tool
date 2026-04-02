@@ -1,8 +1,9 @@
 import {useState} from "react";
-import {MenuItem, Select, Stack} from "@mui/material";
+import {Box, Button, MenuItem, Select, Stack} from "@mui/material";
 
 function TrainedSkillSelect({
     professionSkills,
+    setTrainedSkills,
     count,
 }) {
     const [selection1, setSelection1] = useState('');
@@ -39,7 +40,43 @@ function TrainedSkillSelect({
         setSelection4(event.target.value);
     }
 
-    const Dropdown = ({ value, onChange, options, placeholder }) => (
+    const checkIsValid = (selections) => {
+        if(count === 2) {
+            return !(selections[0] === '' || selections[1] === '')
+        } else if(count === 4) {
+            return !(
+                selections[0] === ''
+                || selections[1] === ''
+                || selections[2] === ''
+                || selections[3] === ''
+            )
+        } else {
+            return false
+        }
+    }
+
+    const test = (selections) => {
+        return [
+            selections[0],
+            selections[1],
+            selections[2],
+            selections[3],
+        ].filter(selection => selection !== '');
+    }
+
+    const chosenOptions = test([selection1, selection2, selection3, selection4]);
+    const isValid = checkIsValid([selection1, selection2, selection3, selection4])
+
+    const handleAccept = () => {
+        setTrainedSkills([
+            ...selection1,
+            ...selection2,
+            ...selection3,
+            ...selection4,
+        ]);
+    }
+
+    const Dropdown = ({ value, onChange, options }) => (
         <Select value={value} onChange={onChange} size={"small"} fullWidth>
             {options.map((option) => (
                 <MenuItem key={option} value={option}>
@@ -50,33 +87,49 @@ function TrainedSkillSelect({
     );
 
     return (
-        <Stack direction="column" spacing={2}>
-            <h3>Select skills to train</h3>
-            { count >= 1 && (
-                <Dropdown
-                    options={options1}
-                    value={selection1}
-                    onChange={handleChange1}/>
-            )}
-            { count >= 2 && (
-                <Dropdown
-                    options={options2}
-                    value={selection2}
-                    onChange={handleChange2}/>
-            )}
-            { count >= 3 && (
-                <Dropdown
-                    options={options3}
-                    value={selection3}
-                    onChange={handleChange3}/>
-            )}
-            { count >= 4 && (
-                <Dropdown
-                    options={options4}
-                    value={selection4}
-                    onChange={handleChange4}/>
-            )}
-        </Stack>
+        <Box>
+            <p>{isValid.toString()}</p>
+            <p>{chosenOptions}</p>
+            <Stack direction="column" spacing={2}>
+                <h3>Select skills to train</h3>
+                { count >= 1 && (
+                    <Dropdown
+                        options={options1}
+                        value={selection1}
+                        onChange={handleChange1}/>
+                )}
+                { count >= 2 && (
+                    <Dropdown
+                        options={options2}
+                        value={selection2}
+                        onChange={handleChange2}/>
+                )}
+                { count >= 3 && (
+                    <Dropdown
+                        options={options3}
+                        value={selection3}
+                        onChange={handleChange3}/>
+                )}
+                { count >= 4 && (
+                    <Dropdown
+                        options={options4}
+                        value={selection4}
+                        onChange={handleChange4}/>
+                )}
+            </Stack>
+            <div className="button-group">
+
+                <button className="btn btn-secondary" onClick={() => setStep(3)}>Back</button>
+                <button className="btn btn-primary"
+                    onClick={() => {
+
+                    }} disabled={!isValid}
+                >Next</button>
+                <Button
+                    onClick={() => {handleAccept()}}
+                >Accept</Button>
+            </div>
+        </Box>
     );
 }
 
