@@ -1,13 +1,10 @@
-import {ProfessionService} from "../../../services/ProfessionService.tsx";
 import {Stack} from "@mui/material";
-import {BackgroundService} from "../../../services/BackgroundService.tsx";
 import {SkillEnum} from "../../../DataObjects/enums/SkillEnum.tsx";
 import {AbilitiesEnum} from "../../../DataObjects/enums/AbilitiesEnum.tsx";
 
 function SkillRankDetail({
-    trainedSkills,
-    professionSkills,
-    selectedOrigin,
+    abilityScores,
+    skillRanks,
 }) {
 
     const skillList = [
@@ -30,28 +27,21 @@ function SkillRankDetail({
         {name: SkillEnum.survival, attribute: AbilitiesEnum.Wisdom},
         {name: SkillEnum.xenobiology, attribute: AbilitiesEnum.Intelligence},
     ]
-    const backgroundService = new BackgroundService()
-    const backgroundSkills = backgroundService.getSkills(selectedOrigin.background)
 
-
-    function SkillRow({skill}) {
-        let value = 0
-        if(backgroundSkills.includes(skill.name)) {
-            value += 2
+    function SkillRow({name, value}) {
+        let attribute = skillList.find(s => s.name === name)?.attribute
+        let total = value
+        if (attribute === AbilitiesEnum.Dexterity) {
+            total += abilityScores.Dexterity
         }
-        if(trainedSkills.includes(skill.name)) {
-            value += 2
-        }
-        let isClassSkill = professionSkills.includes(skill.name)
         return (
             <tr>
-                <td>{isClassSkill? (<>*</>) : (<></>)}</td>
                 <td>
-                    {trainedSkills.includes(skill.name) ? (<>+</>) : (<></>)}
-                    <strong>{skill.name}</strong>
+                    <strong>{name}</strong>
                 </td>
-                <td>{skill.attribute.slice(0,3).toUpperCase()}</td>
+                <td>{attribute.slice(0,3).toUpperCase()}</td>
                 <td>{value}</td>
+                <td>{total}</td>
             </tr>
         )
     }
@@ -62,16 +52,31 @@ function SkillRankDetail({
                 <table className="skill-table">
                     <thead>
                     <tr>
-                        <td></td>
                         <td>Skill</td>
                         <td>Ability</td>
+                        <td>Ranks</td>
                         <td>Total</td>
                     </tr>
                     </thead>
                     <tbody>
-                    {skillList.map(skill => (
-                        <SkillRow key={skill.name}  skill={skill} />
-                    ))}
+                        <SkillRow name={SkillEnum.acrobatics} value={skillRanks.acrobatics} />
+                        <SkillRow name={SkillEnum.astrophysics} value={skillRanks.astrophysics} />
+                        <SkillRow name={SkillEnum.athletics} value={skillRanks.athletics} />
+                        <SkillRow name={SkillEnum.computers} value={skillRanks.computers} />
+                        <SkillRow name={SkillEnum.deception} value={skillRanks.deception} />
+                        <SkillRow name={SkillEnum.insight} value={skillRanks.insight} />
+                        <SkillRow name={SkillEnum.intimidation} value={skillRanks.intimidation} />
+                        <SkillRow name={SkillEnum.investigation} value={skillRanks.investigation} />
+                        <SkillRow name={SkillEnum.lore} value={skillRanks.lore} />
+                        <SkillRow name={SkillEnum.mechanics} value={skillRanks.mechanics} />
+                        <SkillRow name={SkillEnum.medicine} value={skillRanks.medicine} />
+                        <SkillRow name={SkillEnum.perception} value={skillRanks.perception} />
+                        <SkillRow name={SkillEnum.performance} value={skillRanks.performance} />
+                        <SkillRow name={SkillEnum.persuasion} value={skillRanks.persuasion} />
+                        <SkillRow name={SkillEnum.slightOfHand} value={skillRanks.slightOfHand} />
+                        <SkillRow name={SkillEnum.stealth} value={skillRanks.stealth} />
+                        <SkillRow name={SkillEnum.survival} value={skillRanks.survival} />
+                        <SkillRow name={SkillEnum.xenobiology} value={skillRanks.xenobiology} />
                     </tbody>
                 </table>
 
