@@ -55,24 +55,14 @@ function TrainedSkillSelect({
         }
     }
 
-    const test = (selections) => {
-        return [
-            selections[0],
-            selections[1],
-            selections[2],
-            selections[3],
-        ].filter(selection => selection !== '');
-    }
-
-    const chosenOptions = test([selection1, selection2, selection3, selection4]);
     const isValid = checkIsValid([selection1, selection2, selection3, selection4])
 
     const handleAccept = () => {
         setTrainedSkills([
-            ...selection1,
-            ...selection2,
-            ...selection3,
-            ...selection4,
+            selection1,
+            selection2,
+            selection3,
+            selection4,
         ]);
     }
 
@@ -89,7 +79,6 @@ function TrainedSkillSelect({
     return (
         <Box>
             <p>{isValid.toString()}</p>
-            <p>{chosenOptions}</p>
             <Stack direction="column" spacing={2}>
                 <h3>Select skills to train</h3>
                 { count >= 1 && (

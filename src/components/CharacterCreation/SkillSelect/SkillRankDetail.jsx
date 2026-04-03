@@ -5,8 +5,9 @@ import {SkillEnum} from "../../../DataObjects/enums/SkillEnum.tsx";
 import {AbilitiesEnum} from "../../../DataObjects/enums/AbilitiesEnum.tsx";
 
 function SkillRankDetail({
-professionSkills,
-selectedOrigin,
+    trainedSkills,
+    professionSkills,
+    selectedOrigin,
 }) {
 
     const skillList = [
@@ -38,11 +39,15 @@ selectedOrigin,
         if(backgroundSkills.includes(skill.name)) {
             value += 2
         }
+        if(trainedSkills.includes(skill.name)) {
+            value += 2
+        }
         let isClassSkill = professionSkills.includes(skill.name)
         return (
             <tr>
                 <td>{isClassSkill? (<>*</>) : (<></>)}</td>
                 <td>
+                    {trainedSkills.includes(skill.name) ? (<>+</>) : (<></>)}
                     <strong>{skill.name}</strong>
                 </td>
                 <td>{skill.attribute.slice(0,3).toUpperCase()}</td>

@@ -1,11 +1,8 @@
-import {SkillEnum} from "../../DataObjects/enums/SkillEnum.tsx";
-import {AbilitiesEnum} from "../../DataObjects/enums/AbilitiesEnum.tsx";
-import {BackgroundService} from "../../services/BackgroundService.tsx";
 import {ProfessionService} from "../../services/ProfessionService.tsx";
 import {Stack} from "@mui/material";
-import {useState} from "react";
 import TrainedSkillSelect from "./SkillSelect/TrainedSkillSelect.jsx";
 import SkillRankDetail from "./SkillSelect/SkillRankDetail.jsx";
+import {useState} from "react";
 
 function SkillSelect({
      selectedProfession,
@@ -14,7 +11,7 @@ function SkillSelect({
      setSkillRanks,
      setStep,
 }) {
-    let [trainedSkills, setTrainedSkills] = useState([])
+    const [trainedSkills, setTrainedSkills] = useState([]);
 
     const professionService = new ProfessionService()
     const professionSkills = professionService.getProfessionSkills(selectedProfession)
@@ -28,6 +25,7 @@ function SkillSelect({
                 count={professionPoints}
             />
             <SkillRankDetail
+                trainedSkills={trainedSkills}
                 professionSkills={professionSkills}
                 selectedOrigin={selectedOrigin}
             />

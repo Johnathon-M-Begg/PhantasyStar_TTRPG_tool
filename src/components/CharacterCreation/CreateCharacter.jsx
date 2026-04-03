@@ -12,7 +12,7 @@ function CreateCharacter() {
     const [selectedOrigin, setSelectedOrigin] = useState({
         race: null,
         variant: VariantEnum.Default,
-        background: null,
+        background: "Local Hero",
     })
     const [step, setStep] = useState(1)
     const [abilityScores, setAbilityScore] = useState({
@@ -47,7 +47,7 @@ function CreateCharacter() {
     return (
         <div className="container">
             <Box className="white-box">
-                {step === 1 && (
+                {step === 4 && (
                     <OriginSelect
                         selectedOrigin={selectedOrigin}
                         setSelectedOrigin={setSelectedOrigin}
@@ -69,7 +69,7 @@ function CreateCharacter() {
                         setStep={setStep}
                     />
                 )}
-                {step === 4 && (
+                {step === 1 && (
                     <SkillSelect
                     selectedProfession={selectedProfession}
                     selectedOrigin={selectedOrigin}
