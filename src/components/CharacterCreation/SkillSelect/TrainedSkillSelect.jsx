@@ -3,7 +3,7 @@ import {Box, Button, MenuItem, Select, Stack} from "@mui/material";
 
 function TrainedSkillSelect({
     professionSkills,
-    setTrainedSkills,
+    handleUpdate,
     count,
 }) {
     const [selection1, setSelection1] = useState('');
@@ -57,15 +57,6 @@ function TrainedSkillSelect({
 
     const isValid = checkIsValid([selection1, selection2, selection3, selection4])
 
-    const handleAccept = () => {
-        setTrainedSkills([
-            selection1,
-            selection2,
-            selection3,
-            selection4,
-        ]);
-    }
-
     const Dropdown = ({ value, onChange, options }) => (
         <Select value={value} onChange={onChange} size={"small"} fullWidth>
             {options.map((option) => (
@@ -115,7 +106,7 @@ function TrainedSkillSelect({
                     }} disabled={!isValid}
                 >Next</button>
                 <Button
-                    onClick={() => {handleAccept()}}
+                    onClick={() => {handleUpdate([selection1, selection2, selection3, selection4])}}
                 >Accept</Button>
             </div>
         </Box>
