@@ -6,11 +6,12 @@ import SkillSelect from "./SkillSelect.jsx";
 import {Box} from "@mui/material";
 import AbilityAssign from "./AbilityAssign.jsx";
 import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
+import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
 
 function CreateCharacter() {
     const [selectedProfession, setSelectedProfession] = useState('Operative')
     const [selectedOrigin, setSelectedOrigin] = useState({
-        race: "Human",
+        race: RaceEnum.Human,
         variant: VariantEnum.Default,
         background: "Outlaw",
     })

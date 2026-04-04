@@ -55,14 +55,53 @@ function SkillSelect({
 
     const calculateFreePoints = (trainedSkills, backgroundSkills) => {
         let freePoints = 0
+
+        let tempTrainedSkills = trainedSkills
+        let tempBackgroundSkills = backgroundSkills
+
         if(selectedOrigin.race === RaceEnum.Human){
             freePoints += 1
         }
         if(selectedOrigin.variant === VariantEnum.Subterranean){
             freePoints += 1
         }
-        trainedSkills.forEach(skill => {
-            if(backgroundSkills.includes(skill)){
+
+        if(selectedOrigin.race === RaceEnum.Dezolian){
+            if(tempTrainedSkills.includes(SkillEnum.insight) && tempBackgroundSkills.includes(SkillEnum.insight)){
+                freePoints += 2
+                tempTrainedSkills.remove(SkillEnum.insight)
+                tempBackgroundSkills.remove(SkillEnum.insight)
+            }
+        }
+
+        if(
+            selectedOrigin.race === RaceEnum.Dezolian ||
+            selectedOrigin.race === RaceEnum.Newman ||
+            selectedOrigin.race === RaceEnum.Motavian
+        ){
+            if(tempTrainedSkills.includes(SkillEnum.perception) && tempBackgroundSkills.includes(SkillEnum.perception)){
+                freePoints += 2
+                tempTrainedSkills.remove(SkillEnum.perception)
+                tempBackgroundSkills.remove(SkillEnum.perception)
+            }
+        }
+
+        if(selectedOrigin.race === RaceEnum.Motavian){
+            if(tempTrainedSkills.includes(SkillEnum.survival) && tempBackgroundSkills.includes(SkillEnum.perception)){
+                freePoints += 3
+                tempTrainedSkills.remove(SkillEnum.survival)
+                tempBackgroundSkills.remove(SkillEnum.survival)
+            } else if(tempTrainedSkills.includes(SkillEnum.survival)){
+                freePoints += 1
+                tempTrainedSkills.remove(SkillEnum.survival)
+            } else if(tempTrainedSkills.includes(SkillEnum.survival)){
+                freePoints += 1
+                tempTrainedSkills.remove(SkillEnum.survival)
+            }
+        }
+
+        tempTrainedSkills.forEach(skill => {
+            if(tempBackgroundSkills.includes(skill)){
                 freePoints += 1
             }
         })
