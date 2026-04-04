@@ -69,8 +69,8 @@ function SkillSelect({
         if(selectedOrigin.race === RaceEnum.Dezolian){
             if(tempTrainedSkills.includes(SkillEnum.insight) && tempBackgroundSkills.includes(SkillEnum.insight)){
                 freePoints += 2
-                tempTrainedSkills.remove(SkillEnum.insight)
-                tempBackgroundSkills.remove(SkillEnum.insight)
+                tempTrainedSkills = tempTrainedSkills.filter( item => item === SkillEnum.insight)
+                tempBackgroundSkills = tempBackgroundSkills.filter( item => item === SkillEnum.insight)
             }
         }
 
@@ -81,22 +81,23 @@ function SkillSelect({
         ){
             if(tempTrainedSkills.includes(SkillEnum.perception) && tempBackgroundSkills.includes(SkillEnum.perception)){
                 freePoints += 2
-                tempTrainedSkills.remove(SkillEnum.perception)
-                tempBackgroundSkills.remove(SkillEnum.perception)
+                tempTrainedSkills = tempTrainedSkills.filter( item => item === SkillEnum.perception)
+                tempBackgroundSkills = tempBackgroundSkills.filter( item => item === SkillEnum.perception)
             }
         }
 
         if(selectedOrigin.race === RaceEnum.Motavian){
-            if(tempTrainedSkills.includes(SkillEnum.survival) && tempBackgroundSkills.includes(SkillEnum.perception)){
+
+            if(tempTrainedSkills.includes(SkillEnum.survival) && tempBackgroundSkills.includes(SkillEnum.survival)){
                 freePoints += 3
-                tempTrainedSkills.remove(SkillEnum.survival)
-                tempBackgroundSkills.remove(SkillEnum.survival)
+                tempTrainedSkills = tempTrainedSkills.filter(item => item === SkillEnum.survival)
+                tempBackgroundSkills = tempBackgroundSkills.filter( item => item === SkillEnum.survival)
             } else if(tempTrainedSkills.includes(SkillEnum.survival)){
                 freePoints += 1
-                tempTrainedSkills.remove(SkillEnum.survival)
-            } else if(tempTrainedSkills.includes(SkillEnum.survival)){
+                tempTrainedSkills = tempTrainedSkills.filter(item => item === SkillEnum.survival)
+            } else if(tempBackgroundSkills.includes(SkillEnum.survival)){
                 freePoints += 1
-                tempTrainedSkills.remove(SkillEnum.survival)
+                tempBackgroundSkills = tempBackgroundSkills.filter(item => item === SkillEnum.survival)
             }
         }
 
