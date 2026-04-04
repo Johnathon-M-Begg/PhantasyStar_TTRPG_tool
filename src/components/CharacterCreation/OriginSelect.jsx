@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import {Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, Typography} from "@mui/material";
 import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
 import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
+import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
 
 
 function OriginSelect({
@@ -69,20 +70,20 @@ function OriginSelect({
     ]
 
     const backgrounds = [
-        {name: 'Acolyte'},
-        {name: 'Celebrity'},
-        {name: 'Crafter'},
-        {name: 'Drifter'},
-        {name: 'Investigator'},
-        {name: 'Local Hero'},
-        {name: 'Outlander'},
-        {name: 'Outlaw'},
-        {name: 'Patrician'},
-        {name: 'Pilot'},
-        {name: 'Scholar'},
-        {name: 'Soldier'},
-        {name: 'Techie'},
-        {name: 'Wayfarer'},
+        {name: BackgroundEnum.Acolyte},
+        {name: BackgroundEnum.Celebrity},
+        {name: BackgroundEnum.Crafter},
+        {name: BackgroundEnum.Drifter},
+        {name: BackgroundEnum.Investigator},
+        {name: BackgroundEnum.LocalHero},
+        {name: BackgroundEnum.Outlander},
+        {name: BackgroundEnum.Outlaw},
+        {name: BackgroundEnum.Patrician},
+        {name: BackgroundEnum.Pilot},
+        {name: BackgroundEnum.Scholar},
+        {name: BackgroundEnum.Soldier},
+        {name: BackgroundEnum.Techie},
+        {name: BackgroundEnum.Wayfarer},
     ]
 
 
