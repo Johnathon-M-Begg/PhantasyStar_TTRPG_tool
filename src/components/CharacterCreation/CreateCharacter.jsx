@@ -10,9 +10,9 @@ import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
 function CreateCharacter() {
     const [selectedProfession, setSelectedProfession] = useState('Operative')
     const [selectedOrigin, setSelectedOrigin] = useState({
-        race: null,
+        race: "Human",
         variant: VariantEnum.Default,
-        background: "Local Hero",
+        background: "Outlaw",
     })
     const [step, setStep] = useState(1)
     const [abilityScores, setAbilityScore] = useState({
@@ -71,11 +71,12 @@ function CreateCharacter() {
                 )}
                 {step === 1 && (
                     <SkillSelect
-                    selectedProfession={selectedProfession}
-                    selectedOrigin={selectedOrigin}
-                    skillRanks={skillRanks}
-                    setSkillRanks={setSkillRanks}
-                    setStep={setStep}
+                        abilityScores={abilityScores}
+                        selectedProfession={selectedProfession}
+                        selectedOrigin={selectedOrigin}
+                        skillRanks={skillRanks}
+                        setSkillRanks={setSkillRanks}
+                        setStep={setStep}
                     />
                 )}
             </Box>

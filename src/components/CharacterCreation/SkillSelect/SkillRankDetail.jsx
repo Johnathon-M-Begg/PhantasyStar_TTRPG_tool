@@ -79,7 +79,6 @@ function SkillRankDetail({
                         <SkillRow name={SkillEnum.xenobiology} value={skillRanks.xenobiology} />
                     </tbody>
                 </table>
-
             </div>
         )
     }

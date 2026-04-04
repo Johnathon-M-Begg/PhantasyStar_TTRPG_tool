@@ -72,6 +72,7 @@ function SkillSelect({
     const professionSkills = professionService.getProfessionSkills(selectedProfession)
     const professionPoints= professionService.getSkillPoints(selectedProfession)
 
+
     return(
         <Stack direction={"row"}>
             {freePoints}
@@ -79,6 +80,7 @@ function SkillSelect({
                 professionSkills={professionSkills}
                 handleUpdate={handleUpdate}
                 count={professionPoints}
+                race={selectedOrigin.race}
             />
             <SkillRankDetail
                 abilityScores={abilityScores}

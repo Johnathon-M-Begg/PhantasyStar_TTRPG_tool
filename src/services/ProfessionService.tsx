@@ -235,7 +235,7 @@ export class ProfessionService {
     getDescription(name: string): string | undefined {
         return this.getMatch(name)?.description
     }
-s
+
     getProfessionSkills(name: string): SkillEnum[]  {
         return this.getMatch(name)?.classSkills ?? []
     }
