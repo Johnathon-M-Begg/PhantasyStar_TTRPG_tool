@@ -4,6 +4,8 @@ import TrainedSkillSelect from "./SkillSelect/TrainedSkillSelect.jsx";
 import SkillRankDetail from "./SkillSelect/SkillRankDetail.jsx";
 import {useState} from "react";
 import {SkillEnum} from "../../DataObjects/enums/SkillEnum.tsx";
+import {BackgroundService} from "../../services/BackgroundService.tsx";
+
 
 function SkillSelect({
      abilityScores,
@@ -13,27 +15,57 @@ function SkillSelect({
      setSkillRanks,
      setStep,
 }) {
-     const handleUpdate = (selections) => {
-         setSkillRanks({
-             acrobatics: (2 * selections.includes(SkillEnum.acrobatics)),
-             astrophysics: (2 * selections.includes(SkillEnum.astrophysics)),
-             athletics: (2 * selections.includes(SkillEnum.athletics)),
-             computers: (2 * selections.includes(SkillEnum.computers)),
-             deception: (2 * selections.includes(SkillEnum.deception)),
-             insight: (2 * selections.includes(SkillEnum.insight)),
-             intimidation: (2 * selections.includes(SkillEnum.intimidation)),
-             investigation: (2 * selections.includes(SkillEnum.investigation)),
-             lore: (2 * selections.includes(SkillEnum.lore)),
-             mechanics: (2 * selections.includes(SkillEnum.mechanics)),
-             medicine: (2 * selections.includes(SkillEnum.medicine)),
-             performance: (2 * selections.includes(SkillEnum.performance)),
-             perception: (2 * selections.includes(SkillEnum.perception)),
-             persuasion: (2 * selections.includes(SkillEnum.persuasion)),
-             slightOfHand: (2 * selections.includes(SkillEnum.slightOfHand)),
-             stealth: (2 * selections.includes(SkillEnum.stealth)),
-             survival: (2 * selections.includes(SkillEnum.survival)),
-             xenobiology: (2 * selections.includes(SkillEnum.xenobiology)),
-            })
+    const [freePoints, setFreePoints] = useState(0)
+
+    const CalculateSkill = (skill, selections, backgroundSkills) => {
+        let skillRanks = 0
+        let SkillMax = 3
+        if (selections.includes(skill)) {
+            skillRanks = skillRanks + 2
+        }
+        if(backgroundSkills.includes(skill)){
+            skillRanks = skillRanks + 2
+        }
+        if(skillRanks > SkillMax) {
+            return SkillMax;
+        }
+        return skillRanks;
+    }
+
+    const calculateFreePoints = (trainedSkills, backgroundSkills) => {
+        let freePoints = 0
+        trainedSkills.forEach(skill => {
+            if(backgroundSkills.includes(skill)){
+                freePoints += 1
+            }
+        })
+        return freePoints
+    }
+
+    const handleUpdate = (selections) => {
+        const backgroundService = new BackgroundService()
+        let backgroundSkills = backgroundService.getSkills(selectedOrigin.background)
+        setSkillRanks({
+            acrobatics: CalculateSkill(SkillEnum.acrobatics, selections, backgroundSkills),
+            astrophysics: CalculateSkill(SkillEnum.astrophysics, selections,backgroundSkills),
+            athletics: CalculateSkill(SkillEnum.athletics, selections, backgroundSkills),
+            computers: CalculateSkill(SkillEnum.computers, selections, backgroundSkills),
+            deception: CalculateSkill(SkillEnum.deception, selections, backgroundSkills),
+            insight: CalculateSkill(SkillEnum.insight, selections, backgroundSkills),
+            intimidation: CalculateSkill(SkillEnum.intimidation, selections, backgroundSkills),
+            investigation: CalculateSkill(SkillEnum.investigation, selections, backgroundSkills),
+            lore: CalculateSkill(SkillEnum.lore, selections, backgroundSkills),
+            mechanics: CalculateSkill(SkillEnum.mechanics, selections, backgroundSkills),
+            medicine: CalculateSkill(SkillEnum.medicine, selections, backgroundSkills),
+            perception: CalculateSkill(SkillEnum.perception, selections, backgroundSkills,),
+            performance: CalculateSkill(SkillEnum.performance, selections, backgroundSkills),
+            persuasion: CalculateSkill(SkillEnum.persuasion, selections, backgroundSkills),
+            slightOfHand: CalculateSkill(SkillEnum.slightOfHand, selections, backgroundSkills),
+            stealth: CalculateSkill(SkillEnum.stealth, selections, backgroundSkills ),
+            survival: CalculateSkill(SkillEnum.survival, selections, backgroundSkills),
+            xenobiology: CalculateSkill(SkillEnum.xenobiology, selections, backgroundSkills),
+        })
+        setFreePoints(calculateFreePoints(selections, backgroundSkills))
     }
 
     const professionService = new ProfessionService()
@@ -42,6 +74,7 @@ function SkillSelect({
 
     return(
         <Stack direction={"row"}>
+            {freePoints}
             <TrainedSkillSelect
                 professionSkills={professionSkills}
                 handleUpdate={handleUpdate}
