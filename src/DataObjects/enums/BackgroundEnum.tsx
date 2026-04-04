@@ -1,0 +1,16 @@
+export enum BackgroundEnum {
+    Acolyte = 'Acolyte',
+    Celebrity = 'Celebrity',
+    Crafter = 'Crafter',
+    Drifter = 'Drifter',
+    Investigator = 'Investigator',
+    LocalHero = 'Local Hero',
+    Outlander = 'Outlander',
+    Outlaw = 'Outlaw',
+    Patrician = 'Patrician',
+    Pilot = 'Pilot',
+    Scholar = 'Scholar',
+    Soldier = 'Soldier',
+    Techie = 'Techie',
+    Wayfarer = 'Wayfarer',
+}
