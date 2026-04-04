@@ -5,6 +5,8 @@ import SkillRankDetail from "./SkillSelect/SkillRankDetail.jsx";
 import {useState} from "react";
 import {SkillEnum} from "../../DataObjects/enums/SkillEnum.tsx";
 import {BackgroundService} from "../../services/BackgroundService.tsx";
+import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
+import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
 
 
 function SkillSelect({
@@ -34,6 +36,12 @@ function SkillSelect({
 
     const calculateFreePoints = (trainedSkills, backgroundSkills) => {
         let freePoints = 0
+        if(selectedOrigin.race === RaceEnum.Human){
+            freePoints += 1
+        }
+        if(selectedOrigin.variant === VariantEnum.Subterranean){
+            freePoints += 1
+        }
         trainedSkills.forEach(skill => {
             if(backgroundSkills.includes(skill)){
                 freePoints += 1

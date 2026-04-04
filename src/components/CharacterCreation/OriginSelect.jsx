@@ -1,7 +1,8 @@
 import './CreateCharacter.css'
 import { useNavigate } from 'react-router-dom'
-import {Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography} from "@mui/material";
+import {Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, Typography} from "@mui/material";
 import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
+import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
 
 
 function OriginSelect({
@@ -13,30 +14,30 @@ function OriginSelect({
     const navigate = useNavigate()
 
     const races = [
-        { name: 'Human', size: 'Medium', desc: 'Humans are by far the most populous species in the\n' +
+        { name: RaceEnum.Human, size: 'Medium', desc: 'Humans are by far the most populous species in the\n' +
                 'galaxy. They are believed to have originated on Palma,\n' +
                 'the first planet of the Algol system. Many believe,\n' +
                 'however, that their true origins go back far beyond\n' +
                 'Algol’s known history. Humans are also the progenitors\n' +
                 'of both androids and newmans.' },
-        { name: 'Newman', desc: 'Newmans (sometimes spelled “numans”) were created\n' +
+        { name: RaceEnum.Newman, desc: 'Newmans (sometimes spelled “numans”) were created\n' +
                 'as the result of biological research experiments\n' +
                 'combining human genes with those of biomonsters.\n' +
                 'Originally shunned in society, they gained acceptance\n' +
                 'over time and evolved to be recognized and respected\n' +
                 'as an independent species.' },
-        { name: 'Android', desc: ' Originally built to serve humans, they\n' +
+        { name: RaceEnum.Android, desc: ' Originally built to serve humans, they\n' +
                 'evolved over time to become self-aware and gain true\n' +
                 'sentience. After attaining their independence, they set\n' +
                 'out to forge their own paths with a sense of self-worth\n' +
                 'and a dedication to their chosen purpose.' },
         // { name: 'Android - ALT', desc: 'An alternative Android that has self\n' +
         //         'regeneration abilities but gains NO TP' },
-        { name: 'Dezolian', desc: 'These tall humanoids are native to the frozen world of\n' +
+        { name: RaceEnum.Dezolian, desc: 'These tall humanoids are native to the frozen world of\n' +
                 'Dezolis, the third planet of the Algol system. While most\n' +
                 'still reside on their native planet, some are known to\n' +
                 'venture out into other parts of the galaxy.' },
-        { name: 'Motavian', desc: 'These humanoids are native to the desert planet of\n' +
+        { name: RaceEnum.Motavian, desc: 'These humanoids are native to the desert planet of\n' +
                 'Motavia, the second planet of the Algol system. On\n' +
                 'their homeworld, they are often reclusive, even from\n' +
                 'other cultures with nearby settlements. They have no\n' +
@@ -45,7 +46,7 @@ function OriginSelect({
                 'the desert. While rare, some Motavians venture into\n' +
                 'outside settlements, though they avoid involving\n' +
                 'themselves in Palmian affairs unless necessary' },
-        { name: 'Musk Cat', desc: 'Musk cats are small quadrupeds covered\n' +
+        { name: RaceEnum.MuskCat, desc: 'Musk cats are small quadrupeds covered\n' +
                 'in thick fur with yellow or brown hues.\n' +
                 'They have pointy, elongated ears and thick,\n' +
                 'bushy tails. Legends tell of a magical tree\n' +
