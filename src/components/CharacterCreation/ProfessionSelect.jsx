@@ -12,6 +12,7 @@ import {
     TableCell,
     TableRow,
 } from "@mui/material";
+import {ProfessionEnum} from "../../DataObjects/enums/ProfessionEnum.tsx";
 
 function ProfessionSelect({
     selectedProfession,
@@ -21,13 +22,13 @@ function ProfessionSelect({
 
     const professionService = new ProfessionService()
     const professions = [
-        'Guardian',
-        'Hunter',
-        'Mystic',
-        'Operative',
-        'Savant',
-        'Thaumaturge',
-        'Warrior'
+        ProfessionEnum.Guardian,
+        ProfessionEnum.Hunter,
+        ProfessionEnum.Mystic,
+        ProfessionEnum.Operative,
+        ProfessionEnum.Savant,
+        ProfessionEnum.Thaumaturge,
+        ProfessionEnum.Warrior,
     ]
 
     return (
