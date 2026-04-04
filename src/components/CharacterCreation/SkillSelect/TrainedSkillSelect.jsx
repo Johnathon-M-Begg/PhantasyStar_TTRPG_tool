@@ -5,7 +5,7 @@ import {AbilitiesEnum} from "../../../DataObjects/enums/AbilitiesEnum.tsx";
 
 function TrainedSkillSelect({
     professionSkills,
-    handleUpdate,
+    applySkillTraining,
     count,
     race,
 }) {
@@ -107,7 +107,7 @@ function TrainedSkillSelect({
     const isValid = checkIsValid([selection1, selection2, selection3, selection4])
 
     const Dropdown = ({ value, onChange, options }) => (
-        <Select value={value} onChange={onChange} size={"small"} fullWidth>
+        <Select value={value} onChange={onChange} size="small" fullWidth variant={"standard"}>
             {options.map((option) => (
                 <MenuItem key={option} value={option}>
                     {option}
@@ -118,7 +118,6 @@ function TrainedSkillSelect({
 
     return (
         <Box>
-            <p>{isValid.toString()}</p>
             <Stack direction="column" spacing={2}>
                 <h3>Select skills to train</h3>
                 { count >= 1 && (
@@ -161,7 +160,9 @@ function TrainedSkillSelect({
             {/*        }} disabled={!isValid}*/}
             {/*    >Next</button>*/}
                 <Button
-                    onClick={() => {handleUpdate([selection1, selection2, selection3, selection4, selection5])}}
+                    variant={"contained"}
+                    disabled={!isValid}
+                    onClick={() => {applySkillTraining([selection1, selection2, selection3, selection4, selection5])}}
                 >Accept</Button>
             </div>
         </Box>

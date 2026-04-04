@@ -7,13 +7,15 @@ import {Box} from "@mui/material";
 import AbilityAssign from "./AbilityAssign.jsx";
 import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
 import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
+import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
+import {ProfessionEnum} from "../../DataObjects/enums/ProfessionEnum.tsx";
 
 function CreateCharacter() {
-    const [selectedProfession, setSelectedProfession] = useState('Operative')
+    const [selectedProfession, setSelectedProfession] = useState(ProfessionEnum.Hunter)
     const [selectedOrigin, setSelectedOrigin] = useState({
-        race: RaceEnum.Human,
+        race: RaceEnum.Motavian,
         variant: VariantEnum.Default,
-        background: "Outlaw",
+        background: BackgroundEnum.Drifter,
     })
     const [step, setStep] = useState(1)
     const [abilityScores, setAbilityScore] = useState({

@@ -1,5 +1,5 @@
 import {ProfessionService} from "../../services/ProfessionService.tsx";
-import {Stack} from "@mui/material";
+import {Box, Stack} from "@mui/material";
 import TrainedSkillSelect from "./SkillSelect/TrainedSkillSelect.jsx";
 import SkillRankDetail from "./SkillSelect/SkillRankDetail.jsx";
 import {useState} from "react";
@@ -18,6 +18,7 @@ function SkillSelect({
      setStep,
 }) {
     const [freePoints, setFreePoints] = useState(0)
+    const [stage, setStage] = useState(0);
 
     const CalculateSkill = (skill, selections, backgroundSkills) => {
         let skillRanks = 0
@@ -109,7 +110,7 @@ function SkillSelect({
         return freePoints
     }
 
-    const handleUpdate = (selections) => {
+    const applySkillTraining = (selections) => {
         const backgroundService = new BackgroundService()
         let backgroundSkills = backgroundService.getSkills(selectedOrigin.background)
         setSkillRanks({
@@ -133,6 +134,7 @@ function SkillSelect({
             xenobiology: CalculateSkill(SkillEnum.xenobiology, selections, backgroundSkills),
         })
         setFreePoints(calculateFreePoints(selections, backgroundSkills))
+        setStage(1)
     }
 
     const professionService = new ProfessionService()
@@ -142,13 +144,17 @@ function SkillSelect({
 
     return(
         <Stack direction={"row"}>
-            {freePoints}
-            <TrainedSkillSelect
-                professionSkills={professionSkills}
-                handleUpdate={handleUpdate}
-                count={professionPoints}
-                race={selectedOrigin.race}
-            />
+            { stage === 0 && (
+                <TrainedSkillSelect
+                    professionSkills={professionSkills}
+                    applySkillTraining={applySkillTraining}
+                    count={professionPoints}
+                    race={selectedOrigin.race}
+                />
+            )}
+            { stage === 1 && (
+             <Box>stage 1</Box>
+            )}
             <SkillRankDetail
                 abilityScores={abilityScores}
                 skillRanks={skillRanks}
