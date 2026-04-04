@@ -22,6 +22,25 @@ function SkillSelect({
     const CalculateSkill = (skill, selections, backgroundSkills) => {
         let skillRanks = 0
         let SkillMax = 3
+
+        if(skill === SkillEnum.perception){
+            if (
+                selectedOrigin.race === RaceEnum.Motavian
+                || selectedOrigin.race === RaceEnum.Dezolian
+                || selectedOrigin.race === RaceEnum.Newman
+            ){
+                skillRanks += 1
+            }
+        }
+
+        if(skill === SkillEnum.insight && selectedOrigin.race === RaceEnum.Dezolian){
+            skillRanks += 1
+        }
+
+        if(skill === SkillEnum.survival && selectedOrigin.race === RaceEnum.Motavian){
+            skillRanks += 2
+        }
+
         if (selections.includes(skill)) {
             skillRanks = skillRanks + 2
         }
