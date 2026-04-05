@@ -1,12 +1,18 @@
-import {Stack} from "@mui/material";
+import {Button, IconButton, Stack, Table, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 import {SkillEnum} from "../../../DataObjects/enums/SkillEnum.tsx";
 import {AbilitiesEnum} from "../../../DataObjects/enums/AbilitiesEnum.tsx";
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
+import {useState} from "react";
 
-function SkillRankDetail({
+function SkillRankPointBuy({
     abilityScores,
     skillRanks,
+    setSkillRanks,
+    freePoints,
+    setFreePoints,
 }) {
-
+    const [spentPoints, setSpentPoints] = useState([]);
     const skillList = [
         {name: SkillEnum.acrobatics, attribute: AbilitiesEnum.Dexterity},
         {name: SkillEnum.astrophysics, attribute: AbilitiesEnum.Intelligence},
@@ -28,36 +34,76 @@ function SkillRankDetail({
         {name: SkillEnum.xenobiology, attribute: AbilitiesEnum.Intelligence},
     ]
 
-    function SkillRow({name, value}) {
+    function handleAdd(name) {
+        console.log(name)
+    }
+
+    function addAbilityModifier({name, value}) {
         let attribute = skillList.find(s => s.name === name)?.attribute
         let total = value
         if (attribute === AbilitiesEnum.Dexterity) {
             total += abilityScores.Dexterity
         }
+        if (attribute === AbilitiesEnum.Intelligence) {
+            total += abilityScores.Intelligence
+        }
+        if (attribute === AbilitiesEnum.Charisma) {
+            total += abilityScores.Charisma
+        }
+        if (attribute === AbilitiesEnum.Strength) {
+            total += abilityScores.Strength
+        }
+        if (attribute === AbilitiesEnum.Wisdom) {
+            total += abilityScores.Wisdom
+        }
+        return total
+    }
+
+    function SkillRow({name, value}) {
+        let attribute = skillList.find(s => s.name === name)?.attribute
+        let total = addAbilityModifier({name, value})
+        // let spentPointCount = getSpentPoints(name, spentPoints)
+        let isAddDisabled = ((value >= 3) || freePoints <= 0)
+        let isRemoveDisabled = true
         return (
-            <tr>
-                <td>
+            <TableRow>
+                <TableCell>
                     <strong>{name}</strong>
-                </td>
-                <td>{attribute.slice(0,3).toUpperCase()}</td>
-                <td>{value}</td>
-                <td>{total}</td>
-            </tr>
+                </TableCell>
+                <TableCell>{attribute.slice(0,3).toUpperCase()}</TableCell>
+                <TableCell>{value}</TableCell>
+                <TableCell>{total}</TableCell>
+                <TableCell>
+                    <IconButton size="small" disabled={isRemoveDisabled}>
+                        <RemoveIcon
+                            fontSize={"inherit"}
+                            onClick={() => handleRemove(name)}
+                        />
+                    </IconButton>
+                    <IconButton size="small" disabled={isAddDisabled}>
+                        <AddIcon
+                            fontSize={"inherit"}
+                            onClick={() => handleAdd(name)}
+                        />
+                    </IconButton>
+                </TableCell>
+            </TableRow>
         )
     }
 
     function SkillDetailContainer() {
         return (
-            <div className="skill-container">
-                <table className="skill-table">
-                    <thead>
-                    <tr>
-                        <td>Skill</td>
-                        <td>Ability</td>
-                        <td>Ranks</td>
-                        <td>Total</td>
-                    </tr>
-                    </thead>
+            <TableContainer>
+                <Table className="skill-table" size={"small"}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Skill</TableCell>
+                            <TableCell>Ability</TableCell>
+                            <TableCell>Ranks</TableCell>
+                            <TableCell>Total</TableCell>
+                            <TableCell>Actions</TableCell>
+                        </TableRow>
+                    </TableHead>
                     <tbody>
                         <SkillRow name={SkillEnum.acrobatics} value={skillRanks.acrobatics} />
                         <SkillRow name={SkillEnum.astrophysics} value={skillRanks.astrophysics} />
@@ -78,16 +124,48 @@ function SkillRankDetail({
                         <SkillRow name={SkillEnum.survival} value={skillRanks.survival} />
                         <SkillRow name={SkillEnum.xenobiology} value={skillRanks.xenobiology} />
                     </tbody>
-                </table>
-            </div>
+                </Table>
+            </TableContainer>
         )
+    }
+
+    function handleApply() {
+        setSkillRanks({
+            acrobatics: skillList.acrobatics + getSpentPoints(SkillEnum.acrobatics),
+            astrophysics: skillList.astrophysics + getSpentPoints(SkillEnum.astrophysics),
+            athletics: skillList.athletics + getSpentPoints(SkillEnum.athletics),
+            computers: skillList.computers + getSpentPoints(SkillEnum.computers),
+            deception: skillList.deception + getSpentPoints(SkillEnum.deception),
+            insight: skillList.insight + getSpentPoints(SkillEnum.insight),
+            intimidation: skillList.intimidation + getSpentPoints(SkillEnum.intimidation),
+            investigation: skillList.investigation + getSpentPoints(SkillEnum.investigation),
+            lore: skillList.lore + getSpentPoints(SkillEnum.lore),
+            mechanics: skillList.mechanics + getSpentPoints(SkillEnum.mechanics),
+            medicine: skillList.medicine + getSpentPoints(SkillEnum.medicine),
+            performance: skillList.performance + getSpentPoints(SkillEnum.performance),
+            perception: skillList.perception + getSpentPoints(SkillEnum.perception),
+            persuasion: skillList.persuasion + getSpentPoints(SkillEnum.persuasion),
+            slightOfHand: skillList.slightOfHand + getSpentPoints(SkillEnum.slightOfHand),
+            stealth: skillList.stealth + getSpentPoints(SkillEnum.stealth),
+            survival: skillList.survival + getSpentPoints(SkillEnum.survival),
+            xenobiology: skillList.xenobiology + getSpentPoints(SkillEnum.xenobiology),
+        })
     }
 
     return (
         <Stack>
-            <SkillDetailContainer />
+            {freePoints >0 &&(
+                <p>Spend remaining points:
+                    <strong> {freePoints}</strong>
+                </p>
+            )}
+            <SkillDetailContainer/>
+            <Button
+                variant={"contained"}
+                onClick={() => {handleApply()}}
+            >Accept</Button>
         </Stack>
     )
 }
 
-export default SkillRankDetail;
+export default SkillRankPointBuy;
