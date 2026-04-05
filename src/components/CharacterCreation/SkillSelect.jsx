@@ -1,7 +1,7 @@
 import {ProfessionService} from "../../services/ProfessionService.tsx";
 import {Box, Stack} from "@mui/material";
 import TrainedSkillSelect from "./SkillSelect/TrainedSkillSelect.jsx";
-import SkillRankDetail from "./SkillSelect/SkillRankDetail.jsx";
+import SkillRankPointBuy from "./SkillSelect/SkillRankPointBuy.jsx";
 import {useState} from "react";
 import {SkillEnum} from "../../DataObjects/enums/SkillEnum.tsx";
 import {BackgroundService} from "../../services/BackgroundService.tsx";
@@ -67,11 +67,11 @@ function SkillSelect({
             freePoints += 1
         }
 
-        if(selectedOrigin.race === RaceEnum.Dezolian){
+        if(selectedOrigin.race === RaceEnum.Dezolian) {
             if(tempTrainedSkills.includes(SkillEnum.insight) && tempBackgroundSkills.includes(SkillEnum.insight)){
                 freePoints += 2
-                tempTrainedSkills = tempTrainedSkills.filter( item => item === SkillEnum.insight)
-                tempBackgroundSkills = tempBackgroundSkills.filter( item => item === SkillEnum.insight)
+                tempTrainedSkills = tempTrainedSkills.filter( item => item !== SkillEnum.insight)
+                tempBackgroundSkills = tempBackgroundSkills.filter( item => item !== SkillEnum.insight)
             }
         }
 
@@ -79,26 +79,26 @@ function SkillSelect({
             selectedOrigin.race === RaceEnum.Dezolian ||
             selectedOrigin.race === RaceEnum.Newman ||
             selectedOrigin.race === RaceEnum.Motavian
-        ){
+        ) {
             if(tempTrainedSkills.includes(SkillEnum.perception) && tempBackgroundSkills.includes(SkillEnum.perception)){
                 freePoints += 2
-                tempTrainedSkills = tempTrainedSkills.filter( item => item === SkillEnum.perception)
-                tempBackgroundSkills = tempBackgroundSkills.filter( item => item === SkillEnum.perception)
+                tempTrainedSkills = tempTrainedSkills.filter( item => item !== SkillEnum.perception)
+                tempBackgroundSkills = tempBackgroundSkills.filter( item => item !== SkillEnum.perception)
             }
         }
 
-        if(selectedOrigin.race === RaceEnum.Motavian){
+        if(selectedOrigin.race === RaceEnum.Motavian) {
 
             if(tempTrainedSkills.includes(SkillEnum.survival) && tempBackgroundSkills.includes(SkillEnum.survival)){
                 freePoints += 3
-                tempTrainedSkills = tempTrainedSkills.filter(item => item === SkillEnum.survival)
-                tempBackgroundSkills = tempBackgroundSkills.filter( item => item === SkillEnum.survival)
+                tempTrainedSkills = tempTrainedSkills.filter(item => item !== SkillEnum.survival)
+                tempBackgroundSkills = tempBackgroundSkills.filter( item => item !== SkillEnum.survival)
             } else if(tempTrainedSkills.includes(SkillEnum.survival)){
                 freePoints += 1
-                tempTrainedSkills = tempTrainedSkills.filter(item => item === SkillEnum.survival)
+                tempTrainedSkills = tempTrainedSkills.filter(item => item !== SkillEnum.survival)
             } else if(tempBackgroundSkills.includes(SkillEnum.survival)){
                 freePoints += 1
-                tempBackgroundSkills = tempBackgroundSkills.filter(item => item === SkillEnum.survival)
+                tempBackgroundSkills = tempBackgroundSkills.filter(item => item !== SkillEnum.survival)
             }
         }
 
@@ -153,12 +153,14 @@ function SkillSelect({
                 />
             )}
             { stage === 1 && (
-             <Box>stage 1</Box>
+                <SkillRankPointBuy
+                    abilityScores={abilityScores}
+                    skillRanks={skillRanks}
+                    setSkillRanks={setSkillRanks}
+                    freePoints={freePoints}
+                    setFreePoints={setFreePoints}
+                />
             )}
-            <SkillRankDetail
-                abilityScores={abilityScores}
-                skillRanks={skillRanks}
-            />
         </Stack>
     )
 
