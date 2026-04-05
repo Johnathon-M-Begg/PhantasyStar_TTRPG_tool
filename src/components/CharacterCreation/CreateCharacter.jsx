@@ -9,6 +9,7 @@ import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
 import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
 import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
 import {ProfessionEnum} from "../../DataObjects/enums/ProfessionEnum.tsx";
+import ProficiencySelect from "./ProficiencySelect.jsx";
 
 function CreateCharacter() {
     const [selectedProfession, setSelectedProfession] = useState(ProfessionEnum.Hunter)
@@ -46,11 +47,12 @@ function CreateCharacter() {
         survival: 0,
         xenobiology: 0,
     })
+    const [proficiency, setProficiency] = useState([])
 
     return (
         <div className="container">
             <Box className="white-box">
-                {step === 4 && (
+                {step === 1 && (
                     <OriginSelect
                         selectedOrigin={selectedOrigin}
                         setSelectedOrigin={setSelectedOrigin}
@@ -72,7 +74,7 @@ function CreateCharacter() {
                         setStep={setStep}
                     />
                 )}
-                {step === 1 && (
+                {step === 4 && (
                     <SkillSelect
                         abilityScores={abilityScores}
                         selectedProfession={selectedProfession}
@@ -83,7 +85,10 @@ function CreateCharacter() {
                     />
                 )}
                 {(step === 5 && (
-                    <>This is a test</>
+                    <ProficiencySelect
+                        selectedOrigin={selectedOrigin}
+                        selectedProfession={selectedProfession}
+                    />
                 ))}
             </Box>
         </div>
