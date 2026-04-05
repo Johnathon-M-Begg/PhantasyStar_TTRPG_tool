@@ -1,9 +1,7 @@
 import {
     Button,
-    FormControl,
-    Grid, Icon, IconButton,
-    MenuItem,
-    Select,
+    Grid,
+    IconButton,
     Stack,
     Table,
     TableBody, TableCell, TableRow,
@@ -19,9 +17,7 @@ function AbilityAssign({
     setStep,
 }) {
     const rules = [
-        // "Assign Values",
         "Assign Points",
-        // "Assign Rolls",
     ]
     const [currentRule, setCurrentRule] = useState(rules[0])
     const [abilityPoints, setAbilityPoints] = useState(7)

@@ -1,7 +1,6 @@
 import {useState} from "react";
 import {Box, Button, MenuItem, Select, Stack} from "@mui/material";
 import {SkillEnum} from "../../../DataObjects/enums/SkillEnum.tsx";
-import {AbilitiesEnum} from "../../../DataObjects/enums/AbilitiesEnum.tsx";
 
 function TrainedSkillSelect({
     professionSkills,
@@ -107,7 +106,7 @@ function TrainedSkillSelect({
     const isValid = checkIsValid([selection1, selection2, selection3, selection4])
 
     const Dropdown = ({ value, onChange, options }) => (
-        <Select value={value} onChange={onChange} size="small" fullWidth variant={"standard"}>
+        <Select value={value} onChange={onChange} size="small" fullWidth={true} variant={"standard"}>
             {options.map((option) => (
                 <MenuItem key={option} value={option}>
                     {option}
@@ -117,7 +116,7 @@ function TrainedSkillSelect({
     );
 
     return (
-        <Box>
+        <Box sx={{justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'colu',}}>
             <Stack direction="column" spacing={2}>
                 <h3>Select skills to train</h3>
                 { count >= 1 && (
@@ -150,21 +149,12 @@ function TrainedSkillSelect({
                         value={selection5}
                         onChange={handleChange5}/>
                 )}
-            </Stack>
-            <div className="button-group">
-
-            {/*    <button className="btn btn-secondary" onClick={() => setStep(3)}>Back</button>*/}
-            {/*    <button className="btn btn-primary"*/}
-            {/*        onClick={() => {*/}
-
-            {/*        }} disabled={!isValid}*/}
-            {/*    >Next</button>*/}
                 <Button
                     variant={"contained"}
                     disabled={!isValid}
                     onClick={() => {applySkillTraining([selection1, selection2, selection3, selection4, selection5])}}
                 >Accept</Button>
-            </div>
+            </Stack>
         </Box>
     );
 }
