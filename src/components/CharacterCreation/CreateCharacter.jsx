@@ -82,6 +82,9 @@ function CreateCharacter() {
                         setStep={setStep}
                     />
                 )}
+                {(step === 5 && (
+                    <>This is a test</>
+                ))}
             </Box>
         </div>
     )

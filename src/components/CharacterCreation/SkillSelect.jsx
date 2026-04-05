@@ -159,6 +159,8 @@ function SkillSelect({
                     setSkillRanks={setSkillRanks}
                     freePoints={freePoints}
                     setFreePoints={setFreePoints}
+                    setStage={setStage}
+                    setStep={setStep}
                 />
             )}
         </Stack>
