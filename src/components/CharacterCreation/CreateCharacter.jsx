@@ -3,20 +3,19 @@ import './CreateCharacter.css'
 import OriginSelect from "./OriginSelect.jsx";
 import ProfessionSelect from "./ProfessionSelect.jsx";
 import SkillSelect from "./SkillSelect.jsx";
-import {Box} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import AbilityAssign from "./AbilityAssign.jsx";
 import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
-import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
-import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
-import {ProfessionEnum} from "../../DataObjects/enums/ProfessionEnum.tsx";
 import ProficiencySelect from "./ProficiencySelect.jsx";
+import {ProfessionEnum} from "../../DataObjects/enums/ProfessionEnum.tsx";
+import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
 
 function CreateCharacter() {
-    const [selectedProfession, setSelectedProfession] = useState(ProfessionEnum.Hunter)
+    const [selectedProfession, setSelectedProfession] = useState(ProfessionEnum.Operative)
     const [selectedOrigin, setSelectedOrigin] = useState({
-        race: RaceEnum.Motavian,
+        race: null,
         variant: VariantEnum.Default,
-        background: BackgroundEnum.Drifter,
+        background: BackgroundEnum.Scholar,
     })
     const [step, setStep] = useState(1)
     const [abilityScores, setAbilityScore] = useState({
@@ -84,12 +83,17 @@ function CreateCharacter() {
                         setStep={setStep}
                     />
                 )}
-                {(step === 5 && (
+                {step === 5 && (
                     <ProficiencySelect
                         selectedOrigin={selectedOrigin}
                         selectedProfession={selectedProfession}
+                        setProficiency={setProficiency}
+                        setStep={setStep}
                     />
-                ))}
+                )}
+                {step === 6 && (
+                    <Typography>Dummy text</Typography>
+                )}
             </Box>
         </div>
     )

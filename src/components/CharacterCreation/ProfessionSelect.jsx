@@ -95,7 +95,7 @@ function ProfessionSelect({
                 }
             </Box>
             <Grid className="button-group">
-                <Button variant="contained" color="secondary"onClick={() => setStep(1)}>Back</Button>
+                <Button variant="contained" color="secondary" onClick={() => setStep(1)}>Back</Button>
                 <Button variant="contained" color="primary" onClick={() => setStep(3)}
                         disabled={!selectedProfession}
                 >Next</Button>

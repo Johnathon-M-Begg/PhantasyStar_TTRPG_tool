@@ -1,4 +1,4 @@
-import {Box, MenuItem, Select, Stack, Typography} from "@mui/material";
+import {Box, Button, MenuItem, Select, Stack, Typography} from "@mui/material";
 import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
 import {ArtisanToolEnum} from "../../DataObjects/enums/ArtisanToolEnum.tsx";
 import {VehicleTypeEnum} from "../../DataObjects/enums/VehicleTypeEnum.tsx";
@@ -10,8 +10,8 @@ import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
 function ProficiencySelect({
     selectedOrigin,
     selectedProfession,
-    proficiency,
     setProficiency,
+    setStep,
 }) {
 
     const [humanSelection, setHumanSelection] = useState(null);
@@ -21,6 +21,20 @@ function ProficiencySelect({
     const [backgroundSelectionOne, setBackgroundSelectionOne] = useState(null);
     const [backgroundSelectionTwo, setBackgroundSelectionTwo] = useState(null);
     const [backgroundSelectionThree, setBackgroundSelectionThree] = useState(null);
+
+    function apply ()  {
+        setProficiency([
+            humanSelection,
+            variantSelection,
+            professionSelectionOne,
+            professionSelectionTwo,
+            backgroundSelectionOne,
+            backgroundSelectionTwo,
+            backgroundSelectionThree
+        ])
+        setStep(6)
+    }
+
 
     const handleHumanSelectionChange = (event) => {
         setHumanSelection(event.target.value);
@@ -138,9 +152,8 @@ function ProficiencySelect({
             && option !== backgroundSelectionThree
         )
         return(
-            <Box>
+            <Stack spacing={2}>
                 <Typography>Utopian Bonus Proficiency</Typography>
-                <br/>
                 <Select
                     fullWidth={true}
                     size={"small"}
@@ -153,8 +166,7 @@ function ProficiencySelect({
                         </MenuItem>
                     ))}
                 </Select>
-                <br/>
-            </Box>
+            </Stack>
         )
     }
 
@@ -357,6 +369,10 @@ function ProficiencySelect({
             <BackgroundTool/>
             <SelectHumanTool/>
             <VariantBonusTool/>
+            <Stack spacing={2} direction={'row'}>
+                <Button onClick={() => setStep(4)}>Back</Button>
+                <Button onClick={() => {apply()}}>Accept</Button>
+            </Stack>
         </Stack>
     )
 }
