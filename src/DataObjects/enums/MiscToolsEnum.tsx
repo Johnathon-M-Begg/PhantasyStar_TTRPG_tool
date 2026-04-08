@@ -1,4 +1,4 @@
-export enum MiscTools {
+export enum MiscToolsEnum {
     DisguiseKit = "Disguise Kit",
     ForgeryKit = "Forgery Kit",
     GamingSetKitCards = "Gaming Set - Cards",
