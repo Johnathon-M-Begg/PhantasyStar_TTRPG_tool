@@ -1,4 +1,6 @@
 import './CharacterSummary.css'
+import {Box, Stack, Typography} from "@mui/material";
+import SkillSummary from "./SkillSummary.jsx";
 
 function CharacterSummary({
     profession,
@@ -10,17 +12,26 @@ function CharacterSummary({
     proficiencies,
 }) {
     return (
-        <>
-            <h2>Character Summary</h2>
-            <div className="summary-content">
-                <p><strong>Profession:</strong> {profession || 'Not selected'}</p>
-                <p><strong>Race:</strong> {race || 'Not selected'}</p>
-                <p><strong>Variant:</strong> {variant || 'None'}</p>
-            </div>
-            <div className="button-group">
-
-            </div>
-        </>
+        <Stack direction={"column"}>
+            <Typography>Character Summary</Typography>
+            <Stack direction={"row"} spacing={2}>
+                <div>
+                    LVL 1 {profession}
+                </div>
+                <div>
+                    {race}
+                </div>
+                <div>
+                    {variant}
+                </div>
+                <div>
+                    {background}
+                </div>
+            </Stack>
+            <Stack direction={"row"}>
+                <SkillSummary skills={skills} abilityScores={abilityScores}/>
+            </Stack>
+        </Stack>
     )
 }
 

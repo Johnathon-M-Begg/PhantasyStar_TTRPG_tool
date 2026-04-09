@@ -14,7 +14,7 @@ export type SkillRanksDTO = {
     performance: number,
     perception: number,
     persuasion: number,
-    slightOfHand: number,
+    sleightOfHand: number,
     stealth: number,
     survival: number,
     xenobiology: number,

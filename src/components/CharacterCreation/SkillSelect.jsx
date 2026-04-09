@@ -129,7 +129,7 @@ function SkillSelect({
             perception: CalculateSkill(SkillEnum.perception, selections, backgroundSkills,),
             performance: CalculateSkill(SkillEnum.performance, selections, backgroundSkills),
             persuasion: CalculateSkill(SkillEnum.persuasion, selections, backgroundSkills),
-            slightOfHand: CalculateSkill(SkillEnum.sleightOfHand, selections, backgroundSkills),
+            sleightOfHand: CalculateSkill(SkillEnum.sleightOfHand, selections, backgroundSkills),
             stealth: CalculateSkill(SkillEnum.stealth, selections, backgroundSkills ),
             survival: CalculateSkill(SkillEnum.survival, selections, backgroundSkills),
             xenobiology: CalculateSkill(SkillEnum.xenobiology, selections, backgroundSkills),

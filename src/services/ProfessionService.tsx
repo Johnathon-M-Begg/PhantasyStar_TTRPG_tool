@@ -118,7 +118,7 @@ export class ProfessionService {
                 SkillEnum.investigation,
                 SkillEnum.perception,
                 SkillEnum.persuasion,
-                SkillEnum.slightOfHand,
+                SkillEnum.sleightOfHand,
                 SkillEnum.stealth,
             ],
             weaponProficiencies: [

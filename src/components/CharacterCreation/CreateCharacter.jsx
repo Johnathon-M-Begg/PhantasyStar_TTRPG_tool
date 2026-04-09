@@ -40,7 +40,7 @@ function CreateCharacter() {
         performance: 0,
         perception: 0,
         persuasion: 0,
-        slightOfHand: 0,
+        sleightOfHand: 0,
         stealth: 0,
         survival: 0,
         xenobiology: 0,
