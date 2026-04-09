@@ -13,7 +13,7 @@ export enum SkillEnum {
     performance = 'Performance',
     perception = 'Perception',
     persuasion = 'Persuasion',
-    slightOfHand = 'Slight of hand',
+    sleightOfHand = 'Sleight of hand',
     stealth = 'Stealth',
     survival = 'Survival',
     xenobiology = 'Xenobiology',

@@ -24,7 +24,7 @@ function TrainedSkillSelect({
         SkillEnum.perception,
         SkillEnum.performance,
         SkillEnum.persuasion,
-        SkillEnum.slightOfHand,
+        SkillEnum.sleightOfHand,
         SkillEnum.stealth,
         SkillEnum.survival,
         SkillEnum.xenobiology,

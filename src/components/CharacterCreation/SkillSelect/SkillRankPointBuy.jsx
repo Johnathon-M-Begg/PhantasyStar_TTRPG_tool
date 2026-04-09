@@ -53,7 +53,7 @@ function SkillRankPointBuy({
         {name: SkillEnum.perception, attribute: AbilitiesEnum.Wisdom},
         {name: SkillEnum.performance, attribute: AbilitiesEnum.Charisma},
         {name: SkillEnum.persuasion, attribute: AbilitiesEnum.Charisma},
-        {name: SkillEnum.slightOfHand, attribute: AbilitiesEnum.Dexterity},
+        {name: SkillEnum.sleightOfHand, attribute: AbilitiesEnum.Dexterity},
         {name: SkillEnum.stealth, attribute: AbilitiesEnum.Dexterity},
         {name: SkillEnum.survival, attribute: AbilitiesEnum.Wisdom},
         {name: SkillEnum.xenobiology, attribute: AbilitiesEnum.Intelligence},
@@ -74,7 +74,7 @@ function SkillRankPointBuy({
         let performance = (skill === SkillEnum.performance)? 1 : 0
         let perception = (skill === SkillEnum.perception)? 1 : 0
         let persuasion = (skill === SkillEnum.persuasion)? 1 : 0
-        let slightOfHand = (skill === SkillEnum.slightOfHand)? 1 : 0
+        let slightOfHand = (skill === SkillEnum.sleightOfHand)? 1 : 0
         let stealth = (skill === SkillEnum.stealth)? 1 : 0
         let survival = (skill === SkillEnum.survival)? 1 : 0
         let xenobiology = (skill === SkillEnum.xenobiology)? 1 : 0
@@ -117,7 +117,7 @@ function SkillRankPointBuy({
         let performance = (skill === SkillEnum.performance)? -1 : 0
         let perception = (skill === SkillEnum.perception)? -1 : 0
         let persuasion = (skill === SkillEnum.persuasion)? -1 : 0
-        let slightOfHand = (skill === SkillEnum.slightOfHand)? -1 : 0
+        let slightOfHand = (skill === SkillEnum.sleightOfHand)? -1 : 0
         let stealth = (skill === SkillEnum.stealth)? -1 : 0
         let survival = (skill === SkillEnum.survival)? -1 : 0
         let xenobiology = (skill === SkillEnum.xenobiology)? -1 : 0
@@ -249,7 +249,7 @@ function SkillRankPointBuy({
                         <SkillRow name={SkillEnum.perception} value={skillRanks.perception} points={spentPoints.perception} />
                         <SkillRow name={SkillEnum.performance} value={skillRanks.performance} points={spentPoints.performance} />
                         <SkillRow name={SkillEnum.persuasion} value={skillRanks.persuasion} points={spentPoints.persuasion} />
-                        <SkillRow name={SkillEnum.slightOfHand} value={skillRanks.slightOfHand} points={spentPoints.slightOfHand} />
+                        <SkillRow name={SkillEnum.sleightOfHand} value={skillRanks.slightOfHand} points={spentPoints.slightOfHand} />
                         <SkillRow name={SkillEnum.stealth} value={skillRanks.stealth} points={spentPoints.stealth} />
                         <SkillRow name={SkillEnum.survival} value={skillRanks.survival} points={spentPoints.survival} />
                         <SkillRow name={SkillEnum.xenobiology} value={skillRanks.xenobiology} points={spentPoints.xenobiology} />
