@@ -49,7 +49,7 @@ function CreateCharacter() {
     const [proficiency, setProficiency] = useState([])
 
     return (
-        <div className="container">
+        <Box className="container">
             <Box className="white-box">
                 {step === 1 && (
                     <OriginSelect
@@ -95,7 +95,7 @@ function CreateCharacter() {
                     <Typography>Dummy text</Typography>
                 )}
             </Box>
-        </div>
+        </Box>
     )
 }
 

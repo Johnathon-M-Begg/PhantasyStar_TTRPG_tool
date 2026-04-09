@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Box, Button, MenuItem, Select, Stack} from "@mui/material";
+import {Box, Button, MenuItem, Select, Stack, Typography} from "@mui/material";
 import {SkillEnum} from "../../../DataObjects/enums/SkillEnum.tsx";
 
 function TrainedSkillSelect({
@@ -116,9 +116,9 @@ function TrainedSkillSelect({
     );
 
     return (
-        <Box sx={{justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'colu',}}>
+        <Box>
             <Stack direction="column" spacing={2}>
-                <h3>Select skills to train</h3>
+                <Typography variant={'h5'}>Select skills to train</Typography>
                 { count >= 1 && (
                     <Dropdown
                         options={options1}
@@ -144,10 +144,13 @@ function TrainedSkillSelect({
                         onChange={handleChange4}/>
                 )}
                 { race === 'Human' && (
+                    <Stack spacing={1}>
+                        <Typography>Human Bonus Skill</Typography>
                     <Dropdown
                         options={options5}
                         value={selection5}
                         onChange={handleChange5}/>
+                    </Stack>
                 )}
                 <Stack spacing={2} direction={'row'}>
                     <Button

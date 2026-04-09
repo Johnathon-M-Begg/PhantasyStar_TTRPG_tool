@@ -143,7 +143,7 @@ function SkillSelect({
 
 
     return(
-        <Stack direction={"row"}>
+        <Stack direction={"row"} justifyContent={'center'} alignItems={'center'}>
             { stage === 0 && (
                 <TrainedSkillSelect
                     professionSkills={professionSkills}

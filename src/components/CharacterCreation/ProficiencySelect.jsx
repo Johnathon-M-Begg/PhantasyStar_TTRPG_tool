@@ -367,11 +367,20 @@ function ProficiencySelect({
         <Stack spacing={4}>
             <ProfessionTool/>
             <BackgroundTool/>
-            <SelectHumanTool/>
-            <VariantBonusTool/>
+            { selectedOrigin.race === RaceEnum.Human && (
+                <SelectHumanTool/>
+            )}
+            {selectedOrigin.background === BackgroundEnum && (
+                <VariantBonusTool/>
+            )}
             <Stack spacing={2} direction={'row'}>
-                <Button onClick={() => setStep(4)}>Back</Button>
-                <Button onClick={() => {apply()}}>Accept</Button>
+                <Button
+                    onClick={() => setStep(4)}
+                    variant={"contained"}
+                    color={"secondary"}>Back</Button>
+                <Button
+                    onClick={() => {apply()}}
+                    variant={"contained"}>Accept</Button>
             </Stack>
         </Stack>
     )
