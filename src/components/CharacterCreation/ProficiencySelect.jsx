@@ -275,7 +275,7 @@ function ProficiencySelect({
                         ))}
                     </Select>
                 )}
-                {selectionOptionsThree !== [] && (
+                {selectedOrigin.background === BackgroundEnum.Scholar && (
                     <Select
                         variant={'standard'}
                         size="small"

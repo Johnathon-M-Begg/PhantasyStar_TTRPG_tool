@@ -3,19 +3,18 @@ import './CreateCharacter.css'
 import OriginSelect from "./OriginSelect.jsx";
 import ProfessionSelect from "./ProfessionSelect.jsx";
 import SkillSelect from "./SkillSelect.jsx";
-import {Box, Typography} from "@mui/material";
+import {Box} from "@mui/material";
 import AbilityAssign from "./AbilityAssign.jsx";
 import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
 import ProficiencySelect from "./ProficiencySelect.jsx";
-import {ProfessionEnum} from "../../DataObjects/enums/ProfessionEnum.tsx";
-import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
+import CharacterSummary from "../CharacterSummary/CharacterSummary.jsx";
 
 function CreateCharacter() {
-    const [selectedProfession, setSelectedProfession] = useState(ProfessionEnum.Operative)
+    const [selectedProfession, setSelectedProfession] = useState(null)
     const [selectedOrigin, setSelectedOrigin] = useState({
         race: null,
         variant: VariantEnum.Default,
-        background: BackgroundEnum.Scholar,
+        background: null,
     })
     const [step, setStep] = useState(1)
     const [abilityScores, setAbilityScore] = useState({
@@ -105,7 +104,15 @@ function CreateCharacter() {
                     />
                 )}
                 {step === 6 && (
-                    <Typography>Dummy text</Typography>
+                    <CharacterSummary
+                        profession={selectedProfession}
+                        race={selectedOrigin.race}
+                        variant={selectedOrigin.variant}
+                        background={selectedOrigin.background}
+                        abilityScores={abilityScores}
+                        skills={skillRanks}
+                        proficiencies={proficiency}
+                    />
                 )}
             </Box>
         </Box>
