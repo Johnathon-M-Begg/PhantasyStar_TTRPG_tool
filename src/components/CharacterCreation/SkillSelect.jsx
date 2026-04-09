@@ -15,7 +15,8 @@ function SkillSelect({
      selectedOrigin,
      skillRanks,
      setSkillRanks,
-     setStep,
+     stepForward,
+     stepBackward
 }) {
     const [freePoints, setFreePoints] = useState(0)
     const [stage, setStage] = useState(0);
@@ -150,7 +151,7 @@ function SkillSelect({
                     applySkillTraining={applySkillTraining}
                     count={professionPoints}
                     race={selectedOrigin.race}
-                    setStep={setStep}
+                    stepBackward={stepBackward}
                 />
             )}
             { stage === 1 && (
@@ -161,7 +162,7 @@ function SkillSelect({
                     freePoints={freePoints}
                     setFreePoints={setFreePoints}
                     setStage={setStage}
-                    setStep={setStep}
+                    stepForward={stepForward}
                 />
             )}
         </Stack>

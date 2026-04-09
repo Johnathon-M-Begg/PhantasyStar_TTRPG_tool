@@ -1,5 +1,4 @@
 import './CreateCharacter.css'
-import { useNavigate } from 'react-router-dom'
 import {Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, Typography} from "@mui/material";
 import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
 import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
@@ -9,11 +8,9 @@ import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
 function OriginSelect({
     selectedOrigin,
     setSelectedOrigin,
-    setStep,
+    stepForward,
+    stepBackward,
 }) {
-
-    const navigate = useNavigate()
-
     const races = [
         { name: RaceEnum.Human, size: 'Medium', desc: 'Humans are by far the most populous species in the\n' +
                 'galaxy. They are believed to have originated on Palma,\n' +
@@ -167,8 +164,8 @@ function OriginSelect({
                 </Stack>
             </Stack>
             <Box direction={"row"} className="button-group">
-                <Button variant="contained" color="secondary" onClick={() => navigate('/')}>Back</Button>
-                <Button variant="contained" color="primary" onClick={() => setStep(2)}
+                <Button variant="contained" color="secondary" onClick={() => stepBackward()}>Back</Button>
+                <Button variant="contained" color="primary" onClick={() => stepForward()}
                         disabled={!selectedOrigin.race || !selectedOrigin.background || !selectedOrigin.variant}
                 >Next</Button>
             </Box>

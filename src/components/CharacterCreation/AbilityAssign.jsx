@@ -14,7 +14,8 @@ function AbilityAssign({
     abilityScores,
     setAbilityScore,
     selectedOrigin,
-    setStep,
+    stepForward,
+    stepBackward,
 }) {
     const rules = [
         "Assign Points",
@@ -180,11 +181,11 @@ function AbilityAssign({
             <Grid className="button-group">
                 <Button variant="contained" color="secondary"
                         onClick={() => {
-                            setStep(2)
                             resetAbilityScores()
+                            stepBackward()
                         }}
                 >Back</Button>
-                <Button variant="contained" color="primary" onClick={() => setStep(4)}
+                <Button variant="contained" color="primary" onClick={() => stepForward()}
                         disabled={abilityPoints !== 0}
                 >Next</Button>
 

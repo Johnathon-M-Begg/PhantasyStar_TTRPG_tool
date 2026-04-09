@@ -11,7 +11,8 @@ function ProficiencySelect({
     selectedOrigin,
     selectedProfession,
     setProficiency,
-    setStep,
+    stepForward,
+    stepBackward
 }) {
 
     const [humanSelection, setHumanSelection] = useState(null);
@@ -32,7 +33,7 @@ function ProficiencySelect({
             backgroundSelectionTwo,
             backgroundSelectionThree
         ])
-        setStep(6)
+        stepForward()
     }
 
 
@@ -375,7 +376,7 @@ function ProficiencySelect({
             )}
             <Stack spacing={2} direction={'row'}>
                 <Button
-                    onClick={() => setStep(4)}
+                    onClick={() => stepBackward()}
                     variant={"contained"}
                     color={"secondary"}>Back</Button>
                 <Button

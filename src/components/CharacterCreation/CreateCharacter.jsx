@@ -48,6 +48,14 @@ function CreateCharacter() {
     })
     const [proficiency, setProficiency] = useState([])
 
+    function stepForward () {
+        setStep(step + 1)
+    }
+
+    function stepBackward() {
+        setStep(step - 1)
+    }
+
     return (
         <Box className="container">
             <Box className="white-box">
@@ -55,14 +63,16 @@ function CreateCharacter() {
                     <OriginSelect
                         selectedOrigin={selectedOrigin}
                         setSelectedOrigin={setSelectedOrigin}
-                        setStep={setStep}
+                        stepForward={stepForward}
+                        stepBackward={stepBackward}
                     />
                 )}
                 {step === 2 && (
                     <ProfessionSelect
                     selectedProfession={selectedProfession}
                     setSelectedProfession={setSelectedProfession}
-                    setStep={setStep}
+                    stepForward={stepForward}
+                    stepBackward={stepBackward}
                     />
                 )}
                 {step === 3 && (
@@ -70,7 +80,8 @@ function CreateCharacter() {
                         abilityScores={abilityScores}
                         setAbilityScore={setAbilityScore}
                         selectedOrigin={selectedOrigin}
-                        setStep={setStep}
+                        stepForward={stepForward}
+                        stepBackward={stepBackward}
                     />
                 )}
                 {step === 4 && (
@@ -80,7 +91,8 @@ function CreateCharacter() {
                         selectedOrigin={selectedOrigin}
                         skillRanks={skillRanks}
                         setSkillRanks={setSkillRanks}
-                        setStep={setStep}
+                        stepForward={stepForward}
+                        stepBackward={stepBackward}
                     />
                 )}
                 {step === 5 && (
@@ -88,7 +100,8 @@ function CreateCharacter() {
                         selectedOrigin={selectedOrigin}
                         selectedProfession={selectedProfession}
                         setProficiency={setProficiency}
-                        setStep={setStep}
+                        stepForward={stepForward}
+                        stepBackward={stepBackward}
                     />
                 )}
                 {step === 6 && (

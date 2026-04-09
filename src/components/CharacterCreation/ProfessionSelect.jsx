@@ -17,7 +17,8 @@ import {ProfessionEnum} from "../../DataObjects/enums/ProfessionEnum.tsx";
 function ProfessionSelect({
     selectedProfession,
     setSelectedProfession,
-    setStep,
+    stepForward,
+    stepBackward,
 }) {
 
     const professionService = new ProfessionService()
@@ -95,8 +96,8 @@ function ProfessionSelect({
                 }
             </Box>
             <Grid className="button-group">
-                <Button variant="contained" color="secondary" onClick={() => setStep(1)}>Back</Button>
-                <Button variant="contained" color="primary" onClick={() => setStep(3)}
+                <Button variant="contained" color="secondary" onClick={() => stepBackward()}>Back</Button>
+                <Button variant="contained" color="primary" onClick={() => stepForward()}
                         disabled={!selectedProfession}
                 >Next</Button>
             </Grid>

@@ -7,6 +7,7 @@ function TrainedSkillSelect({
     applySkillTraining,
     count,
     race,
+    stepBackward,
 }) {
 
     const skillList = [
@@ -156,7 +157,7 @@ function TrainedSkillSelect({
                     <Button
                         variant={'contained'}
                         color={'secondary'}
-                        onClick={() => setStep(3)}
+                        onClick={() => stepBackward()}
                     >Back</Button>
                     <Button
                         variant={"contained"}

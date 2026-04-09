@@ -12,7 +12,7 @@ function SkillRankPointBuy({
     freePoints,
     setFreePoints,
     setStage,
-    setStep,
+    stepForward,
 }) {
     const initialSpentPoints = {
         acrobatics: 0,
@@ -166,7 +166,7 @@ function SkillRankPointBuy({
             survival: skillRanks.survival + spentPoints.survival,
             xenobiology: skillRanks.xenobiology + spentPoints.xenobiology,
         });
-        setStep(5)
+        stepForward()
     }
 
     function addAbilityModifier({name, value}) {
