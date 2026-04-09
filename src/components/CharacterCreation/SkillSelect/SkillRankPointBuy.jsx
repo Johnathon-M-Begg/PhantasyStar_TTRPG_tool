@@ -204,13 +204,13 @@ function SkillRankPointBuy({
                 <TableCell>{value + points}</TableCell>
                 <TableCell>{total + points}</TableCell>
                 <TableCell>
-                    <IconButton size="small" disabled={isRemoveDisabled}>
+                    <IconButton size="small" disabled={isRemoveDisabled} color={'primary'}>
                         <RemoveIcon
                             fontSize={"inherit"}
                             onClick={() => handleRemove(name)}
                         />
                     </IconButton>
-                    <IconButton size="small" disabled={isAddDisabled}>
+                    <IconButton size="small" disabled={isAddDisabled} color={'primary'}>
                         <AddIcon
                             fontSize={"inherit"}
                             onClick={() => handleAdd(name)}
