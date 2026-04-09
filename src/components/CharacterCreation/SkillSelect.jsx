@@ -150,6 +150,7 @@ function SkillSelect({
                     applySkillTraining={applySkillTraining}
                     count={professionPoints}
                     race={selectedOrigin.race}
+                    setStep={setStep}
                 />
             )}
             { stage === 1 && (

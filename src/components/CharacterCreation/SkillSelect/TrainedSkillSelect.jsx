@@ -149,11 +149,19 @@ function TrainedSkillSelect({
                         value={selection5}
                         onChange={handleChange5}/>
                 )}
-                <Button
-                    variant={"contained"}
-                    disabled={!isValid}
-                    onClick={() => {applySkillTraining([selection1, selection2, selection3, selection4, selection5])}}
-                >Accept</Button>
+                <Stack spacing={2} direction={'row'}>
+                    <Button
+                        variant={'contained'}
+                        color={'secondary'}
+                        onClick={() => setStep(3)}
+                    >Back</Button>
+                    <Button
+                        variant={"contained"}
+                        color="primary"
+                        disabled={!isValid}
+                        onClick={() => {applySkillTraining([selection1, selection2, selection3, selection4, selection5])}}
+                    >Accept</Button>
+                </Stack>
             </Stack>
         </Box>
     );

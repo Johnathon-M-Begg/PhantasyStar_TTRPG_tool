@@ -92,6 +92,15 @@ function AbilityAssign({
                 <TableCell>{property}</TableCell>
                 <TableCell>
                     <IconButton color="primary"
+                                disabled={property <= abilityMin}
+                                onClick={() => {
+                                    updateFunction(property - 1)
+                                    setAbilityPoints(abilityPoints + 1)
+                                }}
+                    >
+                        <RemoveCircle/>
+                    </IconButton>
+                    <IconButton color="primary"
                         disabled={property >= abilityMax || abilityPoints <= 0}
                         onClick={() => {
                             updateFunction(property + 1)
@@ -99,15 +108,6 @@ function AbilityAssign({
                         }}
                     >
                         <AddCircle/>
-                    </IconButton>
-                    <IconButton color="primary"
-                        disabled={property <= abilityMin}
-                        onClick={() => {
-                            updateFunction(property - 1)
-                            setAbilityPoints(abilityPoints + 1)
-                        }}
-                    >
-                        <RemoveCircle/>
                     </IconButton>
                 </TableCell>
             </TableRow>

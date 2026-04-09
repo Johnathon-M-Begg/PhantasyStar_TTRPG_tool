@@ -14,7 +14,6 @@ function SkillRankPointBuy({
     setStage,
     setStep,
 }) {
-    const initialFreePoints = freePoints;
     const initialSpentPoints = {
         acrobatics: 0,
         astrophysics: 0,
@@ -194,7 +193,7 @@ function SkillRankPointBuy({
     function SkillRow({name, value, points}) {
         let attribute = skillList.find(s => s.name === name)?.attribute
         let total = addAbilityModifier({name, value})
-        let isAddDisabled = ((value >= 3) || freePoints <= 0)
+        let isAddDisabled = ((value > 2) || freePoints <= 0)
         let isRemoveDisabled = (points <= 0)
         return (
             <TableRow>
@@ -268,14 +267,18 @@ function SkillRankPointBuy({
                 </p>
             )}
             <SkillDetailContainer/>
-            <Box>
-                <Button variant="contained" onClick={() => {setStage(0)}}>Back</Button>
+            <Stack direction={'row'} spacing={2}>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => {setStage(0)}}
+                >Back</Button>
                 <Button
                     variant="contained"
                     onClick={() => {apply()}}
                     disabled={freePoints >= 1}
                 >Accept</Button>
-            </Box>
+            </Stack>
         </Stack>
     )
 }
