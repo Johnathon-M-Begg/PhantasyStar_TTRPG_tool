@@ -1,4 +1,4 @@
-import {Table, TableBody, TableCell, TableRow} from "@mui/material";
+import {Table, TableBody, TableCell, TableHead, TableRow} from "@mui/material";
 import {SkillEnum} from "../../DataObjects/enums/SkillEnum.tsx";
 
 function SkillSummary({skills, abilityScores}) {
@@ -8,7 +8,6 @@ function SkillSummary({skills, abilityScores}) {
             <TableRow>
                 <TableCell>{skill}</TableCell>
                 <TableCell>{skillRanks}</TableCell>
-                <TableCell>{ability}</TableCell>
                 <TableCell>{skillRanks + ability}</TableCell>
             </TableRow>
         )
@@ -16,6 +15,13 @@ function SkillSummary({skills, abilityScores}) {
 
     return(
         <Table size={"small"}>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Skill</TableCell>
+                    <TableCell>Ranks</TableCell>
+                    <TableCell>Total</TableCell>
+                </TableRow>
+            </TableHead>
             <TableBody>
                 <SkillEntry
                     skill={SkillEnum.acrobatics}
