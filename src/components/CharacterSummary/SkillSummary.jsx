@@ -14,14 +14,7 @@ function SkillSummary({skills, abilityScores}) {
     }
 
     return(
-        <Table size={"small"}>
-            <TableHead>
-                <TableRow>
-                    <TableCell>Skill</TableCell>
-                    <TableCell>Ranks</TableCell>
-                    <TableCell>Total</TableCell>
-                </TableRow>
-            </TableHead>
+        <Table size={"small"} sx={{bgcolor: 'blue.light'}}>
             <TableBody>
                 <SkillEntry
                     skill={SkillEnum.acrobatics}

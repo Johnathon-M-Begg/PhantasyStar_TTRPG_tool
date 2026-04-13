@@ -8,38 +8,41 @@ import AbilityAssign from "./AbilityAssign.jsx";
 import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
 import ProficiencySelect from "./ProficiencySelect.jsx";
 import CharacterSummary from "../CharacterSummary/CharacterSummary.jsx";
+import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
+import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
+import {ProfessionEnum} from "../../DataObjects/enums/ProfessionEnum.tsx";
 
 function CreateCharacter() {
-    const [selectedProfession, setSelectedProfession] = useState(null)
+    const [selectedProfession, setSelectedProfession] = useState(ProfessionEnum.Guardian)
     const [selectedOrigin, setSelectedOrigin] = useState({
-        race: null,
+        race: RaceEnum.Human,
         variant: VariantEnum.Default,
-        background: null,
+        background: BackgroundEnum.Wayfarer,
     })
     const [step, setStep] = useState(1)
     const [abilityScores, setAbilityScore] = useState({
-        Strength: 0,
-        Dexterity: 0,
-        Constitution: 0,
+        Strength: 3,
+        Dexterity: -1,
+        Constitution: 2,
         Intelligence: 0,
-        Wisdom: 0,
-        Charisma: 0,
+        Wisdom: 2,
+        Charisma: 1,
     })
     const [skillRanks, setSkillRanks] = useState({
         acrobatics: 0,
         astrophysics: 0,
-        athletics: 0,
+        athletics: 2,
         computers: 0,
         deception: 0,
-        insight: 0,
+        insight: 3,
         intimidation: 0,
         investigation: 0,
         lore: 0,
         mechanics: 0,
         medicine: 0,
         performance: 0,
-        perception: 0,
-        persuasion: 0,
+        perception: 3,
+        persuasion: 3,
         sleightOfHand: 0,
         stealth: 0,
         survival: 0,
@@ -58,7 +61,7 @@ function CreateCharacter() {
     return (
         <Box className="container">
             <Box className="white-box">
-                {step === 1 && (
+                {step === 0 && (
                     <OriginSelect
                         selectedOrigin={selectedOrigin}
                         setSelectedOrigin={setSelectedOrigin}
@@ -103,7 +106,7 @@ function CreateCharacter() {
                         stepBackward={stepBackward}
                     />
                 )}
-                {step === 6 && (
+                {step === 1 && (
                     <CharacterSummary
                         profession={selectedProfession}
                         race={selectedOrigin.race}
