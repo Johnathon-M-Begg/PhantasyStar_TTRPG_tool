@@ -2,6 +2,7 @@ import './CharacterSummary.css'
 import {Box, Divider, Paper, Stack, Table, TableBody, TableCell, TableRow, Typography} from "@mui/material";
 import SkillSummary from "./SkillSummary.jsx";
 import AbilitySummary from "./AbilitySummary.jsx";
+import SecondaryAttributeSummary from "./SecondaryAttributeSummary.jsx";
 
 function CharacterSummary({
     profession,
@@ -40,6 +41,7 @@ function CharacterSummary({
                 <Stack direction={"column"} spacing={2}>
                     <PersonalDetails/>
                     <AbilitySummary abilityScore={abilityScores}/>
+                    <SecondaryAttributeSummary profession={profession} abilityScore={abilityScores}/>
                 </Stack>
                 <SkillSummary skills={skills} abilityScores={abilityScores}/>
             </Stack>

@@ -7,7 +7,7 @@ function SkillSummary({skills, abilityScores}) {
         return(
             <TableRow>
                 <TableCell>{skill}</TableCell>
-                <TableCell>{skillRanks}</TableCell>
+                {/*<TableCell>{skillRanks}</TableCell>*/}
                 <TableCell>{skillRanks + ability}</TableCell>
             </TableRow>
         )

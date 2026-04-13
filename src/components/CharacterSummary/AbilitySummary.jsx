@@ -32,6 +32,7 @@ function AbilitySummary({abilityScore}) {
     function Entry () {
         return (
             <Paper elevation={3} sx={{bgcolor: 'orange.light'}}>
+                Ability Scores
                 <Data/>
             </Paper>
         )
