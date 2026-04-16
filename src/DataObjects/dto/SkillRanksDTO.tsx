@@ -1,0 +1,21 @@
+
+export type SkillRanksDTO = {
+    acrobatics: number,
+    astrophysics: number,
+    athletics: number,
+    computers: number,
+    deception: number,
+    insight: number,
+    intimidation: number,
+    investigation: number,
+    lore: number,
+    mechanics: number,
+    medicine: number,
+    performance: number,
+    perception: number,
+    persuasion: number,
+    sleightOfHand: number,
+    stealth: number,
+    survival: number,
+    xenobiology: number,
+}

@@ -1,0 +1,14 @@
+.summary-content {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.summary-content p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.summary-content strong {
+    color: #007bff;
+}

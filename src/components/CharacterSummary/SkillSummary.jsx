@@ -1,0 +1,114 @@
+import {Paper, Table, TableBody, TableCell, TableHead, TableRow} from "@mui/material";
+import {SkillEnum} from "../../DataObjects/enums/SkillEnum.tsx";
+
+function SkillSummary({skills, abilityScores}) {
+
+    function SkillEntry({skill, skillRanks, ability}) {
+        return(
+            <TableRow>
+                <TableCell>{skill}</TableCell>
+                {/*<TableCell>{skillRanks}</TableCell>*/}
+                <TableCell>{skillRanks + ability}</TableCell>
+            </TableRow>
+        )
+    }
+
+    return(
+        <Paper elevation={3}>
+            <Table size={"small"} sx={{bgcolor: 'blue.light'}}>
+                <TableBody>
+                    <SkillEntry
+                        skill={SkillEnum.acrobatics}
+                        skillRanks={skills.acrobatics}
+                        ability={abilityScores.Dexterity}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.astrophysics}
+                        skillRanks={skills.astrophysics}
+                        ability={abilityScores.Intelligence}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.athletics}
+                        skillRanks={skills.athletics}
+                        ability={abilityScores.Strength}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.computers}
+                        skillRanks={skills.computers}
+                        ability={abilityScores.Intelligence}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.deception}
+                        skillRanks={skills.deception}
+                        ability={abilityScores.Charisma}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.insight}
+                        skillRanks={skills.insight}
+                        ability={abilityScores.Wisdom}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.intimidation}
+                        skillRanks={skills.intimidation}
+                        ability={abilityScores.Charisma}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.investigation}
+                        skillRanks={skills.investigation}
+                        ability={abilityScores.Intelligence}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.lore}
+                        skillRanks={skills.lore}
+                        ability={abilityScores.Intelligence}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.mechanics}
+                        skillRanks={skills.mechanics}
+                        ability={abilityScores.Wisdom}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.medicine}
+                        skillRanks={skills.medicine}
+                        ability={abilityScores.Wisdom}
+                    /><SkillEntry
+                        skill={SkillEnum.performance}
+                        skillRanks={skills.performance}
+                        ability={abilityScores.Charisma}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.perception}
+                        skillRanks={skills.perception}
+                        ability={abilityScores.Wisdom}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.persuasion}
+                        skillRanks={skills.persuasion}
+                        ability={abilityScores.Charisma}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.sleightOfHand}
+                        skillRanks={skills.sleightOfHand}
+                        ability={abilityScores.Dexterity}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.stealth}
+                        skillRanks={skills.stealth}
+                        ability={abilityScores.Intelligence}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.survival}
+                        skillRanks={skills.survival}
+                        ability={abilityScores.Intelligence}
+                    />
+                    <SkillEntry
+                        skill={SkillEnum.xenobiology}
+                        skillRanks={skills.xenobiology}
+                        ability={abilityScores.Wisdom}
+                    />
+                </TableBody>
+            </Table>
+        </Paper>
+    )
+}
+export default SkillSummary
