@@ -9,8 +9,8 @@ function AbilitySummary({abilityScore}) {
                 <TableRow>
                     <TableCell>STR</TableCell>
                     <TableCell>{abilityScore.Strength}</TableCell>
-                    <TableCell>DEX</TableCell>
-                    <TableCell>{abilityScore.Dexterity}</TableCell>
+                    <TableCell>INT</TableCell>
+                    <TableCell>{abilityScore.Intelligence}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell>CON</TableCell>
@@ -19,10 +19,11 @@ function AbilitySummary({abilityScore}) {
                     <TableCell>{abilityScore.Wisdom}</TableCell>
                 </TableRow>
                 <TableRow>
+                    <TableCell>DEX</TableCell>
+                    <TableCell>{abilityScore.Dexterity}</TableCell>
                     <TableCell>CHA</TableCell>
                     <TableCell>{abilityScore.Charisma}</TableCell>
-                    <TableCell>INT</TableCell>
-                    <TableCell>{abilityScore.Intelligence}</TableCell>
+
                 </TableRow>
             </TableBody>
         </Table>
