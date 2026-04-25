@@ -24,7 +24,7 @@ function ProficiencySelect({
     const [backgroundSelectionThree, setBackgroundSelectionThree] = useState(null);
 
     function apply ()  {
-        setProficiency([
+        let filteredProficiencies = [
             humanSelection,
             variantSelection,
             professionSelectionOne,
@@ -32,7 +32,8 @@ function ProficiencySelect({
             backgroundSelectionOne,
             backgroundSelectionTwo,
             backgroundSelectionThree
-        ])
+        ].filter(str => str);
+        setProficiency(filteredProficiencies)
         stepForward()
     }
 
