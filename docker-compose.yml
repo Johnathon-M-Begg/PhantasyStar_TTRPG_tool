@@ -1,0 +1,14 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        VITE_API_BASE_URL: /api
+    image: phantasy-star-ttrpg-tool:latest
+    container_name: phantasy-star-ttrpg-tool
+    ports:
+      - "4173:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
