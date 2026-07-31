@@ -3,6 +3,7 @@ import {Box, Divider, Paper, Stack, Table, TableBody, TableCell, TableRow, Typog
 import SkillSummary from "./SkillSummary.jsx";
 import AbilitySummary from "./AbilitySummary.jsx";
 import SecondaryAttributeSummary from "./SecondaryAttributeSummary.jsx";
+import ProficienciesSummary from "./ProficienciesSummary.jsx";
 
 function CharacterSummary({
     profession,
@@ -42,6 +43,7 @@ function CharacterSummary({
                     <PersonalDetails/>
                     <AbilitySummary abilityScore={abilityScores}/>
                     <SecondaryAttributeSummary profession={profession} abilityScore={abilityScores}/>
+                    <ProficienciesSummary proficiencies={proficiencies}/>
                 </Stack>
                 <SkillSummary skills={skills} abilityScores={abilityScores}/>
             </Stack>
