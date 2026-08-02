@@ -1,0 +1,26 @@
+.auth-page {
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 28px;
+}
+
+.auth-title {
+    margin-bottom: 16px;
+}
+
+.auth-actions {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+

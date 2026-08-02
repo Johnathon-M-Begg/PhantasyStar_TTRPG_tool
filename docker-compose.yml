@@ -3,7 +3,7 @@ services:
     build:
       context: .
       args:
-        VITE_API_BASE_URL: /api
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-/api}
     image: phantasy-star-ttrpg-tool:latest
     container_name: phantasy-star-ttrpg-tool
     ports:
