@@ -19,9 +19,12 @@ docker compose up --build -d
 ## Backend auth integration
 
 - The frontend now sends auth requests to the backend:
-  - `POST {VITE_API_BASE_URL}/auth/login`
-  - `POST {VITE_API_BASE_URL}/auth/register`
+  - `POST {VITE_API_BASE_URL}/v1/users/login`
+  - `POST {VITE_API_BASE_URL}/v1/users/register`
+- Character summary confirmation sends:
+  - `POST {VITE_API_BASE_URL}{VITE_CHARACTER_SAVE_PATH}`
 - API base URL is controlled by `VITE_API_BASE_URL`.
+- Character save path is controlled by `VITE_CHARACTER_SAVE_PATH` (default `/v1/characters`).
 
 ### Configure API URL for different environments
 

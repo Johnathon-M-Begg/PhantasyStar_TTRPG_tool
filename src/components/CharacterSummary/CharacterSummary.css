@@ -1,14 +1,32 @@
-.summary-content {
+.summary-root {
     text-align: left;
-    margin: 20px 0;
 }
 
-.summary-content p {
-    font-size: 18px;
-    margin: 10px 0;
-    color: #333;
+.summary-content {
+    align-items: flex-start;
 }
 
-.summary-content strong {
-    color: #007bff;
+.summary-left-column {
+    flex: 1;
+    min-width: 280px;
+}
+
+.summary-right-column {
+    flex: 1;
+    min-width: 320px;
+    overflow-x: auto;
+}
+
+.summary-actions {
+    justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+    .summary-actions {
+        justify-content: stretch;
+    }
+
+    .summary-actions button {
+        flex: 1;
+    }
 }

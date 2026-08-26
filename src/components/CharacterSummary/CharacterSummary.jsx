@@ -1,5 +1,5 @@
 import './CharacterSummary.css'
-import {Box, Divider, Paper, Stack, Table, TableBody, TableCell, TableRow, Typography} from "@mui/material";
+import { Alert, Button, Paper, Stack, Table, TableBody, TableCell, TableRow, Typography } from '@mui/material'
 import SkillSummary from "./SkillSummary.jsx";
 import AbilitySummary from "./AbilitySummary.jsx";
 import SecondaryAttributeSummary from "./SecondaryAttributeSummary.jsx";
@@ -13,6 +13,11 @@ function CharacterSummary({
     abilityScores,
     skills,
     proficiencies,
+    onBack,
+    onConfirm,
+    isSaving,
+    saveError,
+    saveSuccessMessage,
 }) {
 
     function PersonalDetails() {
@@ -36,16 +41,31 @@ function CharacterSummary({
     }
 
     return (
-        <Stack direction={"column"} spacing={1}>
-            <Typography>Character Summary</Typography>
-            <Stack direction={"row"} spacing={3}>
-                <Stack direction={"column"} spacing={2}>
+        <Stack direction={'column'} spacing={2} className="summary-root">
+            <Typography variant="h5">Character Summary</Typography>
+            <Typography variant="body2">
+                Please verify all character details below before saving.
+            </Typography>
+            {saveError ? <Alert severity="error">{saveError}</Alert> : null}
+            {saveSuccessMessage ? <Alert severity="success">{saveSuccessMessage}</Alert> : null}
+            <Stack direction={{ xs: 'column', lg: 'row' }} spacing={2} className="summary-content">
+                <Stack direction={'column'} spacing={2} className="summary-left-column">
                     <PersonalDetails/>
                     <AbilitySummary abilityScore={abilityScores}/>
                     <SecondaryAttributeSummary profession={profession} abilityScore={abilityScores}/>
                     <ProficienciesSummary proficiencies={proficiencies}/>
                 </Stack>
-                <SkillSummary skills={skills} abilityScores={abilityScores}/>
+                <Stack className="summary-right-column">
+                    <SkillSummary skills={skills} abilityScores={abilityScores}/>
+                </Stack>
+            </Stack>
+            <Stack direction={'row'} spacing={2} className="summary-actions">
+                <Button variant="outlined" onClick={onBack} disabled={isSaving}>
+                    Back
+                </Button>
+                <Button variant="contained" onClick={onConfirm} disabled={isSaving}>
+                    {isSaving ? 'Saving...' : 'OK'}
+                </Button>
             </Stack>
         </Stack>
     )

@@ -12,6 +12,19 @@ import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
 import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
 import {ProfessionEnum} from "../../DataObjects/enums/ProfessionEnum.tsx";
 
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '/api').replace(/\/$/, '')
+const rawCharacterSavePath = import.meta.env.VITE_CHARACTER_SAVE_PATH ?? '/v1/characters'
+const CHARACTER_SAVE_PATH = rawCharacterSavePath.startsWith('/')
+    ? rawCharacterSavePath
+    : `/${rawCharacterSavePath}`
+
+function readErrorMessage(response, fallbackMessage) {
+    return response
+        .json()
+        .then(payload => payload?.message || payload?.error || fallbackMessage)
+        .catch(() => fallbackMessage)
+}
+
 function CreateCharacter() {
     const [selectedProfession, setSelectedProfession] = useState(null)
     const [selectedOrigin, setSelectedOrigin] = useState({
@@ -49,6 +62,9 @@ function CreateCharacter() {
         xenobiology: 0,
     })
     const [proficiency, setProficiency] = useState([])
+    const [isSaving, setIsSaving] = useState(false)
+    const [saveError, setSaveError] = useState('')
+    const [saveSuccessMessage, setSaveSuccessMessage] = useState('')
 
     function stepForward () {
         setStep(step + 1)
@@ -56,6 +72,41 @@ function CreateCharacter() {
 
     function stepBackward() {
         setStep(step - 1)
+    }
+
+    async function saveCharacter() {
+        setSaveError('')
+        setSaveSuccessMessage('')
+        setIsSaving(true)
+
+        const payload = {
+            profession: selectedProfession,
+            origin: selectedOrigin,
+            abilityScores,
+            skillRanks,
+            proficiencies: proficiency,
+        }
+
+        try {
+            const response = await fetch(`${API_BASE_URL}${CHARACTER_SAVE_PATH}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+
+            if (!response.ok) {
+                const message = await readErrorMessage(response, 'Could not save character.')
+                throw new Error(message)
+            }
+
+            setSaveSuccessMessage('Character saved successfully.')
+        } catch (error) {
+            setSaveError(error.message)
+        } finally {
+            setIsSaving(false)
+        }
     }
 
     return (
@@ -115,6 +166,11 @@ function CreateCharacter() {
                         abilityScores={abilityScores}
                         skills={skillRanks}
                         proficiencies={proficiency}
+                        onBack={stepBackward}
+                        onConfirm={saveCharacter}
+                        isSaving={isSaving}
+                        saveError={saveError}
+                        saveSuccessMessage={saveSuccessMessage}
                     />
                 )}
             </Box>
