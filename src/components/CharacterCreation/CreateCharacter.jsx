@@ -8,15 +8,9 @@ import AbilityAssign from "./AbilityAssign.jsx";
 import {VariantEnum} from "../../DataObjects/enums/VariantEnum.tsx";
 import ProficiencySelect from "./ProficiencySelect.jsx";
 import CharacterSummary from "../CharacterSummary/CharacterSummary.jsx";
-import {RaceEnum} from "../../DataObjects/enums/RaceEnum.tsx";
-import {BackgroundEnum} from "../../DataObjects/enums/BackgroundEnum.tsx";
-import {ProfessionEnum} from "../../DataObjects/enums/ProfessionEnum.tsx";
+import { withApiBase } from '../../config/api'
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '/api').replace(/\/$/, '')
-const rawCharacterSavePath = import.meta.env.VITE_CHARACTER_SAVE_PATH ?? '/v1/characters'
-const CHARACTER_SAVE_PATH = rawCharacterSavePath.startsWith('/')
-    ? rawCharacterSavePath
-    : `/${rawCharacterSavePath}`
+const CHARACTER_SAVE_PATH = import.meta.env.VITE_CHARACTER_SAVE_PATH ?? '/v1/characters'
 
 function readErrorMessage(response, fallbackMessage) {
     return response
@@ -88,7 +82,7 @@ function CreateCharacter() {
         }
 
         try {
-            const response = await fetch(`${API_BASE_URL}${CHARACTER_SAVE_PATH}`, {
+            const response = await fetch(withApiBase(CHARACTER_SAVE_PATH), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import './LandingPage.css'
 import { Box, Button, Typography } from '@mui/material'
-import { useAuth } from '../context/AuthContext.jsx'
+import { useAuth } from '../context/AuthStateContext.jsx'
 
 function LandingPage() {
     const navigate = useNavigate()

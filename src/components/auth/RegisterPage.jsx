@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Alert, Box, Button, Link, Paper, Stack, TextField, Typography } from '@mui/material'
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext.jsx'
+import { useAuth } from '../../context/AuthStateContext.jsx'
 import './AuthPage.css'
 
 function RegisterPage() {
@@ -133,4 +133,3 @@ function RegisterPage() {
 }
 
 export default RegisterPage
-

@@ -24,21 +24,26 @@ docker compose up --build -d
 - Character summary confirmation sends:
   - `POST {VITE_API_BASE_URL}{VITE_CHARACTER_SAVE_PATH}`
 - API base URL is controlled by `VITE_API_BASE_URL`.
+- If `VITE_API_BASE_URL` is not set, the app defaults to `http://localhost:8080`.
 - Character save path is controlled by `VITE_CHARACTER_SAVE_PATH` (default `/v1/characters`).
 
 ### Configure API URL for different environments
 
-Create a local env file from the example and set your backend URL:
+Create a local env file from the example:
 
 ```bash
 cp .env.example .env
 ```
 
-Then edit `.env` and set `VITE_API_BASE_URL` as needed, for example:
+Defaults in `.env.example` point to local backend:
 
+- `VITE_API_BASE_URL=http://localhost:8080`
+
+Override `VITE_API_BASE_URL` per environment as needed:
+
+- `http://localhost:8080` for direct local backend
+- `https://api.example.com` for production backend
 - `/api` for Docker + nginx proxy
-- `http://localhost:8080/api` for direct local backend
-- `https://test-api.example.com/api` for test environment
 
 When using Docker Compose, rebuild so Vite picks up the new build-time value:
 

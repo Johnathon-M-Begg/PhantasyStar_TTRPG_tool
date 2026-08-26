@@ -1,9 +1,8 @@
-import { createContext, useContext, useMemo, useState } from 'react'
-
-const AuthContext = createContext(null)
+import { useMemo, useState } from 'react'
+import { AuthContext } from './AuthStateContext'
+import { withApiBase } from '../config/api'
 
 const SESSION_STORAGE_KEY = 'ps_tool_session'
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '/api').replace(/\/$/, '')
 const LOGIN_PATH = '/v1/users/login'
 const REGISTER_PATH = '/v1/users/register'
 
@@ -36,7 +35,7 @@ function normalizeUser(payload, fallbackUsername) {
 }
 
 async function postToAuthEndpoint(path, payload, fallbackMessage) {
-  const response = await fetch(`${API_BASE_URL}${path}`, {
+  const response = await fetch(withApiBase(path), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -100,14 +99,3 @@ export function AuthProvider({ children }) {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
-
-export function useAuth() {
-  const context = useContext(AuthContext)
-
-  if (!context) {
-    throw new Error('useAuth must be used inside AuthProvider.')
-  }
-
-  return context
-}
-
